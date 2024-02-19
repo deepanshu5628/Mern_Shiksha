@@ -2,7 +2,7 @@ require("dotenv").config();
 // connecting db
 const mongoose=require("mongoose");
 async function main(){
-    await mongoose.connect(MONGODB_LINK);
+    await mongoose.connect(process.env.MONGODB_LINK);
 };
 
 let startdb=()=>{
