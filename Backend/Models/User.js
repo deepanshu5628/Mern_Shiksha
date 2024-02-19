@@ -1,10 +1,10 @@
 const mongoose=require("mongoose");
 const userSchema=new mongoose.Schema({
-    firstname:{
+    firstName:{
         type:String,
         required:true,
     },
-    lastname:{
+    lastName:{
         type:String,
         required:true,
     },
@@ -16,9 +16,9 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true,
     },
-    accoutType:{
-        type:{String},
-        enum:["Admin","Instructor","Student"],
+    accountType:{
+        type:String,
+        enum:["Instructor","Student"],
         required:true,
     },
     courses:[{
@@ -31,15 +31,19 @@ const userSchema=new mongoose.Schema({
     },
     image:{
         type:String,
-        required:true,
+        default:null,
+        // require,
     },
     courseProgress:{
         type:mongoose.Types.ObjectId,
         ref:"CourseProgress",
+    },
+    resetToken:{
+        type:String,
+    },
+    resetTokenTimer:{
+        type:Date,
     }
-
-
-
 })
 
 const User=mongoose.model("User",userSchema);
