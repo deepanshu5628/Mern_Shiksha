@@ -5,15 +5,16 @@ exports.islogedin=async(req,res,next)=>{
     // find token from headers
     // perform basic validation
     let tok=req.headers.authorization;
-    let token=tok.replace("Bearer ","");
-    
     // validation on token
-    if(!token){
+    if(!tok){
         return res.status(400).json({
             success:false,
             message:"Token is missing,Please login ",
         });
     };
+    let token=tok.replace("Bearer ","");
+    
+    
     // fill the current user details in the req.user
     let payload;
     try {
