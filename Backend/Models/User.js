@@ -18,7 +18,7 @@ const userSchema=new mongoose.Schema({
     },
     accountType:{
         type:String,
-        enum:["Instructor","Student"],
+        enum:["Instructor","Student","Admin"],
         required:true,
     },
     courses:[{
