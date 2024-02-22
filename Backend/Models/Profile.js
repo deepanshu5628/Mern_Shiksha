@@ -7,7 +7,7 @@ const profileSchmea=new mongoose.Schema({
         required:true,
     },
     dob:{
-        type:Date,
+        type:String,
         default:null,
         required:true,
     },

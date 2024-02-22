@@ -5,7 +5,7 @@ const Profile=require("../Models/Profile");
 exports.updateProfile=async(req,res)=>{
     try {
         // fetch all details from body 
-        let {gender,dob,about,contactNo}=req,body;
+        let {gender,dob,about,contactNo}=req.body;
         // this needs to be verify ->
         let userid=req.user.id;
         // validate the details 
@@ -46,17 +46,26 @@ exports.updateProfile=async(req,res)=>{
 // delete a user's account 
 exports.deleteAccount=async(req,res)=>{
     try {
-        // fetch user id from requres body 
-        let userId=req.user._id;
-        let userdetails=User.findById(userId);
+        // fetch user id from requres body
+        let userId=req.user.id;
+        let userdetails=await User.findById(userId);
+        if(!userdetails){
+            return res.status(400).json({
+                success:false,
+                message:"user id is not valid ",
+            })
+        }
         // delete it from user model
         let deluserdetails=await User.findByIdAndDelete(userId);
+        // deltet user profile 
+        let detuserprofile=await Profile.findByIdAndDelete(userdetails.additionalInformation);
         // delete user'id from the enroller course section -Pending
         // send responce
         res.status(200).json({
             success:true,
             message:"Acoount Deleted",
             deluserdetails,
+            detuserprofile,
         });
 
     } catch (error) {
@@ -76,8 +85,13 @@ exports.getAllUserDetails=async(req,res)=>{
         let userId=req.user.id;
         // getalluserdetails
         let userdetails=await User.findById(userId)
-        .populate("Course","courseName")
-        .populate("additionalInformation","gender","dob","contactNo","about");
+        .populate("additionalInformation");
+
+        res.status(200).json({
+            success:true,
+            message:"here are all details ",
+            userdetails,
+        })
     } catch (error) {
         return res.status(400).json({
             success:false,

@@ -27,6 +27,7 @@ exports.createSection=async(req,res)=>{
         }); 
         // save this section in the course 
         let updatedcourse=await Course.findOneAndUpdate({_id:coursedetails},{$push:{courseContent:newSection._id}},{new:true});
+        // H.W use .populate bcz we are going to log the updatedcourse details 
         // send response 
         res.status(200).json({
             success:true,
@@ -56,8 +57,8 @@ exports.updateSection=async(req,res)=>{
             });
         }
         // validate section id 
-        let Sectiondetails=await findOne({_id:sectionId});
-        if(Sectiondetails){
+        let Sectiondetails=await Section.findOne({_id:sectionId});
+        if(!Sectiondetails){
             return res.status(400).json({
                 success:false,
                 message:"Section id is not valid ",
@@ -66,7 +67,11 @@ exports.updateSection=async(req,res)=>{
 
         // find section and update 
         let updatedSection=await Section.findOneAndUpdate({_id:sectionId},{sectionName:sectionName},{new:true});
-        // send responce 
+        // send responce
+        res.status(200).json({
+            success:true,
+            message:"Successfully updated the section",
+        }) 
     } catch (error) {
         return res.status(400).json({
             success:false,
@@ -96,11 +101,11 @@ exports.deleteSection=async(req,res)=>{
             });
         }
         // deltet the section from the db 
-        let deletedSection=await Section.findOneAndDelete({_id:sectionId});
+        let deletedSection=await Section.findOneAndDelete({_id:sectionId},{new:true});
         // delete the section the course as well 
         let updatedcourse=await Course.findByIdAndUpdate(courseId,{
-            $pull:{courseContent:courseId},
-        })
+            $pull:{courseContent:sectionId},
+        },{new:true})
         // send respoce 
         res.status(200).json({
             success:true,
