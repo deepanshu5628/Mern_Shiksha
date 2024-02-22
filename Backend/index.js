@@ -24,7 +24,8 @@ app.use(fileUpload({
 // user routes
 const userRoute=require("./Routes/User");
 const courseRoute=require("./Routes/Course");
+const profileRoute=require("./Routes/Profile");
 app.use("/api/v1/auth",userRoute);
 app.use("/api/v1/Course",courseRoute);
-
+app.use("/api/v1/profile",profileRoute);
 

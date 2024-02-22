@@ -4,24 +4,24 @@ const profileSchmea=new mongoose.Schema({
         type:String,
         default:null,
         enum:["Male","Female","Others"],
-        require,
+        required:true,
     },
     dob:{
-        type:Date,
+        type:String,
         default:null,
-        require,
+        required:true,
     },
     about:{
         type:String,
         default:null,
         trim:true,
-        require,
+        required:true,
     },
     contactNo:{
         type:Number,
         default:null,
         trim:true,
-        require,
+        required:true,
     }
 })
 
