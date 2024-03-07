@@ -8,7 +8,7 @@ function App() {
     <div className='w-screen min-h-screen bg-richblack-900 flex flex-col font-inte'>
     <Navbar/>
     <Routes>
-      <Route path='/' element={<Home/>}/>
+      <Route path='/'  element={<Home/>}/>
       <Route path='/login' Component={Login}/>
     </Routes>
     </div>

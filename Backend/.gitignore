@@ -1,4 +1,4 @@
-.env
+
 # Logs
 logs
 *.log
@@ -12,7 +12,7 @@ node_modules
 dist
 dist-ssr
 *.local
-
+.env
 asf
 # Editor directories and files
 .vscode/*
@@ -24,4 +24,3 @@ asf
 *.njsproj
 *.sln
 *.sw?
-.env
