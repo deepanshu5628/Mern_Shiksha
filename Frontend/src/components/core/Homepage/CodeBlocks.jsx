@@ -21,7 +21,7 @@ function CodeBlocks ({position,heading,subheading,ctabtn1,ctabtn2,codeblock,back
             </div>
         </div>
         {/* section 2  */}
-        <div className="flex flex-row   code-border h-fit w-[50%] text-10[px]  py-4 lg-w-[500px]">
+        <div className="flex flex-row border border-zinc-400  code-border h-fit w-[50%] text-10[px]  py-4 lg-w-[500px]">
             <div className="w-[10%] text-center flex flex-col text-richblack-400 select-none  font-inter font-bold">
                 <p>1</p>
                 <p>2</p>
