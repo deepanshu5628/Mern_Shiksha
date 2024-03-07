@@ -6,7 +6,6 @@ import { apiconnector } from "../../../services/apiconnector";
 import { user } from "../../../services/apis";
 import { login } from "../../../services/operations/authAPI";
 
-// import { login } from "../../../services/operations/authAPI"
 
 function LoginForm() {
   const navigate = useNavigate()
