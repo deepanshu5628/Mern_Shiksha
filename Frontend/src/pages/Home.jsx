@@ -3,7 +3,19 @@ import CTAButton from "../components/core/Homepage/CTAButton";
 import CodeBlocks from "../components/core/Homepage/CodeBlocks";
 import {Link}from "react-router-dom";
 import Banner from "../assets/Images/banner.mp4";
+import imageno1 from "../assets/Images/TimelineImage.png";
+import imgtwo from "../assets/Images/Compare_with_others.png";
+import imgonee from "../assets/Images/Know_your_progress.png";
+import imgthree from "../assets/Images/Plan_your_lessons.png";
+import logoone from "../assets/TimeLineLogo/Logo1.svg";
+import logotwo from "../assets/TimeLineLogo/Logo2.svg";
+import logothree from "../assets/TimeLineLogo/Logo3.svg";
+import logofour from "../assets/TimeLineLogo/Logo4.svg";
+import instructorimg from "../assets/Images/Instructor.png";
 import { FaArrowRight } from "react-icons/fa6";
+import ExploreMore from "../components/core/Homepage/ExploreMore";
+import RecBox from "../components/core/Homepage/RecBox";
+import Footer from "../components/common/Footer";
 function Home(){
     return (
         <div>
@@ -39,7 +51,7 @@ function Home(){
                 </div>
 
                 {/* video */}
-                <div className="mx-3 my-12 shadow-blue-200" >
+                <div className="mx-3 my-12 shadow-2xl  shadow-blue-200" >
                     <video muted loop autoPlay > 
                     <source src={Banner} type="video/mp4" />
                     </video>
@@ -98,14 +110,110 @@ function Home(){
                         btntext:"Learn More"
                     }}
                     codeblock={`import react from "react";\nimport CTAButton from "./Button";\nimport { FaArrowRight } from "react-icons/fa6";\nimport { TypeAnimation } from 'react-type-animation';\n \nconst home()=>{\nreturn home()\n}\n}`}
+                    codeColor={"text-richblack-300"}
                     />
                 </div>
+                <ExploreMore/>
             </div>
-            {/* section-2 */}
             
-            {/* section-3 */}
-            {/* section-4 */}
+
+
+           {/* ----------------------- section-2 ------------------------------------------*/}
+            {/* self try  */}
+            <div className="bg-pure-greys-5 text-richblack-700 relative mx-auto  flex flex-col   w-11/12  max-w-maxContent items-center justify-between pb-12 " >
+            {/* part-1 two buttons  */}
+               <div className="bg-white w-[100%] homepage_bg h-[333px] flex text-center justify-center gap-4 pt-48">
+                    <CTAButton linkto={"/signup"} active={true} children={<div className="flex justify-center gap-1"><p>Explore Full Catelog</p> <FaArrowRight/></div>}/>
+                    <CTAButton linkto={"/signup"} children={"Learn More"}/> 
+                </div>
+                {/* part2 -heading and para   */}
+                <div className="flex justify-between  gap-24 mt-20 mb-16 ">
+                    <div className="text-4xl font-bold "><p>Get the skills you need for a </p> <HighlightText text={"job that is in demand"}/></div>
+                    <div className="flex flex-col gap-10">
+                        <div>                        
+                        <p>The modern Shiksha is the dictates its own terms. 
+                        Today,</p> <p>to be a competitive specialist requires more than professional skills</p>
+                        </div>
+                        <CTAButton children={"Learn More "}  active={true} linkto={"/"} />
+                    </div>
+                </div>
+                {/* iamge and role's  */}
+                <div className="flex flex-row gap-8 justify-between ">
+                    <div className=" w-6/12 flex flex-col gap-10  ">
+                        <RecBox heading={"Leadership"} description={"Fully committed to the success company"} logo={logoone} />
+                        <RecBox heading={"Responsibility"} description={"Students will always be our top priority"} logo={logotwo} />
+                        <RecBox heading={"Flexibilty"} description={"The ability to switch is an important skills"} logo={logothree} />
+                        <RecBox heading={"Solve the Problem"} description={"Code your way to a solution"} logo={logofour} />
+                    </div>
+                    {/* image  */}
+                    <div className="w-6/12   flex justify-center items-center flex-col">
+                        <div className="shadow-2xl  shadow-blue-200"><img src={imageno1} alt="computer" /></div>
+                        <div className="h-[120px] w-[90%] flex text-white text-1.5xl relative bottom-10  justify-center gap-40 text-bolds bg-caribbeangreen-700"> 
+                        <div className=" flex gap-5 pl-4 items-center">
+                            <h1 className="text-2xl font-extrabold">10</h1>
+                            <div className="text-richblack-300" ><h1>Years</h1><h1>Experince</h1></div>
+                        </div>
+                        <div className=" flex gap-5 items-center">
+                            <h1 className="text-2xl font-extrabold">250</h1>
+                            <div className="text-richblack-300" ><h1>Types</h1><h1>of Courses</h1></div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* next headline  */}
+                 <div className="mt-6 mb-5">
+                    <div className="text-4xl font-bold  mb-2"><p>Your swiss knife for <HighlightText text={"learning any language"}/></p></div>
+                    <div className=" text-center" > <p>Using spin making learning multiple languages easy. with 20+ languages realistic voice-over, progress tracking,
+                        <br /> custom schedule and more.</p></div>
+                </div> 
+                {/* 3images */}
+                <div className="flex justify-between font-1.3xl">
+                    <div>
+                    <img className="relative left-16" src={imgonee} alt="1st" />
+                    </div>
+                    <div>
+                    <img  className="relative " src={imgtwo} alt="2nd" />
+                    </div>
+                    <div>
+                    <img src={imgthree} className="relative right-32" alt="3rd" />
+                    </div>
+                </div>
+                {/* last btn  */}
+                <CTAButton  active={true} children={"Learn More"}/>
+            </div>
+            {/* --------------------------------section-3---------------------------------- */}
+            <div className="w-11/12 max-w-maxContent mx-auto text-richblack-300 pt-16 pl-8 ">
+                {/* part-1 */}
+            <div className="flex gap-24 justify-between">
+                {/* image div  */}
+                <div >
+                    <img className="w-[32rem] h-[26rem]" src={instructorimg} alt="instructore image" />
+                </div>
+                {/* info div  */}
+                <div className="flex w-[50%] mt-12 gap-10  flex-col">
+                    <div className="text-5xl font-bold"><p>Become an</p> <HighlightText text={"instructor"}/></div>
+                    <div className="text-2xl"><p>Instructors from around the world teach millions of students on Shiksha. 
+                        We provide the tools and skills to teach what you love.</p>
+                    </div>
+                    <CTAButton  active={true} linkto={"/signup"} children={
+                        <div className="flex font-bold text-1.3xl">
+                            <p>Start Teaching Today </p>
+                            <FaArrowRight/>
+                        </div>}/>
+                </div>
+            </div>
+
+            {/* part2  reviews */}
+            <div>
+                <div className="text-4xl font-semibold text-white text-center mt-12"><p>Review from others learners</p></div>
+                <div>
+                    <p>review of useres</p>
+                </div>
+            </div>
+            </div>
             {/* footer */}
+            <Footer/>
         </div>
     )
 }
