@@ -12,7 +12,7 @@ const BASE_URL_CONTACTUS=BASE_URL+"api/v1/reach";
 // ----------------------------------coursese-----------------------------
 // categoty api 's 
 export const categories={
-    CATEGORIES_API_SHOWALLCATEGORIES:BASE_URL_COURSE+"/showallcategories",
+    CATEGORIES_API_SHOWALLCATEGORIES:BASE_URL_COURSE+"/showallcategories",        //done
     CATEGORIES_API_CREATECATEGORY:BASE_URL_COURSE+"/createcategory",
     CATEGORIES_API_GETCATEGORYPAGEDETAILS:BASE_URL_COURSE+"/getCategoryPageDetails",
 }
@@ -41,9 +41,9 @@ export const review={
 
 // ---------------USER------------------------------------
 export const user={
-    AUTH_API_LOGIN:BASE_URL_AUTH+"/login",
-    AUTH_API_SIGNUP:BASE_URL_AUTH+"/signup",
-    AUTH_API_SENDOTP:BASE_URL_AUTH+"/sendotp",
+    AUTH_API_LOGIN:BASE_URL_AUTH+"/login",          //done
+    AUTH_API_SIGNUP:BASE_URL_AUTH+"/signup",         //done 
+    AUTH_API_SENDOTP:BASE_URL_AUTH+"/sendotp",        //done
     AUTH_API_CHANGEPASSWORD:BASE_URL_AUTH+"/changepassword",
     AUTH_API_RESETPASSWORDTOKEN:BASE_URL_AUTH+"/resetpasswordtoken",
     AUTH_API_RESETPASSWORD:BASE_URL_AUTH+"/resetpassword",   
