@@ -1,7 +1,7 @@
 const User=require("../Models/User");
 const bcrypt=require("bcrypt");
 const mailsender=require("../Utils/mailsender");
-// change password
+// ---------------------------------------------change password--------------------
 exports.changePassword=async(req,res)=>{
     try {
         // fetch passs and newppas
@@ -46,7 +46,7 @@ exports.changePassword=async(req,res)=>{
         });   
     }
 }
-// reset password
+// ---------------------------------------reset password token---------------------------
 exports.resetPasswordtoken=async(req,res)=>{
     try {
         // fetch email from the req body 
@@ -69,7 +69,7 @@ exports.resetPasswordtoken=async(req,res)=>{
         // generate a token
         let token=crypto.randomUUID();
         // create a link 
-        let url=`http://localhost:5173/ressetpassword/${token}`;
+        let url=`http://localhost:5175/update-password/${token}`;
         // send this link via mail to the mail address
         try {
             let info=mailsender(email,"password resetlink",url);
@@ -94,19 +94,19 @@ exports.resetPasswordtoken=async(req,res)=>{
         });   
     }
 }
-
+// -----------------------------------resset password---------------------------------------
 exports.resetPassword=async(req,res)=>{
     try {
         // fetch token pass confirmpass form req.body
-        let {token,password,confirmpassword}=req.body;
+        let {token,password,confirmPassword}=req.body;
         // perform basic validation
-        if(!token||!password||!confirmpassword){
+        if(!token||!password||!confirmPassword){
             return res.status(400).json({
                 success:false,
                 message:"fill all the dtails ",
             });
         }
-        if(password!==confirmpassword){
+        if(password!==confirmPassword){
             return res.status(400).json({
                 success:false,
                 message:"Both the passwords should Match",
@@ -117,7 +117,7 @@ exports.resetPassword=async(req,res)=>{
         if(!userdetails){
             return res.status(400).json({
                 success:false,
-                message:"invalid user",
+                message:"invalid Token",
             });
         }
         // check for the token timeer
