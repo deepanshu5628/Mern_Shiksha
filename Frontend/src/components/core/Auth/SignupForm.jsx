@@ -44,30 +44,20 @@ function SignupForm() {
   // Handle Form Submission
   const handleOnSubmit =async (e) => {
     e.preventDefault()
-
     if (password !== confirmPassword) {
       toast.error("Passwords Do Not Match")
       return
     }
     dispatch(sendOtp(email,navigate,signupData));
-
-    
-
-  //   // Setting signup data to state
-  //   // To be used after otp verification
-  //   dispatch(setSignupData(signupData))
-  //   // Send OTP to user for verification
-  //   dispatch(sendOtp(formData.email, navigate))
-
-  //   // Reset
-  //   setFormData({
-  //     firstName: "",
-  //     lastName: "",
-  //     email: "",
-  //     password: "",
-  //     confirmPassword: "",
-  //   })
-  //   setAccountType(ACCOUNT_TYPE.STUDENT)
+    // Reset
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    })
+    setAccountType(ACCOUNT_TYPE.STUDENT)
   }
 
   // data to pass to Tab component

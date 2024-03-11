@@ -76,12 +76,54 @@ export const signup=(signupData,otp,navigate)=>{
            return  console.log("error in fetching data form backend");
         }
         if(res.success){
-            toast.success("Successfully Registered");
-            navigate("/");
+            toast.success("Successfully Registered Log in please");
+            navigate("/login");
+            dispatch(setSignupData(null));
+             localStorage.removeItem("signupData");
         }
         if(!res.success){
             toast.error(res.message);
         }
+        
         dispatch(setLoading(false));
     }
 }
+
+// ----------------------------send reset password token ------------------------------
+export const resetpasswordtoken= (email,setisemailsent)=>{
+    return async (dispatch)=>{
+        let res;
+        try {
+            res=await apiconnector("POST",user.AUTH_API_RESETPASSWORDTOKEN,{email})
+        } catch (error) {
+           return console.log(error);
+        }
+        if(res.success){
+            toast.success(res.message);
+            setisemailsent(true);
+        }
+        if(!res.success){
+            toast.error(res.message);
+        }
+    }
+}
+
+// ------------------------------resset password -----------------------------------------
+export const ressetpassword=(token,password,confirmPassword,navigate)=>{
+    return async(dispatch)=>{
+        let res;
+        try {
+            res=await apiconnector("POST",user.AUTH_API_RESETPASSWORD,{token,password,confirmPassword});
+        } catch (error) {
+            toast.success("unkkonw error occured");
+            return  console.log(error);
+        }
+        if(res.success){
+            toast.success(res.message);
+            navigate("/login");
+        }
+        if(!res.success){
+            toast.error(res.message);
+        }
+    }
+} 
