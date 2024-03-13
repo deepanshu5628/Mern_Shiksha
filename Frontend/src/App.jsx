@@ -7,6 +7,8 @@ import signup from "./pages/Signup";
 import VerifyEmail from './pages/VerifyEmail';
 import Forgetpasspage from './pages/Forgetpasspage';
 import Updatepassword from './pages/Updatepassword';
+import ContactUs from "./pages/ContactUs";
+import About from './pages/About';
 function App() {
   return (
     <div className='w-screen min-h-screen bg-richblack-900 flex flex-col font-inte'>
@@ -18,6 +20,8 @@ function App() {
       <Route path='/verifyemail' Component={VerifyEmail}/>
       <Route path='/forgot-password' Component={Forgetpasspage}/>
       <Route path='/update-password/:id' Component={Updatepassword} />
+      <Route path='/contact' Component={ContactUs}/>
+      <Route path='/about' Component={About}/>
     </Routes>
     </div>
   )

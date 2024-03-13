@@ -6,7 +6,7 @@ const BASE_URL="http://localhost:3000";
 const BASE_URL_COURSE=BASE_URL+"/api/v1/Course";
 const BASE_URL_AUTH=BASE_URL+"/api/v1/auth";
 const BASE_URL_PROFILE=BASE_URL+"/api/v1/profile";
-const BASE_URL_CONTACTUS=BASE_URL+"api/v1/reach";
+const BASE_URL_CONTACTUS=BASE_URL+"/api/v1/reach";
 
 
 // ----------------------------------coursese-----------------------------
