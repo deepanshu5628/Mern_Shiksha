@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import {toast } from 'react-toastify';
 
@@ -12,7 +12,6 @@ import Tab from "../../common/Tab"
 function SignupForm() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
   // student or instructor
   const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT)
 
@@ -75,11 +74,12 @@ function SignupForm() {
   ]
 
   return (
-    // <div className="bg-white"><h1>form data</h1></div>
+    
     <div>
       {/* Tab */}
       <Tab tabData={tabData} field={accountType} setField={setAccountType} />
       {/* Form */}
+  
       <form onSubmit={handleOnSubmit} className="flex w-full flex-col gap-y-4">
         <div className="flex gap-x-4">
           <label>
@@ -197,6 +197,7 @@ function SignupForm() {
           Create Account
         </button>
       </form>
+    
     </div>
   )
 }
