@@ -73,25 +73,28 @@ export const signup=(signupData,otp,navigate)=>{
         try {
              res=await apiconnector("POST",user.AUTH_API_SIGNUP,{...signupData,otp});
         } catch (error) {
+            navigate("/signup")
            return  console.log("error in fetching data form backend");
         }
         if(res.success){
             toast.success("Successfully Registered Log in please");
             navigate("/login");
             dispatch(setSignupData(null));
-             localStorage.removeItem("signupData");
+            localStorage.removeItem("signupData");
         }
         if(!res.success){
             toast.error(res.message);
+            // navigate("/signup")
         }
-        
         dispatch(setLoading(false));
+        
     }
 }
 
 // ----------------------------send reset password token ------------------------------
 export const resetpasswordtoken= (email,setisemailsent)=>{
     return async (dispatch)=>{
+        dispatch(setLoading(true));
         let res;
         try {
             res=await apiconnector("POST",user.AUTH_API_RESETPASSWORDTOKEN,{email})
@@ -105,12 +108,15 @@ export const resetpasswordtoken= (email,setisemailsent)=>{
         if(!res.success){
             toast.error(res.message);
         }
+        dispatch(setLoading(false));
+
     }
 }
 
 // ------------------------------resset password -----------------------------------------
 export const ressetpassword=(token,password,confirmPassword,navigate)=>{
     return async(dispatch)=>{
+        dispatch(setLoading(true));
         let res;
         try {
             res=await apiconnector("POST",user.AUTH_API_RESETPASSWORD,{token,password,confirmPassword});
@@ -125,5 +131,7 @@ export const ressetpassword=(token,password,confirmPassword,navigate)=>{
         if(!res.success){
             toast.error(res.message);
         }
+        dispatch(setLoading(false));
+
     }
 } 

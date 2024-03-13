@@ -45,8 +45,8 @@ export const user={
     AUTH_API_SIGNUP:BASE_URL_AUTH+"/signup",         //done 
     AUTH_API_SENDOTP:BASE_URL_AUTH+"/sendotp",        //done
     AUTH_API_CHANGEPASSWORD:BASE_URL_AUTH+"/changepassword",
-    AUTH_API_RESETPASSWORDTOKEN:BASE_URL_AUTH+"/resetpasswordtoken",
-    AUTH_API_RESETPASSWORD:BASE_URL_AUTH+"/resetpassword",   
+    AUTH_API_RESETPASSWORDTOKEN:BASE_URL_AUTH+"/resetpasswordtoken",  //done
+    AUTH_API_RESETPASSWORD:BASE_URL_AUTH+"/resetpassword",    //done
 }
 
 // -----------------PROFILE-------------------------------
@@ -59,5 +59,5 @@ export const profile={
 
 // -------------------CONTACTT US _----------------
 export const contactus={
-    CONTACTUS_API_CONTACT:BASE_URL_CONTACTUS+"/contact",
+    CONTACTUS_API_CONTACT:BASE_URL_CONTACTUS+"/contact", //done
 }

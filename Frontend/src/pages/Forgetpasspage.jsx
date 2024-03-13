@@ -5,12 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { resetpasswordtoken } from "../services/operations/authAPI";
 import { apiconnector } from "../services/apiconnector";
 import {user} from "../services/apis";
-
-
+import Spinner from "../components/common/Spinner"
 function Forgetpasspage(){
     const dispatch=useDispatch();
-
-
     let [email,setemail]=useState("");
     let [isemailsend,setisemailsent]=useState(false);
     let {loading }=useSelector((state)=>state.auth);
@@ -26,7 +23,7 @@ function Forgetpasspage(){
     return (
        <div>
         {
-            loading ?  <div className="loader"></div> :
+            loading ?  <Spinner/> :
             <div className="flex justify-center text-richblack-5  min-h-screen min-w-min  items-center">
             <div className=" flex-col min-w-[330px] max-w-[420px]   justify-center items-center ">
             <h1 className="text-4xl font-semibold ">{isemailsend ? "Check email": "Reset your password:"  }</h1>
