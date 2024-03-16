@@ -12,12 +12,12 @@ export const login=(email,password,navigate)=>{
             let res=await apiconnector("POST",user.AUTH_API_LOGIN,{email,password});            
             if(res.success){
                 let token=res.token;
-                let signupData=res.userdetails;
-                console.log(signupData.firstName);
+                let logindata=res.userdetails;
+                console.log(logindata.firstName);
                 dispatch(setToken(token));
-                dispatch(setUser(signupData));
+                dispatch(setUser(logindata));
                 localStorage.setItem("token",JSON.stringify(token));
-            localStorage.setItem("user",JSON.stringify(signupData));  
+            localStorage.setItem("user",JSON.stringify(logindata));  
             toast.success(res.message);
             navigate("/dashboard/my-profile");
         }
