@@ -3,6 +3,7 @@ const bcrypt=require("bcrypt");
 const mailsender=require("../Utils/mailsender");
 // ---------------------------------------------change password--------------------
 exports.changePassword=async(req,res)=>{
+    console.log("requriest recived");
     try {
         // fetch passs and newppas
         let {password,confirmpassword}=req.body;
@@ -12,7 +13,7 @@ exports.changePassword=async(req,res)=>{
         if(!payload){
             return res.status(400).json({
                 success:false,
-                message:"payload is missing ",
+                message:"User must be loged in to change the password",
             });
         }
         // match password's

@@ -3,7 +3,7 @@ import CTAButton from "../Homepage/CTAButton";
 import { MdModeEdit } from "react-icons/md";
 
 function Myprofile() {
-  const { user } = useSelector((state) => state.profile);
+  const { user,image } = useSelector((state) => state.profile);
 
   return (
     <div className="flex flex-col text-richblack-5 justify-center items-center my-4 gap-6 w-[100%]   ">
@@ -14,7 +14,7 @@ function Myprofile() {
         <div className="flex gap-3">
           {/* image div  */}
           <div>
-            <img className="rounded-full " src={user.image} alt="" />
+            <img className="rounded-full w-20 h-20 " src={image} alt="" />
           </div>
           {/* name email div */}
           <div>
@@ -38,7 +38,7 @@ function Myprofile() {
         </div>
       </section>
 
-      {/* second section */}
+      {/* second section about div */}
       <section className="bg-richblack-800 h-auto py-6 rounded-md px-8 w-[70%] flex-col  justify-between items-center">
         {/* first div  */}
         <div className="flex mb-4 justify-between w-full">
@@ -58,8 +58,8 @@ function Myprofile() {
         </div>
         {/* second div */}
         <div className="text-richblack-100">
-          {user.about ? (
-            <p>{user.about}</p>
+          {user.additionalInformation ? (
+            <p>{user.additionalInformation.about}</p>
           ) : (
             "Write something about yourself...."
           )}
@@ -104,18 +104,18 @@ function Myprofile() {
             </div>
             <div className="w-full">
               <p className="text-richblack-300 mb-1"> Phone Number</p>
-              <p>{user.contactNo ? user.contactNo : "Add Contact No"}</p>
+              <p>{user.additionalInformation ? user.additionalInformation.contactNo : "Add Contact No"}</p>
             </div>
           </div>
           {/* gender and DOB */}
           <div className="flex justify-start p-4">
             <div className="w-full">
               <p className="text-richblack-300 mb-1">Gender</p>
-              <p>{user.gender ? user.gender : "Add Gender"}</p>
+              <p>{user.additionalInformation ? user.additionalInformation.gender : "Add Gender"}</p>
             </div>
             <div className="w-full">
               <p className="text-richblack-300 mb-1">DOB</p>
-              <p>{user.contactNo ? user.contactNo : "Add Dob"}</p>
+              <p>{user.additionalInformation ? user.additionalInformation.dob : "Add Dob"}</p>
             </div>
           </div>
         </div>

@@ -27,6 +27,7 @@ const userSchema=new mongoose.Schema({
     }],
     additionalInformation:{
         type:mongoose.Types.ObjectId,
+        default:null,
         ref:"Profile",
     },
     image:{

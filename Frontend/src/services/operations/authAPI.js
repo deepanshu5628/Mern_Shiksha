@@ -1,19 +1,21 @@
 import { apiconnector } from "../apiconnector";
 import {user} from "../apis";
 import {setLoading,setSignupData,setToken} from "../../redux/Slices/authSlice";
-import {setUser} from "../../redux/Slices/profileSlice";
+import {setImage, setUser} from "../../redux/Slices/profileSlice";
 import {toast } from 'react-toastify';
 
 // -----------------------------login-------------------------------------------------
 export const login=(email,password,navigate)=>{
     return async(dispatch)=>{
         dispatch(setLoading(true));
+        let res;
         try {
-            let res=await apiconnector("POST",user.AUTH_API_LOGIN,{email,password});            
+             res=await apiconnector("POST",user.AUTH_API_LOGIN,{email,password});            
             if(res.success){
                 let token=res.token;
                 let logindata=res.userdetails;
-                console.log(logindata.firstName);
+            //    console.log(logindata)
+                dispatch(setImage(logindata.image));
                 dispatch(setToken(token));
                 dispatch(setUser(logindata));
                 localStorage.setItem("token",JSON.stringify(token));
@@ -135,3 +137,35 @@ export const ressetpassword=(token,password,confirmPassword,navigate)=>{
 
     }
 } 
+
+
+
+// -------------------------------change password -----------------------------------------
+export const changepassword=(data,token,navigate)=>{
+    console.log("requrest  recived in change apssword in authapi")
+    console.log(token);
+    return async(dispatch)=>{
+        dispatch(setLoading(true));
+        console.log(data);
+        let res;
+        try {
+            res=await apiconnector("POST",user.AUTH_API_CHANGEPASSWORD,data,{
+                "Content-Type":"application/json",
+                "authorization":`Bearer ${token}`
+            });
+            console.log(res);
+
+        } catch (error) {
+            toast.error("error error while sending requrest to backend");
+            return  console.log(error);
+        }
+        if(res.success){
+            toast.success(res.message);
+            navigate("/dashboard/setting");
+        }
+        if(!res.success){
+            toast.error(res.message);
+        }
+        dispatch(setLoading(false));
+    }
+}

@@ -5,6 +5,7 @@ const profileSlice=createSlice({
     initialState:{
         user:localStorage.getItem("user")? JSON.parse(localStorage.getItem("user")):null,
         loading:false,
+        image:localStorage.getItem("image")? JSON.parse(localStorage.getItem("image")):null,
     },
     reducers:{
         setUser(state,actions){
@@ -12,9 +13,12 @@ const profileSlice=createSlice({
         },
         setLoading(state,actions){
             state.loading=actions.payload;
+        },
+        setImage(state,actions){
+            state.image=actions.payload;
         }
     }
 })
 
-export const{setUser,setLoading}=profileSlice.actions;
+export const{setUser,setImage,setLoading}=profileSlice.actions;
 export default profileSlice.reducer;

@@ -16,9 +16,9 @@ function Navbar() {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
   const totalitems = useSelector((state) => state.cart.totalitems);
-  const { user } = useSelector((state) => state.profile);
+  const { user,image:dpimage } = useSelector((state) => state.profile);
   const [sublinks, setsublinks] = useState([]);
-
+  let dashboarpaths=location.pathname.split("/")[1];
   // logout btn handler
   function logoutbtnhandler() {
     dispatch(logout(navigate));
@@ -43,7 +43,7 @@ function Navbar() {
     catefetch();
   }, []);
   return (
-    <div className=" w-full  items-center flex bg-richblack-800 justify-center border-b-[1px] border-b-richblack-700 ">
+    <div className={` w-full  items-center flex  bg-richblack-800 justify-center border-b-[1px] border-b-richblack-700 ${dashboarpaths==="dashboard"? "fixed" :null} `}>
       <div className="w-11/12 max-w-maxContent  h-14 flex items-center justify-between">
         {/* image div  */}
         <div className="">
@@ -132,9 +132,8 @@ function Navbar() {
           {token !== null && (
             <div className="flex items-center gap-1 ">
               <img
-                className="rounded-full"
-                width={35}
-                src={user.image}
+                className="rounded-full h-[39px] w-[39px]"                
+                src={dpimage}
                 alt=""
               />
               {/* <FaCaretDown className="hover:bg-richblack-600" /> */}

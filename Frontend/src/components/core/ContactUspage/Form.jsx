@@ -73,7 +73,7 @@ function Form({heading,description}){
                                      {...register("firstName",{required:{value:true,message:"Enter First Name"}})}
                                      />
                                      {errors.firstName&& (
-                                        <span>{errors.firstName.message}</span>
+                                        <span className="text-yellow-50">{errors.firstName.message}</span>
                                      )}
                                 </div>
                                 <div className="flex-col">
@@ -85,7 +85,7 @@ function Form({heading,description}){
                                      {...register("lastName",{required:{value:true,message:"last Name is required"}})}
                                      />
                                      {errors.lastName&&(
-                                        <span>{errors.lastName.message}</span>
+                                        <span className="text-yellow-50">{errors.lastName.message}</span>
                                      )}
                                 </div>
                            </div>
@@ -101,7 +101,7 @@ function Form({heading,description}){
                                  {...register("email",{required:{value:true,message:"email is Required"}})}
                                  />
                                  {errors.email&& (
-                                    <span>{errors.email.message}</span>
+                                    <span className="text-yellow-50">{errors.email.message}</span>
                                  )}
                             </div>
                                 
@@ -136,7 +136,7 @@ function Form({heading,description}){
                                         })}
                                       />
                                       {errors.phoneNo&&(
-                                        <div>{errors.phoneNo.message}</div>
+                                        <div className="text-yellow-50">{errors.phoneNo.message}</div>
                                       )}
                                 </div>
                            </div>
@@ -150,7 +150,7 @@ function Form({heading,description}){
                                  rows={5}>
                                 </textarea>
                                 {errors.message&&(
-                                    <span>{errors.message.message}</span>
+                                    <span className="text-yellow-50">{errors.message.message}</span>
                                 )}
                            </div>
                                 
