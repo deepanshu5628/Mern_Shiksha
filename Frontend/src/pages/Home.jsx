@@ -3,7 +3,7 @@ import CTAButton from "../components/core/Homepage/CTAButton";
 import CodeBlocks from "../components/core/Homepage/CodeBlocks";
 import { Link } from "react-router-dom";
 import Banner from "../assets/Images/banner.mp4";
-import imageno1 from "../assets/Images/TimelineImage.png";
+import imageno1 from "../assets/Images/TimelineImage.jpg";
 import imgtwo from "../assets/Images/Compare_with_others.png";
 import imgonee from "../assets/Images/Know_your_progress.png";
 import imgthree from "../assets/Images/Plan_your_lessons.png";

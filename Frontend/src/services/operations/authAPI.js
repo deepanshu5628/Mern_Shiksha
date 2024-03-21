@@ -1,23 +1,26 @@
 import { apiconnector } from "../apiconnector";
 import {user} from "../apis";
 import {setLoading,setSignupData,setToken} from "../../redux/Slices/authSlice";
-import {setUser} from "../../redux/Slices/profileSlice";
+import {setImage, setUser} from "../../redux/Slices/profileSlice";
 import {toast } from 'react-toastify';
+import { setCourse, setStep } from "../../redux/Slices/courseSlice";
 
 // -----------------------------login-------------------------------------------------
 export const login=(email,password,navigate)=>{
     return async(dispatch)=>{
         dispatch(setLoading(true));
+        let res;
         try {
-            let res=await apiconnector("POST",user.AUTH_API_LOGIN,{email,password});            
+             res=await apiconnector("POST",user.AUTH_API_LOGIN,{email,password});            
             if(res.success){
                 let token=res.token;
-                let signupData=res.userdetails;
-                console.log(signupData.firstName);
+                let logindata=res.userdetails;
+            //    console.log(logindata)
+                dispatch(setImage(logindata.image));
                 dispatch(setToken(token));
-                dispatch(setUser(signupData));
+                dispatch(setUser(logindata));
                 localStorage.setItem("token",JSON.stringify(token));
-            localStorage.setItem("user",JSON.stringify(signupData));  
+            localStorage.setItem("user",JSON.stringify(logindata));  
             toast.success(res.message);
             navigate("/dashboard/my-profile");
         }
@@ -37,10 +40,17 @@ export const logout =(navigate)=>{
     return (dispatch)=>{
         dispatch(setLoading(true));
         dispatch(setToken(null));
-        dispatch(setUser(null));
         localStorage.removeItem("token");
+        dispatch(setUser(null));
         localStorage.removeItem("user");
-        toast.success("Logged Out")
+        dispatch(setStep(1));
+        localStorage.removeItem("step");
+        dispatch(setCourse(null));
+        localStorage.removeItem("course");
+        // dispatch(setSignupData(null));
+        // localStorage.removeItem("signupData");
+        toast.success("Logged Out");
+        localStorage.clear();
         navigate("/");
         dispatch(setLoading(false));
     }
@@ -79,8 +89,7 @@ export const signup=(signupData,otp,navigate)=>{
         if(res.success){
             toast.success("Successfully Registered Log in please");
             navigate("/login");
-            dispatch(setSignupData(null));
-            localStorage.removeItem("signupData");
+            
         }
         if(!res.success){
             toast.error(res.message);
@@ -135,3 +144,35 @@ export const ressetpassword=(token,password,confirmPassword,navigate)=>{
 
     }
 } 
+
+
+
+// -------------------------------change password -----------------------------------------
+export const changepassword=(data,token,navigate)=>{
+    console.log("requrest  recived in change apssword in authapi")
+    console.log(token);
+    return async(dispatch)=>{
+        dispatch(setLoading(true));
+        console.log(data);
+        let res;
+        try {
+            res=await apiconnector("POST",user.AUTH_API_CHANGEPASSWORD,data,{
+                "Content-Type":"application/json",
+                "authorization":`Bearer ${token}`
+            });
+            console.log(res);
+
+        } catch (error) {
+            toast.error("error error while sending requrest to backend");
+            return  console.log(error);
+        }
+        if(res.success){
+            toast.success(res.message);
+            navigate("/dashboard/setting");
+        }
+        if(!res.success){
+            toast.error(res.message);
+        }
+        dispatch(setLoading(false));
+    }
+}

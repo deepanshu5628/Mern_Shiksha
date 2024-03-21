@@ -4,6 +4,7 @@ export const sidebarLinks = [
     id: 1,
     name: "My Profile",
     path: "/dashboard/my-profile",
+    type: "all",
     icon: "VscAccount",
   },
   {
@@ -36,9 +37,23 @@ export const sidebarLinks = [
   },
   {
     id: 6,
-    name: "Your Cart",
+    name: "Cart",
     path: "/dashboard/cart",
     type: ACCOUNT_TYPE.STUDENT,
+    icon: "VscHistory",
+  },
+  {
+    id: 7,
+    name: "Setting",
+    path: "/dashboard/setting",
+    type: "all",
+    icon: "VscHistory",
+  },
+  {
+    id: 8,
+    name: "Logout",
+    path: "/logout",
+    type: "all",
     icon: "VscHistory",
   },
 ];
