@@ -7,7 +7,7 @@ function Sidebar() {
   const currpath=location.pathname;
   return (
     <div
-      className="bg-richblack-800 fixed   h-[calc(100vh-3.5rem)]   pl-1  py-4
+      className="bg-richblack-800 fixed min-w-[13%] h-[calc(100vh-3.5rem)]   pl-1  py-4
           text-richblack-25"
     >
       {sidebarLinks.map((element, index) => {

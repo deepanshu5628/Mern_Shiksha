@@ -38,19 +38,20 @@ function App() {
           <Route path="/dashboard/my-profile" Component={Dashboard} />
           <Route path="/dashboard/setting" Component={Dashboard} />
 
-          {/* {user.accountType === "Instructor" && (
+          {/* {user !==null &&  user.accountType === "Instructor" && (
             <> */}
               <Route path="/dashboard/instructor" Component={Dashboard} />
               <Route path="/dashboard/my-courses" Component={Dashboard} />
               <Route path="/dashboard/add-course" Component={Dashboard} />
             {/* </>
-          )}
-          { */}
-            {/* user.accountType==="Student" && (<> */}
+          )} */}
+
+          {/* {user!==null && user.accountType === "Student" && (
+            <> */}
               <Route path="/dashboard/enrolled-courses" Component={Dashboard} />
               <Route path="/dashboard/cart" Component={Dashboard} />
-            {/* </>)
-          } */}
+            {/* </>
+          )} */}
         </Route>
       </Routes>
     </div>

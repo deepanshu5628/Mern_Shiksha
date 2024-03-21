@@ -29,6 +29,7 @@ export const subsection = {
 
 export const course = {
   COURSE_API_CREATECOURSE: BASE_URL_COURSE + "/createcourse",
+  COURSE_API_UPDATECOURSE: BASE_URL_COURSE + "/updatecourse",
   COURSE_API_GETALLCOURSE: BASE_URL_COURSE + "/getallcourses",
   COURSE_API_GETCOURSEDETAILS: BASE_URL_COURSE + "/getcoursedetails",
 };

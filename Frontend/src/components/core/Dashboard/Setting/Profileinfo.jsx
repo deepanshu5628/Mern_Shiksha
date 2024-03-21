@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { updateprofile } from "../../../../services/operations/SettingAPI";
 function Profileinfo() {
-  const { user,image } = useSelector((state) => state.profile);
-  const dispatch=useDispatch();
-  const navigate=useNavigate();
+  const { user, image } = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
   const {
     register,
@@ -15,7 +15,7 @@ function Profileinfo() {
   } = useForm();
 
   function formsubmithandler(data) {
-    dispatch(updateprofile(data,token,navigate));
+    dispatch(updateprofile(data, token, navigate));
   }
   return (
     <>
@@ -65,7 +65,11 @@ function Profileinfo() {
                   type="date"
                   id="dob"
                   name="dob"
-                  defaultValue={user.additionalInformation===null? null:user.additionalInformation.dob}
+                  defaultValue={
+                    user.additionalInformation === null
+                      ? null
+                      : user.additionalInformation.dob
+                  }
                   className="bg-richblack-700 mt-2 py-3 rounded-lg px-3 w-[90%] text-white"
                   {...register("dob", { required: true })}
                 />
@@ -77,7 +81,11 @@ function Profileinfo() {
                 <select
                   className="bg-richblack-700 mt-2 py-3 rounded-lg px-3 w-[90%] text-white"
                   name="gender"
-                  defaultValue={user.additionalInformation===null? null:user.additionalInformation.gender}
+                  defaultValue={
+                    user.additionalInformation === null
+                      ? null
+                      : user.additionalInformation.gender
+                  }
                   {...register("gender", { required: true })}
                 >
                   <option value="Male">Male</option>
@@ -95,7 +103,11 @@ function Profileinfo() {
                   id="contactNo"
                   placeholder="Enter Contact Number"
                   name="contactNo"
-                  defaultValue={user.additionalInformation===null? null:user.additionalInformation.contactNo}
+                  defaultValue={
+                    user.additionalInformation === null
+                      ? null
+                      : user.additionalInformation.contactNo
+                  }
                   className="bg-richblack-700 py-3 mt-2 rounded-lg px-3 w-[90%] text-white"
                   {...register("contactNo", {
                     required: true,
@@ -114,7 +126,11 @@ function Profileinfo() {
                   type="text"
                   id="about"
                   name="about"
-                  defaultValue={user.additionalInformation===null? null:user.additionalInformation.about}
+                  defaultValue={
+                    user.additionalInformation === null
+                      ? null
+                      : user.additionalInformation.about
+                  }
                   placeholder="Enter Bio Details"
                   className="bg-richblack-700 py-3 mt-2 rounded-lg px-3 w-[90%] text-white"
                   {...register("about", { required: true })}

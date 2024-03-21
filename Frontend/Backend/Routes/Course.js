@@ -1,6 +1,6 @@
 const express=require("express");
 // course controller input 
-const {createCourse, getAllCourse,getCourseDetails}=require("../Controller/Course");
+const {createCourse, updateCourse,getAllCourse,getCourseDetails}=require("../Controller/Course");
 const {createSection,updateSection,deleteSection}=require("../Controller/Section");
 const {createSubsection}=require("../Controller/Subsection");
 // category controller input 
@@ -28,6 +28,8 @@ router.post("/addSubSection",islogedin,isInstructor,createSubsection)
 // ------------------Course--------------------
 // create a course (only instructor ):)
 router.post("/createCourse",islogedin,isInstructor,createCourse);
+// Update a course (only instructor ):)
+router.post("/updateCourse",islogedin,isInstructor,updateCourse);
 // get all registered courses
 router.get("/getallcourses",getAllCourse);
 // get course detail s

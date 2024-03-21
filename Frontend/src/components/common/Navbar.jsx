@@ -46,9 +46,11 @@ function Navbar() {
     <div className={` w-full  items-center flex  bg-richblack-800 justify-center border-b-[1px] border-b-richblack-700 ${dashboarpaths==="dashboard"? "fixed" :null} `}>
       <div className="w-11/12 max-w-maxContent  h-14 flex items-center justify-between">
         {/* image div  */}
+        <Link to="/">
         <div className="">
           <img className="h-[54px] w-[165px] rounded-lg" src={logoimage} alt="logoimage" />
         </div>
+        </Link>
         {/* nav option */}
         <nav>
           <ul className="flex gap-x-6 text-richblack-25 cursor-pointer">
