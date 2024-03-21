@@ -1,7 +1,7 @@
 const Course = require("../Models/Course");
 const Section = require("../Models/Section");
 
-// create section controller
+// ------------------------------create section controller----------------------------------
 exports.createSection=async(req,res)=>{
     try {
         // fetch all the data form the body 
@@ -26,29 +26,28 @@ exports.createSection=async(req,res)=>{
             sectionName:sectionName,
         }); 
         // save this section in the course 
-        let updatedcourse=await Course.findOneAndUpdate({_id:coursedetails},{$push:{courseContent:newSection._id}},{new:true});
+        let updatedcourse=await Course.findOneAndUpdate({_id:coursedetails},{$push:{courseContent:newSection._id}},{new:true}).populate("category").populate("courseContent").exec();
         // H.W use .populate bcz we are going to log the updatedcourse details 
         // send response 
         res.status(200).json({
             success:true,
             message:"section created Successfully",
-            newSection,
             updatedcourse,
         });
     } catch (error) {
         return res.status(400).json({
             success:false,
             message:"error in create section controller",
-            data:error.message,
+            data:error,
         });
     }
 }
 
-// update Section controller
+// ----------------------------------update Section controller----------------------------------
 exports.updateSection=async(req,res)=>{
     try {
         // fetch data form body 
-        let{sectionName,sectionId}=req.body;
+        let{sectionName,sectionId,courseId}=req.body;
         // validate 
         if(!sectionName||!sectionId){
             return res.status(400).json({
@@ -67,10 +66,15 @@ exports.updateSection=async(req,res)=>{
 
         // find section and update 
         let updatedSection=await Section.findOneAndUpdate({_id:sectionId},{sectionName:sectionName},{new:true});
+        
+
+        // fetch the updated course details 
+        let updatedcourse=await Course.findById(courseId).populate("category").populate("courseContent");
         // send responce
         res.status(200).json({
             success:true,
             message:"Successfully updated the section",
+            updatedcourse,
         }) 
     } catch (error) {
         return res.status(400).json({
@@ -81,6 +85,7 @@ exports.updateSection=async(req,res)=>{
     }
 }
 
+// ----------------------------------delete section----------------------------------
 exports.deleteSection=async(req,res)=>{
     try {
         // fetch section id 
@@ -105,7 +110,9 @@ exports.deleteSection=async(req,res)=>{
         // delete the section the course as well 
         let updatedcourse=await Course.findByIdAndUpdate(courseId,{
             $pull:{courseContent:sectionId},
-        },{new:true})
+        },{new:true}).populate("category").populate("courseContent").exec();
+
+        
         // send respoce 
         res.status(200).json({
             success:true,

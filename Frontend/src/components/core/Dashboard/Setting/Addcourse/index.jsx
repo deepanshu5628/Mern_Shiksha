@@ -1,6 +1,10 @@
+import { useDispatch } from "react-redux";
 import Rendersteps from "./Rendersteps";
 import { IoSparklesOutline } from "react-icons/io5";
+import { useEffect } from "react";
 function AddCourse() {
+  const dispatch=useDispatch();
+  // useEffect()
   return (
     <div className="flex text-richblack-5  justify-center  my-10  w-[100%]">
       <div className=" min-w-[49%]">
