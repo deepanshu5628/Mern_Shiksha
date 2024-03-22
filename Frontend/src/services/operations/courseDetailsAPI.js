@@ -43,6 +43,18 @@ export const updateCourseDetails = async (data, token) => {
   }
 };
 
+// --------------------------------------------Get details of a specific course -------------------------
+export const getcoursedetails = async (id) => {
+  let result;
+  try {
+    result = await apiconnector("POST", course.COURSE_API_GETCOURSEDETAILS,{courseId:id})
+    return result;
+  } catch (error) {
+    console.log("error occured in Create Section in coursedetailsAPI.jsx");
+    return error;
+  }
+};
+
 // --------------------------------------------Create A section -------------------------
 export const createSection = async (data, token) => {
   let result;

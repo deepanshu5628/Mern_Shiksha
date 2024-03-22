@@ -1,10 +1,24 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Rendersteps from "./Rendersteps";
 import { IoSparklesOutline } from "react-icons/io5";
 import { useEffect } from "react";
+import { getcoursedetails } from "../../../../../services/operations/courseDetailsAPI";
+import { setCourse } from "../../../../../redux/Slices/courseSlice";
 function AddCourse() {
-  const dispatch=useDispatch();
-  // useEffect()
+  const dispatch = useDispatch();
+  const { course, step } = useSelector((state) => state.course);
+
+  //---------------------------------- special logic for rerender probkem ------------------------
+  if (course != null) {
+    const fetchcoursedetails = async () => {
+      let res = await getcoursedetails(course._id);
+      dispatch(setCourse(res.coursedetails));
+    };
+    if (step < 6) {
+      fetchcoursedetails();
+    }
+  }
+  // ----------------------------------------------------------------------------------------
   return (
     <div className="flex text-richblack-5  justify-center  my-10  w-[100%]">
       <div className=" min-w-[49%]">

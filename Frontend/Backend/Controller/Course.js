@@ -227,6 +227,8 @@ exports.getAllCourse = async (req, res) => {
   }
 };
 
+// ----------------------------------------------get Details of a specific  ---------------------
+
 exports.getCourseDetails = async (req, res) => {
   try {
     // fetch data form body

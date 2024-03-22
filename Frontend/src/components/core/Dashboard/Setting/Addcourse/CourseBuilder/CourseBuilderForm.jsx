@@ -7,7 +7,10 @@ import {
 } from "../../../../../../redux/Slices/courseSlice";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { createSection, updateSection } from "../../../../../../services/operations/courseDetailsAPI";
+import {
+  createSection,
+  updateSection,
+} from "../../../../../../services/operations/courseDetailsAPI";
 import { toast } from "react-toastify";
 import NestedView from "./NestedView";
 import { func } from "prop-types";
@@ -25,14 +28,6 @@ function CourseBuilderForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  // back btn function
-  function backbtnfxn() {
-    dispatch(setStep(1));
-    dispatch(setEdit(true));
-  }
-
-
 
   async function sectionformhandler(data) {
     if (!editSectionName) {
@@ -58,10 +53,14 @@ function CourseBuilderForm() {
       }
       setLoading(false);
     }
-    
-    if(editSectionName){
+
+    if (editSectionName) {
       setLoading(true);
-      let finaldata = { sectionName: data.sectionName, sectionId: editSectionName,courseId:course._id };
+      let finaldata = {
+        sectionName: data.sectionName,
+        sectionId: editSectionName,
+        courseId: course._id,
+      };
       try {
         let res = await updateSection(finaldata, token);
         if (res.success) {
@@ -83,23 +82,30 @@ function CourseBuilderForm() {
     }
   }
 
-  function editSectionNamefxn(id,sectionName){
+  // EDIT SECTION NAME
+  function editSectionNamefxn(id, sectionName) {
     seteditSectionName(id);
-    setValue("sectionName",sectionName);
+    setValue("sectionName", sectionName);
   }
 
-    // cancel button fucntion
-    async function canceleditbtn() {
+  // cancel button fucntion
+  async function canceleditbtn() {
+    seteditSectionName(null);
+    setValue("sectionName", "");
+  }
+
+  // back btn function
+  function backbtnfxn() {
+    dispatch(setStep(1));
+    dispatch(setEdit(true));
+  }
+
+  useEffect(() => {
+    if ( course!==null&& course.courseContent.length === 0) {
       seteditSectionName(null);
-      setValue("sectionName", "");
     }
-
-
-    useEffect(()=>{
-      if(course.courseContent.length===0){
-        seteditSectionName(null);
-      }
-    },[])
+    
+  }, []);
   return (
     <div>
       {Loading ? (
@@ -166,7 +172,9 @@ function CourseBuilderForm() {
           </div>
 
           {/* nested view div */}
-          {course.courseContent.length > 0 && <NestedView editSectionNamefxn={editSectionNamefxn}  />}
+          { course !==null && course.courseContent.length > 0 && (
+            <NestedView  editSectionNamefxn={editSectionNamefxn} />
+          )}
           {/* buttons div */}
           <div className="flex  justify-end">
             <div className=" flex gap-8">

@@ -31,7 +31,7 @@ export const course = {
   COURSE_API_CREATECOURSE: BASE_URL_COURSE + "/createcourse",   //done
   COURSE_API_UPDATECOURSE: BASE_URL_COURSE + "/updatecourse",   //done
   COURSE_API_GETALLCOURSE: BASE_URL_COURSE + "/getallcourses",
-  COURSE_API_GETCOURSEDETAILS: BASE_URL_COURSE + "/getcoursedetails",
+  COURSE_API_GETCOURSEDETAILS: BASE_URL_COURSE + "/getcoursedetails",   //to get details of a specific course
 };
 
 export const review = {

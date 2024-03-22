@@ -2,6 +2,9 @@ import { useSelector } from "react-redux";
 import { FaCheck } from "react-icons/fa";
 import CourseInformationform from "./CourseInformation/CourseInformationform";
 import CourseBuilderForm from "./CourseBuilder/CourseBuilderForm";
+import { useEffect } from "react";
+import {getcoursedetails} from "../../../../../services/operations/courseDetailsAPI"
+import { toast } from "react-toastify";
 function Rendersteps() {
   const { step } = useSelector((state) => state.course);
   const steps = [
@@ -18,6 +21,7 @@ function Rendersteps() {
       title: "Course Publish",
     },
   ];
+
   return (
     <>
     <div className="bg-richblack-800 h-auto py-6 rounded-md px-8 w-[85%] flex justify-between items-center">

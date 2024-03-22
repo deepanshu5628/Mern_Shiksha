@@ -48,6 +48,7 @@ function CourseInformationform() {
     }
   }, []);
 
+
   function formsubmithandler(data) {
     if (!edit) {
       let formdata = new FormData();
@@ -66,6 +67,7 @@ function CourseInformationform() {
           let res = await addCourseDetails(formdata, token);
           //  let  result = await res.data;
           // console.log(res);
+          
           if (res.data.success) {
             toast.success(res.data.message);
             dispatch(setStep(2));
