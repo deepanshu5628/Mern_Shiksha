@@ -7,6 +7,7 @@ import {getcoursedetails} from "../../../../../services/operations/courseDetails
 import { toast } from "react-toastify";
 function Rendersteps() {
   const { step } = useSelector((state) => state.course);
+  console.log("renderStep.jsx page");
   const steps = [
     {
       id: 1,

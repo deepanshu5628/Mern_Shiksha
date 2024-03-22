@@ -7,17 +7,23 @@ import { setCourse } from "../../../../../redux/Slices/courseSlice";
 function AddCourse() {
   const dispatch = useDispatch();
   const { course, step } = useSelector((state) => state.course);
-
-  //---------------------------------- special logic for rerender probkem ------------------------
-  if (course != null) {
-    const fetchcoursedetails = async () => {
-      let res = await getcoursedetails(course._id);
-      dispatch(setCourse(res.coursedetails));
-    };
-    if (step < 6) {
-      fetchcoursedetails();
+  console.log("index.jsx page");
+  
+  useEffect(()=>{
+    if (course != null) {
+      const fetchcoursedetails = async () => {
+        let res = await getcoursedetails(course._id);
+        dispatch(setCourse(res.coursedetails));
+        console.log(res.coursedetails)
+        // console.log("effect of use effect");
+      };
+      if (step < 6) {
+        // fetchcoursedetails();
+      }
     }
-  }
+  },[step])
+  //---------------------------------- special logic for rerender probkem ------------------------
+ 
   // ----------------------------------------------------------------------------------------
   return (
     <div className="flex text-richblack-5  justify-center  my-10  w-[100%]">

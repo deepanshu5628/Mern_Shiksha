@@ -26,7 +26,13 @@ exports.createSection=async(req,res)=>{
             sectionName:sectionName,
         }); 
         // save this section in the course 
-        let updatedcourse=await Course.findOneAndUpdate({_id:coursedetails},{$push:{courseContent:newSection._id}},{new:true}).populate("category").populate("courseContent").exec();
+        let updatedcourse=await Course.findOneAndUpdate({_id:coursedetails},{$push:{courseContent:newSection._id}},{new:true}).populate("category")
+        .populate("courseContent")
+        .populate({
+            path: "courseContent",
+            populate: {
+              path: "subSection",
+            }}).exec();
         // H.W use .populate bcz we are going to log the updatedcourse details 
         // send response 
         res.status(200).json({
@@ -69,7 +75,15 @@ exports.updateSection=async(req,res)=>{
         
 
         // fetch the updated course details 
-        let updatedcourse=await Course.findById(courseId).populate("category").populate("courseContent");
+        let updatedcourse=await Course.findById(courseId)
+        .populate("category")
+        .populate("courseContent")
+        .populate({
+            path: "courseContent",
+            populate: {
+              path: "subSection",
+            }}).exec();
+        
         // send responce
         res.status(200).json({
             success:true,
@@ -110,9 +124,14 @@ exports.deleteSection=async(req,res)=>{
         // delete the section the course as well 
         let updatedcourse=await Course.findByIdAndUpdate(courseId,{
             $pull:{courseContent:sectionId},
-        },{new:true}).populate("category").populate("courseContent").exec();
-
-        
+        },{new:true})
+        .populate("category")
+        .populate("courseContent")
+        .populate({
+            path: "courseContent",
+            populate: {
+              path: "subSection",
+            }}).exec();
         // send respoce 
         res.status(200).json({
             success:true,

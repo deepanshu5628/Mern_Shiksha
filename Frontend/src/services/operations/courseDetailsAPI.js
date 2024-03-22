@@ -1,5 +1,9 @@
 import { apiconnector, axiosapiconnector } from "../apiconnector";
-import { course, section } from "../apis";
+import { course, section, subsection } from "../apis";
+
+
+// ------------------------------------course CRUD API's----------------------------------
+
 
 // -------------------------------Create Course ---------------------------------------
 export const addCourseDetails = async (data, token) => {
@@ -55,6 +59,13 @@ export const getcoursedetails = async (id) => {
   }
 };
 
+
+
+
+
+// ----------------------------------------Section Crud Api's -----------------------------
+
+
 // --------------------------------------------Create A section -------------------------
 export const createSection = async (data, token) => {
   let result;
@@ -100,3 +111,37 @@ export const deleteSection = async (data, token) => {
     return error;
   }
 };
+
+
+// ----------------------------------------Sub Section Crud Api's -----------------------------
+
+
+// ------------------------------creata SubSection------------------------------
+export const createSubSection=async(data,token)=>{
+  let result;
+  try {
+    result = await axiosapiconnector("POST", subsection.SUBSECTION_API_ADDSUBSECTION, data, {
+      "Content-Type": "multipart/form-data",
+      authorization: `Bearer ${token}`,
+    });
+    return result.data;
+  } catch (error) {
+    console.log("error occured in Create Sub Section in coursedetailsAPI.jsx");
+    return error;
+  }
+}
+
+// ------------------------------Deltet SubSection------------------------------
+export const DeleteSubSection=async(data,token)=>{
+  let result;
+  try {
+    result = await apiconnector("POST", subsection.SUBSECTION_API_DELETESUBSECTION, data, {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    });
+    return result;
+  } catch (error) {
+    console.log("error occured in Delete Sub Section in coursedetailsAPI.jsx");
+    return error;
+  }
+}

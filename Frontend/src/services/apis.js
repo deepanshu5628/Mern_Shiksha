@@ -24,7 +24,8 @@ export const section = {
 };
 
 export const subsection = {
-  SUBSECTION_API_ADDSUBSECTION: BASE_URL_COURSE + "/addsubsection",
+  SUBSECTION_API_ADDSUBSECTION: BASE_URL_COURSE + "/addsubsection",  //done
+  SUBSECTION_API_DELETESUBSECTION: BASE_URL_COURSE + "/deletesubsection",   //done
 };
 
 export const course = {

@@ -2,7 +2,7 @@ const express=require("express");
 // course controller input 
 const {createCourse, updateCourse,getAllCourse,getCourseDetails}=require("../Controller/Course");
 const {createSection,updateSection,deleteSection}=require("../Controller/Section");
-const {createSubsection}=require("../Controller/Subsection");
+const {createSubsection,deleteSubSection}=require("../Controller/Subsection");
 // category controller input 
 const{showAllCategory,createCategory,categoryPageDetails}=require("../Controller/Category");
 // Rating and review controller
@@ -24,6 +24,7 @@ router.post("/deleteSection",islogedin,isInstructor,deleteSection);
 // ----------------Sub Section---------------
 // add a subsection to a section 
 router.post("/addSubSection",islogedin,isInstructor,createSubsection)
+router.post("/deleteSubSection",islogedin,isInstructor,deleteSubSection)
 
 // ------------------Course--------------------
 // create a course (only instructor ):)

@@ -16,6 +16,8 @@ import NestedView from "./NestedView";
 import { func } from "prop-types";
 
 function CourseBuilderForm() {
+  console.log("course builder.jsx page");
+
   const dispatch = useDispatch();
   let [Loading, setLoading] = useState(false);
   const { token } = useSelector((state) => state.auth);

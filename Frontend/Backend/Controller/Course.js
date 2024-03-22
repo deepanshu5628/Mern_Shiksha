@@ -97,9 +97,14 @@ exports.createCourse = async (req, res) => {
     );
 
     // fetch finalCourseDetails
-    let updatedcourse = await Course.findById(newcourse._id).populate(
-      "category"
-    );
+    let updatedcourse = await Course.findById(newcourse._id)
+    .populate("category")
+    .populate("Instructor")
+    .populate({
+      path: "courseContent",
+      populate: {
+        path: "subSection",
+      }}).exec();
     // send respoce
     res.status(200).json({
       success: true,
@@ -166,7 +171,13 @@ exports.updateCourse = async (req, res) => {
         category: isvalidCategory._id,
       },
       { new: true }
-    ).populate("category");
+    ).populate("category")
+    .populate("Instructor")
+    .populate({
+      path: "courseContent",
+      populate: {
+        path: "subSection",
+      }}).exec();
 
     // now if the place the category is changed then update them in the category schema
     try {
