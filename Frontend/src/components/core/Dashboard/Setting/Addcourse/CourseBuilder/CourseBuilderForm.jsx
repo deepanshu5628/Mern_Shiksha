@@ -101,6 +101,19 @@ function CourseBuilderForm() {
     dispatch(setStep(1));
     dispatch(setEdit(true));
   }
+  // console.log(course);
+  // next btn fxn
+  function NextStep(){
+    if(course.courseContent.length===0){
+      toast.error("please add at least one Section");
+      return 
+    }
+    if(course.courseContent.some((section)=>section.subSection.length===0)){
+      toast.error("each Section Should Have atlease one subSection");
+      return;
+    }
+    dispatch(setStep(3));
+  }
 
   useEffect(() => {
     if ( course!==null&& course.courseContent.length === 0) {
@@ -189,6 +202,7 @@ function CourseBuilderForm() {
                 Back
               </button>
               <button
+              onClick={NextStep}
                 className="text-center text-[13px] px-6 py-3 rounded-md 
              font-bold text-black bg-yellow-50 hover:scale-95 transition-all 
              duration-200 my-3"

@@ -25,6 +25,27 @@ export const addCourseDetails = async (data, token) => {
   }
 };
 
+// -------------------------------Publish Course ---------------------------------------
+export const publishCourse = async (data, token) => {
+  
+  let result;
+  try {
+    result = await apiconnector(
+      "POST",
+      course.COURSE_API_PUBLISHCOURSE,
+      data,
+      {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      }
+    );
+    return result;
+  } catch (error) {
+    console.log("error occured");
+    return error;
+  }
+}
+
 // ------------------------------------------Update Course Details --------------------------
 export const updateCourseDetails = async (data, token) => {
   let result;
@@ -51,7 +72,7 @@ export const updateCourseDetails = async (data, token) => {
 export const getcoursedetails = async (id) => {
   let result;
   try {
-    result = await apiconnector("POST", course.COURSE_API_GETCOURSEDETAILS,{courseId:id})
+    result = await apiconnector("POST", course.COURSE_API_GETCOURSEDETAILS, { courseId: id })
     return result;
   } catch (error) {
     console.log("error occured in Create Section in coursedetailsAPI.jsx");
@@ -117,7 +138,7 @@ export const deleteSection = async (data, token) => {
 
 
 // ------------------------------creata SubSection------------------------------
-export const createSubSection=async(data,token)=>{
+export const createSubSection = async (data, token) => {
   let result;
   try {
     result = await axiosapiconnector("POST", subsection.SUBSECTION_API_ADDSUBSECTION, data, {
@@ -132,7 +153,7 @@ export const createSubSection=async(data,token)=>{
 }
 
 // ------------------------------Deltet SubSection------------------------------
-export const DeleteSubSection=async(data,token)=>{
+export const DeleteSubSection = async (data, token) => {
   let result;
   try {
     result = await apiconnector("POST", subsection.SUBSECTION_API_DELETESUBSECTION, data, {

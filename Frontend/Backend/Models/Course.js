@@ -41,7 +41,16 @@ const courseSchema=new mongoose.Schema({
     ratingAndReviews:[{
         type:mongoose.Types.ObjectId,
         ref:"RatingAndReview",
-    }]
+    }],
+    status: {
+		type: String,
+        default:"Draft",
+		enum: ["Draft", "Published"],
+	},
+	createdAt: {
+		type:Date,
+		default:Date.now
+	},
 })
 
 const Course=mongoose.model("Course",courseSchema);

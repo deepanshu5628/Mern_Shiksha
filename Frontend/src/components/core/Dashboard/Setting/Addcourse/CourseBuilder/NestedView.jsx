@@ -101,7 +101,7 @@ return (
                 <RxDropdownMenu />
                 <p>{element.sectionName}</p>
               </div>
-              <div className="flex gap-2  items-center">
+              <div onClick={(e)=>e.stopPropagation()} className="flex gap-2  items-center">
                 <MdEdit
                   onClick={() => editfxn(element._id, element.sectionName)}
                 />

@@ -219,6 +219,60 @@ exports.updateCourse = async (req, res) => {
     });
   }
 };
+
+// -----------------------------------------publich course controller----------------------
+exports.publishCourse=async(req,res)=>{
+  try {
+    // console.log(req.body);/
+    let {status,courseId,instructorId}=req.body
+    // basic validation
+    if(!status||!courseId||!instructorId){
+      return res.status(400).json({
+        success: false,
+        message: "fill in all the details",
+      });
+    }
+    // verify the instructor
+    let ins=await User.findById(instructorId);
+    // console.log(ins);
+    if(!ins.courses.some((id)=>id==courseId)){
+      return res.status(400).json({
+        success: false,
+        message: "Ustaad tez na bni",
+      });
+    }
+
+    let updatedcourse=await Course.findByIdAndUpdate(courseId,{status:status},{new:true})
+    .populate({
+      path: "Instructor",
+      populate: {
+        path: "additionalInformation",
+      },
+    })
+    .populate("category")
+    .populate({
+      path: "courseContent",
+      populate: {
+        path: "subSection",
+      },
+    })
+    .populate("ratingAndReviews")
+    .exec();
+    // send responce
+    res.status(200).json({
+      success:true,
+      message:"heelo g",
+      updatedcourse,
+    })
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: "error in publish Course  controller",
+      data: error.message,
+    });
+  }
+}
+
 // ----------------------------------------------get all course controller ---------------------
 exports.getAllCourse = async (req, res) => {
   try {
