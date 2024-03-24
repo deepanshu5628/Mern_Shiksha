@@ -4,19 +4,18 @@ import {
   setCourse,
   setEdit,
   setStep,
-} from "../../../../../../redux/Slices/courseSlice";
+} from "../../../../../redux/Slices/courseSlice";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   createSection,
   updateSection,
-} from "../../../../../../services/operations/courseDetailsAPI";
+} from "../../../../../services/operations/courseDetailsAPI";
 import { toast } from "react-toastify";
 import NestedView from "./NestedView";
 import { func } from "prop-types";
 
 function CourseBuilderForm() {
-  console.log("course builder.jsx page");
 
   const dispatch = useDispatch();
   let [Loading, setLoading] = useState(false);

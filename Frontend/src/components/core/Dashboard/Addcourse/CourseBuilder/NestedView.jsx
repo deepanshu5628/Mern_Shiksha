@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RxDropdownMenu } from "react-icons/rx";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-import { deleteSection,DeleteSubSection,getcoursedetails } from "../../../../../../services/operations/courseDetailsAPI";
+import { deleteSection,DeleteSubSection,getcoursedetails } from "../../../../../services/operations/courseDetailsAPI";
 import { FaCaretDown } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import { setCourse } from "../../../../../../redux/Slices/courseSlice";
+import { setCourse } from "../../../../../redux/Slices/courseSlice";
 import SubSectionModal from "./SubSectionModal";
 
 function NestedView({ editSectionNamefxn }) {
@@ -16,7 +16,6 @@ function NestedView({ editSectionNamefxn }) {
   const [viewSubSection, setViewSubSection] = useState(null)
   const [editSubSection, setEditSubSection] = useState(null)
 
-  console.log("Nestedview.jsx page");
 
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
@@ -53,7 +52,7 @@ function NestedView({ editSectionNamefxn }) {
   }
   // delte the Subsection
   async function DelSubSection(subSectionId, sectionId) {
-    console.log("del btn is clicked");
+    // console.log("del btn is clicked");
     setloading(true);
     try {
       let res = await DeleteSubSection(
@@ -90,7 +89,7 @@ return (
     <div className="bg-richblack-700 rounded-lg p-3 my-2">
       {/* main div  */}
       {course.courseContent.map((element, index) => {
-        console.log(element);
+        // console.log(element);
         return (
           <details
             key={element._id}

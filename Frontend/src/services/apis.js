@@ -31,7 +31,9 @@ export const subsection = {
 export const course = {
   COURSE_API_CREATECOURSE: BASE_URL_COURSE + "/createcourse",   //done
   COURSE_API_UPDATECOURSE: BASE_URL_COURSE + "/updatecourse",   //done
-  COURSE_API_PUBLISHCOURSE: BASE_URL_COURSE + "/publishcourse",   
+  COURSE_API_PUBLISHCOURSE: BASE_URL_COURSE + "/publishcourse",   //done
+  COURSE_API_INSTRUCTORCOURSE: BASE_URL_COURSE + "/InstructorCourse",  //done
+  COURSE_API_DELETECOURSE: BASE_URL_COURSE + "/deletecourse",  
   COURSE_API_GETALLCOURSE: BASE_URL_COURSE + "/getallcourses",
   COURSE_API_GETCOURSEDETAILS: BASE_URL_COURSE + "/getcoursedetails",   //to get details of a specific course
 };

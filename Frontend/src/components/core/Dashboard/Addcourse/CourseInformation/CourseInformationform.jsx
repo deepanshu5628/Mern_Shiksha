@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { apiconnector } from "../../../../../../services/apiconnector";
-import { categories } from "../../../../../../services/apis";
-import { addCourseDetails, updateCourseDetails } from "../../../../../../services/operations/courseDetailsAPI";
+import { apiconnector } from "../../../../../services/apiconnector";
+import { categories } from "../../../../../services/apis";
+import { addCourseDetails, updateCourseDetails } from "../../../../../services/operations/courseDetailsAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { setCourse, setStep } from "../../../../../../redux/Slices/courseSlice";
-import { getcoursedetails } from "../../../../../../services/operations/courseDetailsAPI";
+import { setCourse, setStep } from "../../../../../redux/Slices/courseSlice";
+import { getcoursedetails } from "../../../../../services/operations/courseDetailsAPI";
 
 function CourseInformationform() {
   const { edit, course, step } = useSelector((state) => state.course);
@@ -16,7 +16,6 @@ function CourseInformationform() {
   const [courseCategories, setCourseCategories] = useState([]);
   // console.log(course);
   // console.log(edit);
-  console.log("courseinformation .jsx page");
 
 
   const {

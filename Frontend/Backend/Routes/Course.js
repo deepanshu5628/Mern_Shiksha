@@ -1,6 +1,6 @@
 const express=require("express");
 // course controller input 
-const {createCourse, publishCourse,updateCourse,getAllCourse,getCourseDetails}=require("../Controller/Course");
+const {createCourse, publishCourse,updateCourse,deleteCourse,instructorCourse,getAllCourse,getCourseDetails}=require("../Controller/Course");
 const {createSection,updateSection,deleteSection}=require("../Controller/Section");
 const {createSubsection,deleteSubSection}=require("../Controller/Subsection");
 // category controller input 
@@ -31,8 +31,12 @@ router.post("/deleteSubSection",islogedin,isInstructor,deleteSubSection)
 router.post("/createCourse",islogedin,isInstructor,createCourse);
 // Update a course (only instructor ):)
 router.post("/updateCourse",islogedin,isInstructor,updateCourse);
+// Delete a course (only instructor ):)
+router.delete("/deleteCourse",islogedin,isInstructor,deleteCourse);
 // Publish course (only instructor ):)
 router.post("/publishCourse",islogedin,isInstructor,publishCourse);
+// Course details of a specific Instructor (only instructor ):)
+router.get("/InstructorCourse",islogedin,isInstructor,instructorCourse);
 
 // get all registered courses
 router.get("/getallcourses",getAllCourse);

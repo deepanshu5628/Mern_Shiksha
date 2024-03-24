@@ -2,12 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Rendersteps from "./Rendersteps";
 import { IoSparklesOutline } from "react-icons/io5";
 import { useEffect } from "react";
-import { getcoursedetails } from "../../../../../services/operations/courseDetailsAPI";
-import { setCourse } from "../../../../../redux/Slices/courseSlice";
+import { getcoursedetails } from "../../../../services/operations/courseDetailsAPI";
+import { setCourse } from "../../../../redux/Slices/courseSlice";
 function AddCourse() {
   const dispatch = useDispatch();
   const { course, step } = useSelector((state) => state.course);
-  console.log("index.jsx page");
   
   useEffect(()=>{
     if (course != null) {

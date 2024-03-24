@@ -5,7 +5,8 @@ import EnrolledCourses from "../components/core/Dashboard/EnrolledCourses";
 import Setting from "../components/core/Dashboard/Setting/Setting";
 import Cart from "../components/core/Dashboard/Cart"
 import { useSelector } from "react-redux";
-import AddCourse from "../components/core/Dashboard/Setting/Addcourse/index"
+import MyCourses from "../components/core/Dashboard/MyCourses";
+import AddCourse from "../components/core/Dashboard/Addcourse/index"
 function Dashboard() {
   const { loading: authloading } = useSelector((state) => state.auth);
   const { loading: profileloading } = useSelector((state) => state.profile);
@@ -26,6 +27,7 @@ function Dashboard() {
           {currpath === "/dashboard/enrolled-courses" ? <EnrolledCourses /> : null}
           {currpath === "/dashboard/cart" ? <Cart /> : null}
           {currpath === "/dashboard/add-course" ? <AddCourse /> : null}
+          {currpath === "/dashboard/my-courses" ? <MyCourses /> : null}
           </div>
         </div>
       )}

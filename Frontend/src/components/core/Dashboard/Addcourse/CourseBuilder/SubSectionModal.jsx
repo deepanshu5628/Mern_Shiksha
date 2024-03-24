@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
-import { createSubSection } from "../../../../../../services/operations/courseDetailsAPI";
+import { createSubSection } from "../../../../../services/operations/courseDetailsAPI";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { ImCross } from "react-icons/im";
-import { setStep, setCourse } from "../../../../../../redux/Slices/courseSlice";
-import { getcoursedetails } from "../../../../../../services/operations/courseDetailsAPI";
+import { setStep, setCourse } from "../../../../../redux/Slices/courseSlice";
+import { getcoursedetails } from "../../../../../services/operations/courseDetailsAPI";
 function SubSectionModal({ add = false, edit = false, view = false, sectionId ,fxn1}) {
     const { register, setValue, getValues, handleSubmit, formState: { errors } } = useForm();
     let [loading, setloading] = useState(false);
@@ -27,7 +27,7 @@ function SubSectionModal({ add = false, edit = false, view = false, sectionId ,f
                 setloading(true);
                 try {
                     let res = await createSubSection(formData, token);
-                    console.log("create subsection respoce ", res);
+                    // console.log("create subsection respoce ", res);
                     if (res.success) {
                         const fetchcoursedetails = async () => {
                             let res = await getcoursedetails(course._id);

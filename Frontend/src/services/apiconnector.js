@@ -3,7 +3,7 @@ export  const apiconnector=async(method,url,bodydata,headers,params)=>{
     let res=await fetch(url,{
         method:method,
         headers : headers? headers :{"Content-Type":"application/json"},
-        body:JSON.stringify(bodydata),
+        body:bodydata?JSON.stringify(bodydata):null,
         params:params? params:null,
     })
     let data=await res.json();

@@ -4,11 +4,10 @@ import CourseInformationform from "./CourseInformation/CourseInformationform";
 import CourseBuilderForm from "./CourseBuilder/CourseBuilderForm";
 import PublishCourse from "./PublishCourse/PublishCourse";
 import { useEffect } from "react";
-import {getcoursedetails} from "../../../../../services/operations/courseDetailsAPI"
+import {getcoursedetails} from "../../../../services/operations/courseDetailsAPI"
 import { toast } from "react-toastify";
 function Rendersteps() {
   const { step } = useSelector((state) => state.course);
-  console.log("renderStep.jsx page");
   const steps = [
     {
       id: 1,

@@ -27,7 +27,7 @@ export const addCourseDetails = async (data, token) => {
 
 // -------------------------------Publish Course ---------------------------------------
 export const publishCourse = async (data, token) => {
-  
+
   let result;
   try {
     result = await apiconnector(
@@ -75,11 +75,44 @@ export const getcoursedetails = async (id) => {
     result = await apiconnector("POST", course.COURSE_API_GETCOURSEDETAILS, { courseId: id })
     return result;
   } catch (error) {
-    console.log("error occured in Create Section in coursedetailsAPI.jsx");
+    console.log("error occured in Get Details of a specific Course in coursedetailsAPI.jsx");
     return error;
   }
 };
 
+// -------------------------------Delete Course ---------------------------------------
+export const deleteCourse=async(id,token)=>{
+  try {
+    let res=await apiconnector("DELETE",course.COURSE_API_DELETECOURSE,{courseId:id},{
+      "Content-Type":"application/json",
+      "authorization":`Bearer ${token}`
+    })
+    return res;
+  } catch (error) {
+    console.log("error occured in Delete Course in coursedetailsAPI.jsx");
+    return error;
+  }
+}
+
+
+// --------------------------------------------Get ALL cOURSES OF a instructor-------------------------
+export const instructorCoursesdetails = async ( token) => {
+  let result;
+  try {
+    result = await apiconnector(
+      "GET",
+      course.COURSE_API_INSTRUCTORCOURSE,null,
+      {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      }
+    );
+    return result;
+  } catch (error) {
+    console.log("error occured");
+    return error;
+  }
+}
 
 
 
