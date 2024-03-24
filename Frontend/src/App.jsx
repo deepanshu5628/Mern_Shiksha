@@ -10,10 +10,12 @@ import Updatepassword from "./pages/Updatepassword";
 import ContactUs from "./pages/ContactUs";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
+import EditCourse from "./components/core/Dashboard/EditCourse";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
 import { useSelector } from "react-redux";
 function App() {
   const { user } = useSelector((state) => state.profile);
+  const {course}=useSelector((state)=>state.course);
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inte">
       <Navbar />
@@ -43,6 +45,8 @@ function App() {
               <Route path="/dashboard/instructor" Component={Dashboard} />
               <Route path="/dashboard/my-courses" Component={Dashboard} />
               <Route path="/dashboard/add-course" Component={Dashboard} />
+              <Route path="/dashboard/edit-course" Component={Dashboard} />
+
             {/* </>
           )} */}
 

@@ -435,6 +435,7 @@ exports.getAllCourse = async (req, res) => {
 
 exports.getCourseDetails = async (req, res) => {
   try {
+    // console.log(req.body)
     // fetch data form body
     let { courseId } = req.body;
     // perform validation

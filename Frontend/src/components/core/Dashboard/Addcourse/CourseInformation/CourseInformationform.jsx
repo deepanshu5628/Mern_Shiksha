@@ -122,11 +122,7 @@ function CourseInformationform() {
 
           // console.log(res);
           if (res.data.success) {
-            // const fetchcoursedetails = async () => {
-            //   let res = await getcoursedetails(course._id);
-            //   dispatch(setCourse(res.coursedetails));
-            // };
-            // fetchcoursedetails();
+       
             toast.success(res.data.message);
             dispatch(setStep(2));
             localStorage.setItem("step", JSON.stringify("2"));
@@ -156,6 +152,7 @@ function CourseInformationform() {
   function withoutsavefxn() {
     dispatch(setStep(2));
   }
+ 
   return (
     <div className="w-full flex-col justify-between  bg-richblack-800">
       {loading ? (

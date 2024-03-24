@@ -87,6 +87,7 @@ function CourseBuilderForm() {
   function editSectionNamefxn(id, sectionName) {
     seteditSectionName(id);
     setValue("sectionName", sectionName);
+    // seteditSectionName(null);
   }
 
   // cancel button fucntion

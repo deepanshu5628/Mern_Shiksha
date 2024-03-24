@@ -1,29 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import Rendersteps from "./Rendersteps";
 import { IoSparklesOutline } from "react-icons/io5";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getcoursedetails } from "../../../../services/operations/courseDetailsAPI";
-import { setCourse } from "../../../../redux/Slices/courseSlice";
+import { setCourse, setEdit } from "../../../../redux/Slices/courseSlice";
+import { useLocation } from "react-router-dom";
 function AddCourse() {
   const dispatch = useDispatch();
-  const { course, step } = useSelector((state) => state.course);
-  
-  useEffect(()=>{
-    if (course != null) {
-      const fetchcoursedetails = async () => {
-        let res = await getcoursedetails(course._id);
-        dispatch(setCourse(res.coursedetails));
-        console.log(res.coursedetails)
-        // console.log("effect of use effect");
-      };
-      if (step < 6) {
-        // fetchcoursedetails();
-      }
-    }
-  },[step])
-  //---------------------------------- special logic for rerender probkem ------------------------
+  const { course, edit,step } = useSelector((state) => state.course);
+  const location=useLocation();
+  // console.log("loca",location.pathname);
+  console.log("in index.jsx",course);
+
  
-  // ----------------------------------------------------------------------------------------
+ 
   return (
     <div className="flex text-richblack-5  justify-center  my-10  w-[100%]">
       <div className=" min-w-[49%]">

@@ -53,6 +53,7 @@ function PublishCourse() {
         }
         if (!res.success) {
             toast.error("error occured");
+            setloading(false);
         }
     }
 

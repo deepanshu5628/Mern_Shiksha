@@ -6,6 +6,7 @@ const courseSlice=createSlice({
         step:localStorage.getItem("step")?JSON.parse(localStorage.getItem("step")):1,
         edit:localStorage.getItem("edit")? JSON.parse(localStorage.getItem("edit")):false,
         course:localStorage.getItem("course")?JSON.parse(localStorage.getItem("course")):null,
+        instructorcourses:localStorage.getItem("instructorcourses")?JSON.parse(localStorage.getItem("course")):null
     },
     reducers:{
         setStep:(state,actions)=>{
@@ -16,10 +17,13 @@ const courseSlice=createSlice({
         },
         setCourse:(state,actions)=>{
             state.course=actions.payload
+        },
+        setInstructorCourses:(state,actions)=>{
+            state.instructorcourses=actions.payload;
         }
     }
 })
 
 
-export const {setStep,setCourse,setEdit}=courseSlice.actions;
+export const {setStep,setCourse,setEdit,setInstructorCourses}=courseSlice.actions;
 export default courseSlice.reducer;

@@ -70,6 +70,7 @@ export const updateCourseDetails = async (data, token) => {
 
 // --------------------------------------------Get details of a specific course -------------------------
 export const getcoursedetails = async (id) => {
+  // console.log(id);
   let result;
   try {
     result = await apiconnector("POST", course.COURSE_API_GETCOURSEDETAILS, { courseId: id })
