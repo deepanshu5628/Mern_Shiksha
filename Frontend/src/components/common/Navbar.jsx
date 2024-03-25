@@ -44,7 +44,7 @@ function Navbar() {
   }, []);
   return (
     <div className={` w-full  items-center flex  bg-richblack-800 justify-center border-b-[1px] border-b-richblack-700 ${dashboarpaths==="dashboard"? "fixed" :null} `}>
-      <div className="w-11/12 max-w-maxContent  h-14 flex items-center justify-between">
+      <div className="w-11/12 max-w-maxContent px-3  h-14 flex items-center justify-between">
         {/* image div  */}
         <Link to="/">
         <div className="">
@@ -132,29 +132,26 @@ function Navbar() {
             </div>
           )}
           {token !== null && (
-            <div className="flex items-center gap-1 ">
+            <div
+             onClick={()=>navigate("/dashboard/my-profile")}
+              className="flex items-center gap-1 cursor-pointer ">
               <img
                 className="rounded-full h-[39px] w-[39px]"                
                 src={dpimage}
                 alt=""
               />
-              {/* <FaCaretDown className="hover:bg-richblack-600" /> */}
-              <select name="" id="" className="w-5  bg-richblack-800 relative right-0">
-                <option value="">Dashobard</option>
-                <option value="">Logout</option>
-              </select>
+             
             </div>
           )}
                  {
                     token !==null && <div>
-                        <button onClick={logoutbtnhandler}>Logout</button>
+                        <button 
+                        onClick={logoutbtnhandler}
+                        className="bg-yellow-200 p-2 text-black text-lg font-semibold rounded-lg hover:bg-pink-600 hover:text-white"
+                        >Logout</button>
                     </div>
                 }
-                 {
-                    token !==null && <div>
-                        <button onClick={()=>navigate("/dashboard/my-profile")}>Dashboard</button>
-                    </div>
-                }
+                 
         </div>
       </div>
     </div>

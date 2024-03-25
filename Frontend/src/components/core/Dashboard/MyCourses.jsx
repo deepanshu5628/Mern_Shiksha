@@ -57,11 +57,11 @@ function MyCourses() {
         <>
             {
                 loading ? <div className="loader"></div> :
-                    <div className="flex flex-col text-richblack-5 justify-center items-center my-4 gap-6 w-[100%]">
-                        <section className="w-[70%] rounded-lg py-3 pb-10 flex-col items-center justify-center bg-richblack-800 ">
+                    <div className="flex flex-col  text-richblack-5 justify-center items-center my-4 gap-6 w-[100%]">
+                        <section className="w-[70%] rounded-lg py-3 px-7  pb-10 flex-col items-center justify-center bg-richblack-800 ">
 
                             {/* heading div */}
-                            <div className="flex justify-between  rounded-2xl w-full my-5 px-4 ">
+                            <div className="flex justify-between  rounded-2xl w-full my-5 px-4 pr-11  ">
                                 <h1 className="text-3xl  font-semibold text-richblack-25">My Course</h1>
                                 <button
                                     onClick={() => navigate("/dashboard/add-course")}
