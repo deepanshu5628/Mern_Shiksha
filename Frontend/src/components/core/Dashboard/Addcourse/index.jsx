@@ -1,6 +1,19 @@
+import { useDispatch, useSelector } from "react-redux";
 import Rendersteps from "./Rendersteps";
 import { IoSparklesOutline } from "react-icons/io5";
+import { useEffect, useState } from "react";
+import { getcoursedetails } from "../../../../services/operations/courseDetailsAPI";
+import { setCourse, setEdit } from "../../../../redux/Slices/courseSlice";
+import { useLocation } from "react-router-dom";
 function AddCourse() {
+  const dispatch = useDispatch();
+  const { course, edit,step } = useSelector((state) => state.course);
+  const location=useLocation();
+  // console.log("loca",location.pathname);
+  console.log("in index.jsx",course);
+
+ 
+ 
   return (
     <div className="flex text-richblack-5  justify-center  my-10  w-[100%]">
       <div className=" min-w-[49%]">

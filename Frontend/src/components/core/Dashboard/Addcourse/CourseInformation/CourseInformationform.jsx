@@ -1,20 +1,22 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { apiconnector } from "../../../../../../services/apiconnector";
-import { categories } from "../../../../../../services/apis";
-import { addCourseDetails,updateCourseDetails } from "../../../../../../services/operations/courseDetailsAPI";
+import { apiconnector } from "../../../../../services/apiconnector";
+import { categories } from "../../../../../services/apis";
+import { addCourseDetails, updateCourseDetails } from "../../../../../services/operations/courseDetailsAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { setCourse, setStep } from "../../../../../../redux/Slices/courseSlice";
-import { current } from "@reduxjs/toolkit";
+import { setCourse, setStep } from "../../../../../redux/Slices/courseSlice";
+import { getcoursedetails } from "../../../../../services/operations/courseDetailsAPI";
+
 function CourseInformationform() {
   const { edit, course, step } = useSelector((state) => state.course);
   const dispatch = useDispatch();
   const [loading, setloading] = useState(false);
   const { token } = useSelector((state) => state.auth);
   const [courseCategories, setCourseCategories] = useState([]);
-  // console.log(course, edit, step);
+  // console.log(course);
   // console.log(edit);
+
 
   const {
     register,
@@ -48,6 +50,7 @@ function CourseInformationform() {
     }
   }, []);
 
+
   function formsubmithandler(data) {
     if (!edit) {
       let formdata = new FormData();
@@ -61,10 +64,8 @@ function CourseInformationform() {
       // api call to backend
       let CreateCourse = async () => {
         setloading(true);
-
         try {
           let res = await addCourseDetails(formdata, token);
-          //  let  result = await res.data;
           // console.log(res);
           if (res.data.success) {
             toast.success(res.data.message);
@@ -91,38 +92,41 @@ function CourseInformationform() {
     }
 
     // if the edit mode is on 
-    if(edit){
-      let currval=getValues();
+    if (edit) {
+      let currval = getValues();
       // console.log(currval.title)
       // console.log("form is in the mode of edit on ");
-      let formdata=new FormData();
-      formdata.append("courseId",course._id);
+      let formdata = new FormData();
+      formdata.append("courseId", course._id);
       // if(currval.title !=course.courseName){
-        formdata.append("courseName",currval.title)
+      formdata.append("courseName", currval.title)
       // }
       // if(currval.description!==course.description){
-        formdata.append("courseDescription",currval.description)
+      formdata.append("courseDescription", currval.description)
       // }
       // if(currval.price!==course.price){
-        formdata.append("price",currval.price);
+      formdata.append("price", currval.price);
       // }
       // if(currval.category!==course.category){
-        formdata.append("category",currval.category);
+      formdata.append("category", currval.category);
       // }
       // if(currval.benifits!==course.whatYouWillLearn){
-        formdata.append("whatYouWillLearn",currval.benifits);
+      formdata.append("whatYouWillLearn", currval.benifits);
       // }
 
       // api call to backend
-      const updateCourse=async()=>{
+      const updateCourse = async () => {
         setloading(true);
         try {
           let res = await updateCourseDetails(formdata, token);
+
           // console.log(res);
           if (res.data.success) {
+       
             toast.success(res.data.message);
             dispatch(setStep(2));
             localStorage.setItem("step", JSON.stringify("2"));
+           
             dispatch(setCourse(res.data.updatedcourse));
             localStorage.setItem(
               "course",
@@ -136,7 +140,7 @@ function CourseInformationform() {
           toast.error("error while creating A course");
           console.log(error);
           setloading(false);
-          return ;
+          return;
         }
         setloading(false);
       }
@@ -148,6 +152,7 @@ function CourseInformationform() {
   function withoutsavefxn() {
     dispatch(setStep(2));
   }
+ 
   return (
     <div className="w-full flex-col justify-between  bg-richblack-800">
       {loading ? (
@@ -233,10 +238,10 @@ function CourseInformationform() {
               name="thumbnail"
               disabled={edit}
               required={!edit}
-              {...register("thumbnail",`${edit?{ required: { value: false } } :{ required: { value: true } }}` )}
+              {...register("thumbnail", `${edit ? { required: { value: false } } : { required: { value: true } }}`)}
               // {...register("thumbnail",{ required: { value: true } } )}
               className="w-full  p-1 rounded-md bg-richblack-700 text-richblack-25"
-              
+
             />
             {errors.thumbnail && (
               <span className="text-yellow-25">Required</span>

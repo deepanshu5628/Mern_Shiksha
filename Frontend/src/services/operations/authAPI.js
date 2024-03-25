@@ -3,7 +3,7 @@ import {user} from "../apis";
 import {setLoading,setSignupData,setToken} from "../../redux/Slices/authSlice";
 import {setImage, setUser} from "../../redux/Slices/profileSlice";
 import {toast } from 'react-toastify';
-import { setCourse, setStep } from "../../redux/Slices/courseSlice";
+import { setCourse,setEdit, setStep } from "../../redux/Slices/courseSlice";
 
 // -----------------------------login-------------------------------------------------
 export const login=(email,password,navigate)=>{
@@ -40,17 +40,14 @@ export const logout =(navigate)=>{
     return (dispatch)=>{
         dispatch(setLoading(true));
         dispatch(setToken(null));
-        localStorage.removeItem("token");
         dispatch(setUser(null));
-        localStorage.removeItem("user");
         dispatch(setStep(1));
-        localStorage.removeItem("step");
         dispatch(setCourse(null));
-        localStorage.removeItem("course");
+        dispatch(setEdit(false));
+        dispatch(setUser(null));
         // dispatch(setSignupData(null));
-        // localStorage.removeItem("signupData");
-        toast.success("Logged Out");
         localStorage.clear();
+        toast.success("Logged Out");
         navigate("/");
         dispatch(setLoading(false));
     }

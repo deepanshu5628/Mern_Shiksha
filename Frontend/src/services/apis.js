@@ -18,20 +18,24 @@ export const categories = {
 };
 
 export const section = {
-  SECTION_API_ADDSECTION: BASE_URL_COURSE + "/addsection",
-  SECTION_API_UPDATESECTION: BASE_URL_COURSE + "/updatesection",
-  SECTION_API_DELETESECTION: BASE_URL_COURSE + "/deletesection",
+  SECTION_API_ADDSECTION: BASE_URL_COURSE + "/addsection",    //done
+  SECTION_API_UPDATESECTION: BASE_URL_COURSE + "/updatesection",    // done
+  SECTION_API_DELETESECTION: BASE_URL_COURSE + "/deletesection",    //DONE
 };
 
 export const subsection = {
-  SUBSECTION_API_ADDSUBSECTION: BASE_URL_COURSE + "/addsubsection",
+  SUBSECTION_API_ADDSUBSECTION: BASE_URL_COURSE + "/addsubsection",  //done
+  SUBSECTION_API_DELETESUBSECTION: BASE_URL_COURSE + "/deletesubsection",   //done
 };
 
 export const course = {
-  COURSE_API_CREATECOURSE: BASE_URL_COURSE + "/createcourse",
-  COURSE_API_UPDATECOURSE: BASE_URL_COURSE + "/updatecourse",
+  COURSE_API_CREATECOURSE: BASE_URL_COURSE + "/createcourse",   //done
+  COURSE_API_UPDATECOURSE: BASE_URL_COURSE + "/updatecourse",   //done
+  COURSE_API_PUBLISHCOURSE: BASE_URL_COURSE + "/publishcourse",   //done
+  COURSE_API_INSTRUCTORCOURSE: BASE_URL_COURSE + "/InstructorCourse",  //done
+  COURSE_API_DELETECOURSE: BASE_URL_COURSE + "/deletecourse",  
   COURSE_API_GETALLCOURSE: BASE_URL_COURSE + "/getallcourses",
-  COURSE_API_GETCOURSEDETAILS: BASE_URL_COURSE + "/getcoursedetails",
+  COURSE_API_GETCOURSEDETAILS: BASE_URL_COURSE + "/getcoursedetails",   //to get details of a specific course
 };
 
 export const review = {

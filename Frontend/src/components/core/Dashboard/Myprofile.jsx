@@ -6,7 +6,7 @@ function Myprofile() {
   const { user,image } = useSelector((state) => state.profile);
 
   return (
-    <div className="flex flex-col text-richblack-5 justify-center items-center my-4 gap-6 w-[100%]   ">
+    <div className="flex flex-col text-richblack-5 justify-center items-center my-4 gap-6 w-[100%]">
       <h1 className="text-4xl  font-semibold text-richblack-25">My Profile</h1>
 
       {/* first section */}

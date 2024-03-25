@@ -49,11 +49,5 @@ export const sidebarLinks = [
     type: "all",
     icon: "VscHistory",
   },
-  {
-    id: 8,
-    name: "Logout",
-    path: "/logout",
-    type: "all",
-    icon: "VscHistory",
-  },
+
 ];

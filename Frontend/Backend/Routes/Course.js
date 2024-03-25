@@ -1,8 +1,8 @@
 const express=require("express");
 // course controller input 
-const {createCourse, updateCourse,getAllCourse,getCourseDetails}=require("../Controller/Course");
+const {createCourse, publishCourse,updateCourse,deleteCourse,instructorCourse,getAllCourse,getCourseDetails}=require("../Controller/Course");
 const {createSection,updateSection,deleteSection}=require("../Controller/Section");
-const {createSubsection}=require("../Controller/Subsection");
+const {createSubsection,deleteSubSection}=require("../Controller/Subsection");
 // category controller input 
 const{showAllCategory,createCategory,categoryPageDetails}=require("../Controller/Category");
 // Rating and review controller
@@ -24,15 +24,23 @@ router.post("/deleteSection",islogedin,isInstructor,deleteSection);
 // ----------------Sub Section---------------
 // add a subsection to a section 
 router.post("/addSubSection",islogedin,isInstructor,createSubsection)
+router.post("/deleteSubSection",islogedin,isInstructor,deleteSubSection)
 
 // ------------------Course--------------------
 // create a course (only instructor ):)
 router.post("/createCourse",islogedin,isInstructor,createCourse);
 // Update a course (only instructor ):)
 router.post("/updateCourse",islogedin,isInstructor,updateCourse);
+// Delete a course (only instructor ):)
+router.delete("/deleteCourse",islogedin,isInstructor,deleteCourse);
+// Publish course (only instructor ):)
+router.post("/publishCourse",islogedin,isInstructor,publishCourse);
+// Course details of a specific Instructor (only instructor ):)
+router.get("/InstructorCourse",islogedin,isInstructor,instructorCourse);
+
 // get all registered courses
 router.get("/getallcourses",getAllCourse);
-// get course detail s
+// get course details
 router.post("/getcoursedetails",getCourseDetails);
 
 //----------------------------------------------------------- Category route -----------------------------------------------------------

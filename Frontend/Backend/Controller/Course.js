@@ -2,6 +2,8 @@ const { default: mongoose } = require("mongoose");
 const Category = require("../Models/Category");
 const Course = require("../Models/Course");
 const User = require("../Models/User");
+const Section = require("../Models/Section");
+const SubSection = require("../Models/SubSection");
 const imageUploader = require("../Utils/imageuploader");
 // -----------------------------------------create course controller----------------------
 exports.createCourse = async (req, res) => {
@@ -97,9 +99,15 @@ exports.createCourse = async (req, res) => {
     );
 
     // fetch finalCourseDetails
-    let updatedcourse = await Course.findById(newcourse._id).populate(
-      "category"
-    );
+    let updatedcourse = await Course.findById(newcourse._id)
+      .populate("category")
+      .populate("Instructor")
+      .populate({
+        path: "courseContent",
+        populate: {
+          path: "subSection",
+        }
+      }).exec();
     // send respoce
     res.status(200).json({
       success: true,
@@ -166,7 +174,14 @@ exports.updateCourse = async (req, res) => {
         category: isvalidCategory._id,
       },
       { new: true }
-    ).populate("category");
+    ).populate("category")
+      .populate("Instructor")
+      .populate({
+        path: "courseContent",
+        populate: {
+          path: "subSection",
+        }
+      }).exec();
 
     // now if the place the category is changed then update them in the category schema
     try {
@@ -183,7 +198,7 @@ exports.updateCourse = async (req, res) => {
         // console.log(oldcoursedetails._id);
         let deletedcategory = await Category.findOneAndUpdate(
           { name: oldcoursedetails.category.name },
-          { $pull: { course:{$eq:oldcoursedetails._id}  } }
+          { $pull: { course: { $eq: oldcoursedetails._id } } }
         );
       }
     } catch (error) {
@@ -208,6 +223,195 @@ exports.updateCourse = async (req, res) => {
     });
   }
 };
+
+// -----------------------------------------publich course controller----------------------
+exports.publishCourse = async (req, res) => {
+  try {
+    // console.log(req.body);/
+    let { status, courseId, instructorId } = req.body
+    // basic validation
+    if (!status || !courseId || !instructorId) {
+      return res.status(400).json({
+        success: false,
+        message: "fill in all the details",
+      });
+    }
+    // verify the instructor
+    let ins = await User.findById(instructorId);
+    // console.log(ins);
+    if (!ins.courses.some((id) => id == courseId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Ustaad tez na bni",
+      });
+    }
+
+    let updatedcourse = await Course.findByIdAndUpdate(courseId, { status: status }, { new: true })
+      .populate({
+        path: "Instructor",
+        populate: {
+          path: "additionalInformation",
+        },
+      })
+      .populate("category")
+      .populate({
+        path: "courseContent",
+        populate: {
+          path: "subSection",
+        },
+      })
+      .populate("ratingAndReviews")
+      .exec();
+    // send responce
+    res.status(200).json({
+      success: true,
+      message: "heelo g",
+      updatedcourse,
+    })
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: "error in publish Course  controller",
+      data: error.message,
+    });
+  }
+}
+
+// -----------------------------------------Instucrtor Course--------------------------------------- 
+exports.instructorCourse = async (req, res) => {
+  try {
+    let instructorId = req.user.id;
+    // perform validation
+    if (!instructorId) {
+      return res.status(400).json({
+        success: false,
+        message: "fill in all the details",
+      })
+    }
+    // check if course id has a couse of  not
+    let instructordetails = await User.findById(instructorId).populate("courses");
+    if (!instructordetails) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid Instructor id ",
+      });
+    }
+    if (instructordetails.courses.length === 0) {
+     return  res.status(200).json({
+        success: true,
+        message: "Instructor Doesn't Have any Course Yet",
+        coursedetail: instructordetails.courses
+      });
+    }
+    // send responce
+    res.status(200).json({
+      success: true,
+      message: "Course details are fetched successfully",
+      coursedetail: instructordetails.courses
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: "error in get Instructor Courses controller in course .js",
+      data: error.message,
+    });
+  }
+}
+
+// -----------------------------------------Delete Course--------------------------------------- 
+exports.deleteCourse = async (req, res) => {
+  try {
+    // fetch CourseId from the req ki body 
+    let { courseId } = req.body;
+    let { instructorId } = req.user.id;
+    // fetch course details
+    let coursedetails = await Course.findById(courseId);
+    if (!coursedetails) {
+      return res.status(400).json({
+        success: false,
+        message: "No Course Found ",
+        data: error
+      })
+    }
+    // console.log(coursedetails);
+    // deltet this course objectid form the Instructor Schema
+    try {
+      let x1 = await User.findByIdAndUpdate(coursedetails.Instructor, 
+       {$pull: { courses:{$eq: coursedetails._id} }}
+        , { new: true });
+
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        message: "error occured while deletring course objeect id from the Instructor Sechema ",
+        data: error
+      })
+    }
+    // delete the Course id from the Category Schema
+    try {
+      let x2 = await Category.findByIdAndUpdate(coursedetails.category, {
+        $pull: { course: { $eq: courseId } }
+      }, { new: true });
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        message: "error occured while deletring course Id from Category Sechema ",
+        data: error
+      })
+    }
+    // clean the enrolledStudents
+    try {
+      const enrolledStudents = coursedetails.enrolledStudents;
+      for (const studentsId of enrolledStudents) {
+        await User.findByIdAndUpdate(studentsId, {
+          $pull: { courses: { $eq: courseId } }
+        })
+      }
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        message: "error occured while delteing Enrolled Students's ",
+        data: error
+      })
+    }
+    // clean the section and subsection
+    try {
+      const courseSection = coursedetails.courseContent;
+      for (const sectionId of courseSection) {
+        // Delete sub-sections of the section
+        const section = await Section.findById(sectionId);
+        if (section) {
+          const subSections = section.subSection
+          for (const subSectionId of subSections) {
+            await SubSection.findByIdAndDelete(subSectionId)
+          }
+        }
+        // Delete the section
+        await Section.findByIdAndDelete(sectionId)
+      }
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        message: "error occured while delteing section and subsection's ",
+        data: error
+      })
+    }
+    // Delete the course
+    await Course.findByIdAndDelete(courseId)
+    // send respoce 
+    res.status(200).json({
+      success: true,
+      message: "Course Deleted SuccessfullY",
+    })
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: "error in Delete Course  controller",
+      data: error.message,
+    });
+  }
+}
+
 // ----------------------------------------------get all course controller ---------------------
 exports.getAllCourse = async (req, res) => {
   try {
@@ -227,12 +431,19 @@ exports.getAllCourse = async (req, res) => {
   }
 };
 
+// ----------------------------------------------get Details of a specific  ---------------------
+
 exports.getCourseDetails = async (req, res) => {
   try {
+    // console.log(req.body)
     // fetch data form body
     let { courseId } = req.body;
     // perform validation
     if (!courseId) {
+      return res.status(400).json({
+        success: false,
+        message: "fill in all the details",
+      })
     }
     // check if course id has a couse of  not
     let coursedetail = await Course.findById(courseId);
