@@ -10,7 +10,7 @@ function AddCourse() {
   const { course, edit,step } = useSelector((state) => state.course);
   const location=useLocation();
   // console.log("loca",location.pathname);
-  console.log("in index.jsx",course);
+  // console.log("in index.jsx",course);
 
  
  

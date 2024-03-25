@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard";
 import EditCourse from "./components/core/Dashboard/EditCourse";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
 import { useSelector } from "react-redux";
+import Catelog from "./pages/Catelog";
 function App() {
   const { user } = useSelector((state) => state.profile);
   const {course}=useSelector((state)=>state.course);
@@ -28,6 +29,7 @@ function App() {
         <Route path="/update-password/:id" Component={Updatepassword} />
         <Route path="/contact" Component={ContactUs} />
         <Route path="/about" Component={About} />
+        <Route path="/Catelog/:category" Component={Catelog} />
 
         {/* sidebar routes */}
         <Route

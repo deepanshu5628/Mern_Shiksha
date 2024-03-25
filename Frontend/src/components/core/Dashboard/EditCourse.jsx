@@ -11,7 +11,7 @@ function EditCourse() {
     const { course } = useSelector((state) => state.course);
     const [loading, setloading] = useState(false);
     // const id = state.id;
-    console.log("state id ",state.data);
+    // console.log("state id ",state.data);
 
 
     // fetch course detials

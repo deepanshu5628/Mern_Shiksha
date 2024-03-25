@@ -17,24 +17,28 @@ function MyCourses() {
     const { token } = useSelector((state) => state.auth);
     const { instructorcourses } = useSelector((state) => state.course);
 
-
+    // console.log(instructorcourses)
     // fxn to fetch the details of Instructor Courses
     async function fetchinstructorcourse() {
         setloading(true);
         let res;
        try {
          res = await instructorCoursesdetails(token);
+        //  console.log(res);
+         if(res.success){
+            dispatch(setInstructorCourses(res.coursedetail));
+            localStorage.setItem("instructorcourses", JSON.stringify(res.coursedetail));
+         }
+         if(!res.success){
+            toast.error(res.message);
+         }
        } catch (error) {
         console.log("error occrued in mY courses");
         console.log(error);
         setloading(false);
         return 
        }
-        // console.log(res);
-            dispatch(setInstructorCourses(res.coursedetail));
-            localStorage.setItem("instructorcourses", JSON.stringify(res.coursedetail));
-            setloading(false);
-       
+       setloading(false);
     }
     useEffect(() => {
         fetchinstructorcourse();
@@ -42,7 +46,7 @@ function MyCourses() {
 
     // fxn to edit a course
     const editcourse=async(courseId)=>{
-        console.log("button is clicked")
+        // console.log("button is clicked")
         navigate("/dashboard/edit-course",{state:{data:courseId}});
     }
 
@@ -70,7 +74,7 @@ function MyCourses() {
                             </div>
 
                             {
-                                instructorcourses !== null && instructorcourses.length < 1 ? <div className="flex h-80 justify-center items-center"><p className="text-4xl">Empty </p> <IoTrashBin className="text-7xl text-pink-600" /></div> :
+                                instructorcourses != null && instructorcourses.length < 1 ? <div className="flex h-80 justify-center items-center"><p className="text-4xl">Empty </p> <IoTrashBin className="text-7xl text-pink-600" /></div> :
 
 
                                     /* table */
