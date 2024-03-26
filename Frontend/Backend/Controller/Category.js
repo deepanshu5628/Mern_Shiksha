@@ -4,9 +4,9 @@ const Course=require("../Models/Course");
 exports.createCategory=async(req,res)=>{
     try {
         // fetch data form requrest 
-        let {name,description}=req.body;
+        let {name,description,link}=req.body;
         // perform validation
-        if(!name||!description){
+        if(!name||!description||!link){
             return res.status(400).json({
                 success:false,
                 message:"fill in all the details",
@@ -16,6 +16,7 @@ exports.createCategory=async(req,res)=>{
         let createdCategory=await Category.create({
             name:name,
             description:description,
+            link:link,
         })
         // return responce
         res.status(200).json({
@@ -57,34 +58,36 @@ exports.showAllCategory=async(req,res)=>{
 exports.categoryPageDetails=async(req,res)=>{
     try {
         // fetch cateory id form req body 
-        let{categoryId}=req.body;
+        let{link}=req.body;
         // basic validation
-        if(!categoryId){
+        if(!link){
             return res.status(400).json({
                 success:false,
                 message:"fill in all the details",
             });
         }
         // check if the cateogory id is valid or not 
-        let categorydetails=await Category.findById(categoryId);
+        let categorydetails=await Category.findOne({link:link});
         if(!categorydetails){
             return res.status(400).json({
                 success:false,
                 message:"Category is not valid ",
             });
         }
+        let categoryId=categorydetails._id;        
+        // console.log(categoryId)
         // find all the courses of the given cateogy 
-        let selectedcatergorycourses=await Course.find({category:categoryId})
-        .populate("ratingAndReviews").exec();
+        let selectedcatergorycourses=await Course.find({$and:[{category:categoryId},{status:"Published"}]})
+        // .populate("ratingAndReviews").exec();
 
         // find other courses other than this caterogy 
-        let othercategorycourses=await Course.find({category:{$ne:categoryId}});
+        let othercategorycourses=await Course.find({$and:[{category:{$ne:categoryId}},{status:"Published"}]});
 
         // most selled course H.W
         res.status(200).json({
             success:true,
             message:"all details are ",
-            // categorydetails,
+            categorydetails,
             selectedcatergorycourses,
             othercategorycourses,
         })

@@ -23,6 +23,7 @@ function Navbar() {
   function logoutbtnhandler() {
     dispatch(logout(navigate));
   }
+  // console.log(sublinks)
 
   // fetch category data using the connetor fucntion
   async function catefetch() {
@@ -66,7 +67,7 @@ function Navbar() {
 
                       {/* hover div 's */}
                       <div
-                        className="invisible absolute left-[46%] top-[5%] z-[1000] 
+                        className="invisible absolute left-[47%] top-[2%] z-[1000] 
                                     flex w-[200px] translate-x-[-50%] translate-y-[3em] flex-col
                                      rounded-lg  bg-richblack-800 p-4 text-richblack-25 opacity-0 
                                      transition-all duration-150 group-hover:visible 
@@ -79,7 +80,7 @@ function Navbar() {
                         ></div>
                         {sublinks.map((cate, index) => {
                           return (
-                            <Link key={index} to={`catelog/${cate.name}`}>
+                            <Link key={index} to={`catelog/${cate.link}`}>
                               <p className="text-center text-xl hover:border">
                                 {cate.name}
                               </p>

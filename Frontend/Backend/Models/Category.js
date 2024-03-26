@@ -8,6 +8,9 @@ const categorySchema=new mongoose.Schema({
         type:String,
         require:true,
     },
+    link:{
+        type:String,
+    },
     course:[{
         type:mongoose.Types.ObjectId,
         ref:"Course",

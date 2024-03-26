@@ -12,9 +12,8 @@ const BASE_URL_CONTACTUS = BASE_URL + "/api/v1/reach";
 // categoty api 's
 export const categories = {
   CATEGORIES_API_SHOWALLCATEGORIES: BASE_URL_COURSE + "/showallcategories", //done
-  CATEGORIES_API_CREATECATEGORY: BASE_URL_COURSE + "/createcategory",
-  CATEGORIES_API_GETCATEGORYPAGEDETAILS:
-    BASE_URL_COURSE + "/getCategoryPageDetails",
+  CATEGORIES_API_CREATECATEGORY: BASE_URL_COURSE + "/createcategory",   //only admin from backend
+  CATEGORIES_API_GETCATEGORYPAGEDETAILS:BASE_URL_COURSE + "/getCategoryPageDetails", //done
 };
 
 export const section = {
@@ -33,9 +32,9 @@ export const course = {
   COURSE_API_UPDATECOURSE: BASE_URL_COURSE + "/updatecourse",   //done
   COURSE_API_PUBLISHCOURSE: BASE_URL_COURSE + "/publishcourse",   //done
   COURSE_API_INSTRUCTORCOURSE: BASE_URL_COURSE + "/InstructorCourse",  //done
-  COURSE_API_DELETECOURSE: BASE_URL_COURSE + "/deletecourse",  
-  COURSE_API_GETALLCOURSE: BASE_URL_COURSE + "/getallcourses",
-  COURSE_API_GETCOURSEDETAILS: BASE_URL_COURSE + "/getcoursedetails",   //to get details of a specific course
+  COURSE_API_DELETECOURSE: BASE_URL_COURSE + "/deletecourse",    //done
+  COURSE_API_GETALLCOURSE: BASE_URL_COURSE + "/getallcourses",   
+  COURSE_API_GETCOURSEDETAILS: BASE_URL_COURSE + "/getcoursedetails",   //done
 };
 
 export const review = {
@@ -49,7 +48,7 @@ export const profile = {
   PROFILE_API_UPDATEDP: BASE_URL_PROFILE + "/updatedp", //done
   PROFILE_API_UPDATEPROFILE: BASE_URL_PROFILE + "/updateProfile", //done
   PROFILE_API_DELETEPROFILE: BASE_URL_PROFILE + "/deleteProfile",  //done
-  PROFILE_API_GETUSERDETAILS: BASE_URL_PROFILE + "/getuserdetails",
+  PROFILE_API_GETUSERDETAILS: BASE_URL_PROFILE + "/getuserdetails", 
 };
 
 // ---------------USER------------------------------------
