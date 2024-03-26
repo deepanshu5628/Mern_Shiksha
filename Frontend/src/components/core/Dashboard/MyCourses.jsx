@@ -9,6 +9,7 @@ import { MdDelete } from "react-icons/md";
 import { MdModeEditOutline } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import {toast} from "react-toastify"
 import { CiCirclePlus } from "react-icons/ci";
 function MyCourses() {
     const [loading, setloading] = useState(false);

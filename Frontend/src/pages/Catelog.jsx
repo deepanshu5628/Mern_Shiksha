@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-import { IoTrashBinSharp } from "react-icons/io5";
 import Footer from "../components/common/Footer"
+import CourseDiv from "../components/core/Catelog/CourseDiv";
 import { fetchcategorydetails } from "../services/operations/PageAndComponentDataAPI";
-
+import EmptyCourse from "../components/core/Catelog/EmptyCourse";
 function Catelog() {
     let [loading, setloading] = useState(false);
     let [categorydetails, setcategorydetails] = useState({});
@@ -13,10 +13,7 @@ function Catelog() {
     let [currpathname, setcurrpathname] = useState(null);
     const location = useLocation();
     let pathname = location.pathname.split("/")[2]
-
     // console.log(selectedcourses)
-
-
     useEffect(() => {
         setcurrpathname(pathname);
         let fetchcatdetails = async () => {
@@ -39,6 +36,7 @@ function Catelog() {
             setloading(false);
         }
         fetchcatdetails();
+        
     }, [])
 
     return (
@@ -49,7 +47,7 @@ function Catelog() {
                         {/* section 1 */}
                         <section className="w-full flex-col bg-richblack-800 p-6 justify-evenly py-10 ">
                             <div className="my-5">
-                                <span className="text-richblack-100 text-2xl"> Home / Catelog / </span><span className="text-yellow-100">{categorydetails.name}</span>
+                                <span className="text-richblack-100 text-xl"> Home / Catelog / </span><span className="text-yellow-100 text-2xl">{categorydetails.name}</span>
                             </div>
                             <div className="text-5xl my-5  font-semibold">
                                 <i>  {categorydetails.name}</i>
@@ -67,22 +65,13 @@ function Catelog() {
                                 {
                                     selectedcourses.length > 0 && selectedcourses.map((course, index) => {
                                         return <div className=" bg-richblack-800  cursor-pointer rounded-lg  m-4 max-h-64 min-h-64 min-w-64 max-w-64 hover:border-yellow-200 hover:border-2" key={index}>
-                                            <div className="p-2 py-4 font-semibold flex-col h-full">
-                                                <img src={course.thumbnail} className="w-[99%] min-h-[70%] rounded-lg  " alt="Thubmnail" />
-                                                <p className=" my-2 text-xl">{course.courseName}</p>
-                                                <p className="">Rs:{course.price}</p>
-                                            </div>
+                                            <CourseDiv course={course} />
                                         </div>
                                     })
                                 }
                                 {
-                                    selectedcourses.length ===0 && <div className= " flex  w-[100%]    justify-center items-center py-5 my-3 text-4xl ">
-                                       <div >
-                                        <p className="text-white ">No Course Found</p>
-                                        <div className=" pl-24">
-                                        <IoTrashBinSharp className="text-pink-300 text-7xl " />
-                                        </div>
-                                       </div>
+                                    selectedcourses.length === 0 && <div className=" flex  w-[100%]    justify-center items-center py-5 my-3 text-4xl ">
+                                        <EmptyCourse />
                                     </div>
                                 }
                             </div>
@@ -99,22 +88,13 @@ function Catelog() {
                                 {
                                     othercourses.length > 0 && othercourses.map((course, index) => {
                                         return <div className=" bg-richblack-800  cursor-pointer rounded-lg  m-4 max-h-64 min-h-64 min-w-64 max-w-64 hover:border-yellow-200 hover:border-2" key={index}>
-                                            <div className="p-2 py-4 font-semibold flex-col h-full">
-                                                <img src={course.thumbnail} className="w-[99%] min-h-[70%] rounded-lg  " alt="Thubmnail" />
-                                                <p className=" my-2 text-xl">{course.courseName}</p>
-                                                <p className="">Rs:{course.price}</p>
-                                            </div>
+                                            <CourseDiv course={course} />
                                         </div>
                                     })
                                 }
-                                 {
-                                    othercourses.length ===0 && <div className= " flex  w-[100%]    justify-center items-center py-5 my-3 text-4xl ">
-                                       <div >
-                                        <p className="text-white ">No Course Found</p>
-                                        <div className=" pl-24">
-                                        <IoTrashBinSharp className="text-pink-300 text-7xl " />
-                                        </div>
-                                       </div>
+                                {
+                                    othercourses.length === 0 && <div className=" flex  w-[100%]    justify-center items-center py-5 my-3 text-4xl ">
+                                        <EmptyCourse />
                                     </div>
                                 }
                             </div>
@@ -123,7 +103,7 @@ function Catelog() {
                             </div>
                         </div>
 
-                        <Footer/>
+                        <Footer />
                     </div>
                 )
             }

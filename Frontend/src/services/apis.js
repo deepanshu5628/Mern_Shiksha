@@ -12,8 +12,8 @@ const BASE_URL_CONTACTUS = BASE_URL + "/api/v1/reach";
 // categoty api 's
 export const categories = {
   CATEGORIES_API_SHOWALLCATEGORIES: BASE_URL_COURSE + "/showallcategories", //done
-  CATEGORIES_API_CREATECATEGORY: BASE_URL_COURSE + "/createcategory",
-  CATEGORIES_API_GETCATEGORYPAGEDETAILS:BASE_URL_COURSE + "/getCategoryPageDetails",
+  CATEGORIES_API_CREATECATEGORY: BASE_URL_COURSE + "/createcategory",   //only admin from backend
+  CATEGORIES_API_GETCATEGORYPAGEDETAILS:BASE_URL_COURSE + "/getCategoryPageDetails", //done
 };
 
 export const section = {

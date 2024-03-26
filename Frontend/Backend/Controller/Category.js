@@ -77,11 +77,11 @@ exports.categoryPageDetails=async(req,res)=>{
         let categoryId=categorydetails._id;        
         // console.log(categoryId)
         // find all the courses of the given cateogy 
-        let selectedcatergorycourses=await Course.find({category:categoryId})
+        let selectedcatergorycourses=await Course.find({$and:[{category:categoryId},{status:"Published"}]})
         // .populate("ratingAndReviews").exec();
 
         // find other courses other than this caterogy 
-        let othercategorycourses=await Course.find({category:{$ne:categoryId}});
+        let othercategorycourses=await Course.find({$and:[{category:{$ne:categoryId}},{status:"Published"}]});
 
         // most selled course H.W
         res.status(200).json({

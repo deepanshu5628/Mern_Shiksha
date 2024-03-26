@@ -14,6 +14,7 @@ import EditCourse from "./components/core/Dashboard/EditCourse";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
 import { useSelector } from "react-redux";
 import Catelog from "./pages/Catelog";
+import Course from "./pages/Course";
 function App() {
   const { user } = useSelector((state) => state.profile);
   const {course}=useSelector((state)=>state.course);
@@ -29,7 +30,8 @@ function App() {
         <Route path="/update-password/:id" Component={Updatepassword} />
         <Route path="/contact" Component={ContactUs} />
         <Route path="/about" Component={About} />
-        <Route path="/Catelog/:category" Component={Catelog} />
+        <Route path="/Catelog/:categoryid" Component={Catelog} />
+        <Route path="/Course/:CourseId" Component={Course} />
 
         {/* sidebar routes */}
         <Route
