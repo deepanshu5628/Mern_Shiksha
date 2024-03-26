@@ -82,7 +82,7 @@ function Course() {
                                         <div className="w-[32%] bg-caribbeangreen-700">
                                             <p>hee</p>
                                         </div>
-                                    </section>
+                                    </section> 
                                     {/* section -3 */}
                                 </div>
                             )
