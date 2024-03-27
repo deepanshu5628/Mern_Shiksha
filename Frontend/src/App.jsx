@@ -18,6 +18,8 @@ import Course from "./pages/Course";
 function App() {
   const { user } = useSelector((state) => state.profile);
   const {course}=useSelector((state)=>state.course);
+ 
+
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inte">
       <Navbar />
