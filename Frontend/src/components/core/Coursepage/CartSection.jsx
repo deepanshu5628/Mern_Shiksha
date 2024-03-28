@@ -40,6 +40,7 @@ function CartSection({ coursedetails }) {
             return
         }
          dispatch(addToCart(coursedetails));
+         
         }
 
         // Use Efffect

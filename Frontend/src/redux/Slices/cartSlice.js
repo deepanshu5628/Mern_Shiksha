@@ -21,6 +21,7 @@ const cartSlice=createSlice({
             // state.cart.push(actions.payload);
             state.cart.push(actions.payload);
             state.totalitems+=1;
+            toast.success("item added")
             state.totalprice+=course.price;
 
             localStorage.setItem("cart",JSON.stringify(state.cart))
@@ -29,11 +30,16 @@ const cartSlice=createSlice({
         },
         // remove form cart 
         removeFromCart(state,action){
+            let course=action.payload
+            const index = state.cart.findIndex((item) => item._id === course)
             state.totalitems-=1;
-            return state.cart.filter((item)=>item._id !==action.payload);
-            // localStorage.setItem("cart",JSON.stringify(state.cart))
-            // localStorage.setItem("totalitems",JSON.stringify(state.totalitems));
-
+            state.totalprice-=state.cart[index].price;
+            state.cart.splice(index, 1)
+            // return state.cart.filter((item)=>item._id !==course);
+            localStorage.setItem("cart",JSON.stringify(state.cart))
+            localStorage.setItem("totalitems",JSON.stringify(state.totalitems));
+            localStorage.setItem("totalprice",JSON.stringify(state.totalprice));
+            toast.success("Removed Successfully");
         },
         // reset cart
         resetCart(state){
