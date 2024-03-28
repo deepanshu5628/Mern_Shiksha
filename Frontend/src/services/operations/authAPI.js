@@ -4,6 +4,7 @@ import {setLoading,setSignupData,setToken} from "../../redux/Slices/authSlice";
 import {setImage, setUser} from "../../redux/Slices/profileSlice";
 import {toast } from 'react-toastify';
 import { setCourse,setEdit, setStep } from "../../redux/Slices/courseSlice";
+import { resetCart } from "../../redux/Slices/cartSlice";
 
 // -----------------------------login-------------------------------------------------
 export const login=(email,password,navigate)=>{
@@ -45,6 +46,7 @@ export const logout =(navigate)=>{
         dispatch(setCourse(null));
         dispatch(setEdit(false));
         dispatch(setUser(null));
+        dispatch(resetCart());
         // dispatch(setSignupData(null));
         localStorage.clear();
         toast.success("Logged Out");

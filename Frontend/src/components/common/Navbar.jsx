@@ -127,10 +127,12 @@ function Navbar() {
 
           {/*if user is loged in   */}
           {token !== null && user.accountType !== "Instructor" && (
-            <div className=" flex items-center ">
-              <Link to="/dashboard/cart"> <CiShoppingCart  className="text-4xl opacity-80" /> </Link>
+            <Link to="/dashboard/cart">
+            <div className=" flex items-center  cursor-pointer">
+               <CiShoppingCart  className="text-4xl opacity-80" /> 
               <p className="relative right-5 text-sm ">{totalitems}</p>
             </div>
+            </Link>
           )}
           {token !== null && (
             <div
