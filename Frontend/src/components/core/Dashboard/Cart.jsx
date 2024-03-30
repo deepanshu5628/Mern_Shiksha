@@ -5,7 +5,7 @@ import { removeFromCart } from "../../../redux/Slices/cartSlice";
 function Cart() {
   const dispatch=useDispatch();
   const { totalitems, cart, totalprice } = useSelector((state) => state.cart);
-  console.log(cart);
+  // console.log(cart);
 
 
   // delbtn

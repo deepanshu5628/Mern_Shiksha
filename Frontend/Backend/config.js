@@ -41,4 +41,12 @@ let connectcloudianry=()=>{
     })
   }
 }
-module.exports={startdb,transporter,connectcloudianry};
+// connecting razorpay
+const Razorpay=require("razorpay");
+const instance=new Razorpay({
+    key_id:process.env.RAZORPAYTEST_KEY_ID,
+    key_secret:process.env.RAZORPAYTEST_KEY_SECRET,
+})
+
+
+module.exports={startdb,transporter,connectcloudianry,instance};

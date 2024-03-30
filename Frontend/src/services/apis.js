@@ -7,6 +7,7 @@ const BASE_URL_COURSE = BASE_URL + "/api/v1/Course";
 const BASE_URL_AUTH = BASE_URL + "/api/v1/auth";
 const BASE_URL_PROFILE = BASE_URL + "/api/v1/profile";
 const BASE_URL_CONTACTUS = BASE_URL + "/api/v1/reach";
+const BASE_URL_PAYMENT = BASE_URL + "/api/v1/payment";
 
 // ----------------------------------coursese-----------------------------
 // categoty api 's
@@ -33,7 +34,7 @@ export const course = {
   COURSE_API_PUBLISHCOURSE: BASE_URL_COURSE + "/publishcourse",   //done
   COURSE_API_INSTRUCTORCOURSE: BASE_URL_COURSE + "/InstructorCourse",  //done
   COURSE_API_DELETECOURSE: BASE_URL_COURSE + "/deletecourse",    //done
-  COURSE_API_GETALLCOURSE: BASE_URL_COURSE + "/getallcourses",   
+  COURSE_API_GETALLCOURSE: BASE_URL_COURSE + "/getallcourses",   //done
   COURSE_API_GETCOURSEDETAILS: BASE_URL_COURSE + "/getcoursedetails",   //done
 };
 
@@ -48,7 +49,7 @@ export const profile = {
   PROFILE_API_UPDATEDP: BASE_URL_PROFILE + "/updatedp", //done
   PROFILE_API_UPDATEPROFILE: BASE_URL_PROFILE + "/updateProfile", //done
   PROFILE_API_DELETEPROFILE: BASE_URL_PROFILE + "/deleteProfile",  //done
-  PROFILE_API_GETUSERDETAILS: BASE_URL_PROFILE + "/getuserdetails", 
+  PROFILE_API_GETUSERDETAILS: BASE_URL_PROFILE + "/getuserdetails", //done
 };
 
 // ---------------USER------------------------------------
@@ -65,3 +66,11 @@ export const user = {
 export const contactus = {
   CONTACTUS_API_CONTACT: BASE_URL_CONTACTUS + "/contact", //done
 };
+
+// -------------------Payment----------------
+export const payment={
+  PAYMENT_API_CREATEORDER:BASE_URL_PAYMENT+"/capturepayment" ,
+  PAYMENT_API_VERIFYPAYMENT:BASE_URL_PAYMENT+"/verifyPayment",
+  // SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL_PAYMENT + "/sendPaymentSuccessEmail",
+
+}
