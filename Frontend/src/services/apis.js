@@ -36,7 +36,8 @@ export const course = {
   COURSE_API_DELETECOURSE: BASE_URL_COURSE + "/deletecourse",    //done
   COURSE_API_GETALLCOURSE: BASE_URL_COURSE + "/getallcourses",   //done
   COURSE_API_GETCOURSEDETAILS: BASE_URL_COURSE + "/getcoursedetails",   //done
-};
+  COURSE_API_USERCOURSES:BASE_URL_COURSE+"/userCoursesDetails" ,      //done
+};  
 
 export const review = {
   COURSE_API_CREATERATING: BASE_URL_COURSE + "/createrating",
@@ -69,8 +70,8 @@ export const contactus = {
 
 // -------------------Payment----------------
 export const payment={
-  PAYMENT_API_CREATEORDER:BASE_URL_PAYMENT+"/capturepayment" ,
-  PAYMENT_API_VERIFYPAYMENT:BASE_URL_PAYMENT+"/verifyPayment",
+  PAYMENT_API_CREATEORDER:BASE_URL_PAYMENT+"/capturepayment" ,    //done
+  PAYMENT_API_VERIFYPAYMENT:BASE_URL_PAYMENT+"/verifyPayment",    //done
   // SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL_PAYMENT + "/sendPaymentSuccessEmail",
 
 }
