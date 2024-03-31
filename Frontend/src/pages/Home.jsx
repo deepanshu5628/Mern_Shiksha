@@ -118,12 +118,12 @@ function Home() {
                   "Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson"
                 }
                 ctabtn1={{
-                  linto: "/",
+                  linkto: "/login",
                   active: true,
                   btntext: "Continue Lesson",
                 }}
                 ctabtn2={{
-                  linkto: "/",
+                  linkto: "/signup",
                   btntext: "Learn More",
                 }}
                 codeblock={`import react from "react";\nimport CTAButton from "./Button";\nimport { FaArrowRight } from "react-icons/fa6";\nimport { TypeAnimation } from 'react-type-animation';\n \nconst home()=>{\nreturn home()\n}\n}`}
@@ -142,7 +142,7 @@ function Home() {
                 linkto={"/signup"}
                 active={true}
                 children={
-                  <div className="flex justify-center gap-1">
+                  <div className="flex gap-1 items-center justify-center gap-1">
                     <p>Explore Full Catelog</p> <FaArrowRight />
                   </div>
                 }
@@ -168,7 +168,7 @@ function Home() {
                 <CTAButton
                   children={"Learn More "}
                   active={true}
-                  linkto={"/"}
+                  linkto={"/login"}
                 />
               </div>
             </div>
@@ -250,7 +250,7 @@ function Home() {
               </div>
             </div>
             {/* last btn  */}
-            <CTAButton active={true} children={"Learn More"} />
+            <CTAButton active={true} linkto={"/signup"} children={"Learn More"} />
           </div>
           {/* --------------------------------section-3---------------------------------- */}
           <div className="w-11/12 max-w-maxContent mx-auto text-richblack-300 pt-16 pl-8 ">
@@ -280,7 +280,7 @@ function Home() {
                   active={true}
                   linkto={"/signup"}
                   children={
-                    <div className="flex font-bold text-1.3xl">
+                    <div className="flex items-center gap-3 font-bold text-1.3xl">
                       <p>Start Teaching Today </p>
                       <FaArrowRight />
                     </div>
