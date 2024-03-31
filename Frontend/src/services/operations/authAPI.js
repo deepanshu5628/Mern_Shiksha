@@ -23,7 +23,11 @@ export const login=(email,password,navigate)=>{
                 localStorage.setItem("token",JSON.stringify(token));
             localStorage.setItem("user",JSON.stringify(logindata));  
             toast.success(res.message);
-            navigate("/dashboard/my-profile");
+            // navigate("/dashboard/my-profile");
+            navigate("/")
+            setTimeout(() => {
+                navigate("/dashboard/my-profile")
+            }, 10);
         }
         if(!res.success){
             toast.error(res.message);

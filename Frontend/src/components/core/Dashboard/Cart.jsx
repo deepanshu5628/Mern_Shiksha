@@ -2,11 +2,28 @@ import { IoTrashBinOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { removeFromCart } from "../../../redux/Slices/cartSlice";
+import { useNavigate } from "react-router-dom";
+import {buyCourse} from "../../../services/operations/paymentAPI"
 function Cart() {
   const dispatch=useDispatch();
-  const { totalitems, cart, totalprice } = useSelector((state) => state.cart);
-  console.log(cart);
+  const navigate=useNavigate();
 
+  const { totalitems, cart, totalprice } = useSelector((state) => state.cart);
+  const {token } = useSelector((state) => state.auth);
+  const {user } = useSelector((state) => state.profile);
+
+  // checkout btn
+  function checkoutbtn(){
+    let bodydata=[];
+    for(const id of cart){
+      bodydata.push(id._id);
+    }
+    if(token){
+      buyCourse(token,bodydata,user,navigate,dispatch);
+      return 
+    }
+
+  }
 
   // delbtn
   function delbtn(id){
@@ -70,7 +87,9 @@ function Cart() {
             <div className="text-7xl flex text-yellow-100"><FaIndianRupeeSign className="pt-1" /> {totalprice}</div>
           </div>
           <div className="ml-16">
-            <button className="bg-yellow-100 p-2  text-black rounded-md">CheckOut</button>
+            <button
+            onClick={checkoutbtn}
+            className="bg-yellow-100 p-2  text-black rounded-md">CheckOut</button>
           </div>
         </section>
       }

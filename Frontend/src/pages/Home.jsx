@@ -16,20 +16,21 @@ import { FaArrowRight } from "react-icons/fa6";
 import ExploreMore from "../components/core/Homepage/ExploreMore";
 import RecBox from "../components/core/Homepage/RecBox";
 import Footer from "../components/common/Footer";
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux"
 import Spinner from "../components/common/Spinner";
 function Home() {
-  const { loading } = useSelector((state) => state.auth);
+  const { loading, token } = useSelector((state) => state.auth);
+  // console.log(token);
   return (
     <div>
       {loading ? (
-       <Spinner/> 
+        <Spinner />
       ) : (
         <div>
           {/* section-1 */}
           <div className="relative mx-auto  flex flex-col   w-11/12  max-w-maxContent items-center text-white justify-between ">
             {/* btn ->becmone and instructor  */}
-            <Link to={"/signup"}>
+            <Link to={`${token === null ? "/signup" : "/dashboard/my-profile"}`}>
               <div
                 className=" mt-16 p-1 mx-auto rounded-full bg-richblack-800 font-bold
                      text-richblack-200  transition-all duration-200 hover:scale-95 w-fit"
@@ -63,10 +64,10 @@ function Home() {
 
             {/* 2 btns*/}
             <div className="flex flex-row gap-3 mt-8">
-              <CTAButton linkto={"/signup"} active={true}>
+              <CTAButton linkto={`${token === null ? "/signup" : "/dashboard/my-profile"}`} active={true}>
                 Learn More
               </CTAButton>
-              <CTAButton linkto={"/login"}>Book A demo</CTAButton>
+              <CTAButton linkto={`${token === null ? "/login" : "/dashboard/my-profile"}`}>Book A demo</CTAButton>
             </div>
 
             {/* video */}
@@ -91,12 +92,12 @@ function Home() {
                   "Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."
                 }
                 ctabtn1={{
-                  linkto: "/signup",
+                  linkto: `${token === null ? "/signup" : "/dashboard/my-profile"}`,
                   active: true,
                   btntext: "Try it yourself",
                 }}
                 ctabtn2={{
-                  linkto: "/login",
+                  linkto: `${token === null ? "/login" : "/dashboard/my-profile"}`,
                   btntext: "Learn More",
                 }}
                 codeblock={`<!DOCTYPE html>\n <html lang="en">\n<head>\n<title>Document</title>\n</head>\n<body>\n<a href="/puma">puma</a>\n<a href="/oneeight">oneeight</a>\n</body>\n</html>`}
@@ -118,12 +119,12 @@ function Home() {
                   "Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first lesson"
                 }
                 ctabtn1={{
-                  linto: "/",
+                  linkto: `${token === null ? "/login" : "/dashboard/my-profile"}`,
                   active: true,
                   btntext: "Continue Lesson",
                 }}
                 ctabtn2={{
-                  linkto: "/",
+                  linkto: `${token === null ? "/signup" : "/dashboard/my-profile"}`,
                   btntext: "Learn More",
                 }}
                 codeblock={`import react from "react";\nimport CTAButton from "./Button";\nimport { FaArrowRight } from "react-icons/fa6";\nimport { TypeAnimation } from 'react-type-animation';\n \nconst home()=>{\nreturn home()\n}\n}`}
@@ -139,15 +140,17 @@ function Home() {
             {/* part-1 two buttons  */}
             <div className="bg-white w-[100%] homepage_bg h-[333px] flex text-center justify-center gap-4 pt-48">
               <CTAButton
-                linkto={"/signup"}
+                linkto={`${token === null ? "/signup" : "/dashboard/my-profile"}`}
                 active={true}
                 children={
-                  <div className="flex justify-center gap-1">
+                  <div className="flex  items-center justify-center gap-1">
                     <p>Explore Full Catelog</p> <FaArrowRight />
                   </div>
                 }
               />
-              <CTAButton linkto={"/signup"} children={"Learn More"} />
+              <CTAButton
+                linkto={`${token === null ? "/signup" : "/dashboard/my-profile"}`}
+                children={"Learn More"} />
             </div>
             {/* part2 -heading and para   */}
             <div className="flex justify-between  gap-24 mt-20 mb-16 ">
@@ -168,7 +171,7 @@ function Home() {
                 <CTAButton
                   children={"Learn More "}
                   active={true}
-                  linkto={"/"}
+                  linkto={`${token === null ? "/login" : "/dashboard/my-profile"}`}
                 />
               </div>
             </div>
@@ -250,7 +253,7 @@ function Home() {
               </div>
             </div>
             {/* last btn  */}
-            <CTAButton active={true} children={"Learn More"} />
+            <CTAButton active={true} linkto={`${token === null ? "/signup" : "/dashboard/my-profile"}`} children={"Learn More"} />
           </div>
           {/* --------------------------------section-3---------------------------------- */}
           <div className="w-11/12 max-w-maxContent mx-auto text-richblack-300 pt-16 pl-8 ">
@@ -278,9 +281,9 @@ function Home() {
                 </div>
                 <CTAButton
                   active={true}
-                  linkto={"/signup"}
+                  linkto={`${token === null ? "/signup" : "/dashboard/my-profile"}`}
                   children={
-                    <div className="flex font-bold text-1.3xl">
+                    <div className="flex items-center gap-3 font-bold text-1.3xl">
                       <p>Start Teaching Today </p>
                       <FaArrowRight />
                     </div>

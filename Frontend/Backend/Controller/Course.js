@@ -297,7 +297,7 @@ exports.instructorCourse = async (req, res) => {
       });
     }
     if (instructordetails.courses.length === 0) {
-     return  res.status(200).json({
+      return res.status(200).json({
         success: true,
         message: "Instructor Doesn't Have any Course Yet",
         coursedetail: instructordetails.courses
@@ -336,8 +336,8 @@ exports.deleteCourse = async (req, res) => {
     // console.log(coursedetails);
     // deltet this course objectid form the Instructor Schema
     try {
-      let x1 = await User.findByIdAndUpdate(coursedetails.Instructor, 
-       {$pull: { courses:{$eq: coursedetails._id} }}
+      let x1 = await User.findByIdAndUpdate(coursedetails.Instructor,
+        { $pull: { courses: { $eq: coursedetails._id } } }
         , { new: true });
 
     } catch (error) {
@@ -489,3 +489,35 @@ exports.getCourseDetails = async (req, res) => {
     });
   }
 };
+
+// --------------------------------get all courses of a specfic user
+exports.userCoursesDetails = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    // find all the courses with this user id 
+    let coursedetails = await User.findById(userId).populate("courses");
+    // console.log(coursedetails);
+    // if no course found
+    if (!coursedetails) {
+      return res.status(200).json({
+        success: true,
+        message: "Empty Cart",
+        coursedetails: [],
+      })
+    }
+    // if course found 
+    // send responce
+    res.status(200).json({
+      success:true,
+      message:"All courses",
+      coursedetails:coursedetails.courses
+    })
+
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: "error in user specific course detils in   controller in course .js",
+      data: error.message,
+    });
+  }
+}

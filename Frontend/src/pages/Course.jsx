@@ -32,6 +32,7 @@ function Course() {
             setloading(false);
         }
         fetchcoursedetails();
+
     }, [])
     return (
         <>

@@ -115,6 +115,25 @@ export const instructorCoursesdetails = async ( token) => {
   }
 }
 
+// ------------------------------ Get Course of a loged in user -------------------------
+export const userCourseDetails=async(token)=>{
+  let result;
+  try {
+    result = await apiconnector(
+      "GET",
+      course.COURSE_API_USERCOURSES,null,
+      {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      }
+    );
+    return result;
+  } catch (error) {
+    console.log("error occured");
+    return error;
+  } 
+}
+
 
 
 

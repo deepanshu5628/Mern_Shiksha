@@ -10,35 +10,36 @@ function Catelog() {
     let [categorydetails, setcategorydetails] = useState({});
     let [selectedcourses, setselectedcourses] = useState([]);
     let [othercourses, setothercourses] = useState([]);
-    let [currpathname, setcurrpathname] = useState(null);
+    let [currpathname, setcurrpathname] = useState("");
     const location = useLocation();
     let pathname = location.pathname.split("/")[2]
-    // console.log(selectedcourses)
-    useEffect(() => {
-        setcurrpathname(pathname);
-        let fetchcatdetails = async () => {
-            setloading(true);
-            try {
-                let res = await fetchcategorydetails(pathname)
-                if (res.success) {
-                    setothercourses(res.othercategorycourses);
-                    setselectedcourses(res.selectedcatergorycourses);
-                    setcategorydetails(res.categorydetails);
-                }
-                if (!res.success) {
-                    toast.error("error occured while fetching from backend");
-                }
-            } catch (error) {
-                toast.error("error while fetching data of category course from backend");
-                console.log(error);
-                return;
-            }
-            setloading(false);
-        }
-        fetchcatdetails();
-        
-    }, [])
+    // console.log("path name is ", pathname)
 
+    // console.log("curr path name is ", currpathname)
+   
+    let fetchcatdetails = async () => {
+        setloading(true);
+        try {
+            let res = await fetchcategorydetails(pathname)
+            if (res.success) {
+                setothercourses(res.othercategorycourses);
+                setselectedcourses(res.selectedcatergorycourses);
+                setcategorydetails(res.categorydetails);
+            }
+            if (!res.success) {
+                toast.error("error occured while fetching from backend");
+            }
+        } catch (error) {
+            toast.error("error while fetching data of category course from backend");
+            console.log(error);
+            return;
+        }
+        setloading(false);
+    }
+    if(pathname!==currpathname){
+        fetchcatdetails();
+        setcurrpathname(pathname)
+    }
     return (
         <div className="text-white">
             {
