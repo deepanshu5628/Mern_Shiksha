@@ -18,6 +18,7 @@ import StudentPrivateRoute from "./components/core/Auth/Routes/StudentPrivateRou
 import { useSelector } from "react-redux";
 import Catelog from "./pages/Catelog";
 import Course from "./pages/Course";
+import Notfound from "./pages/Notfound";
 function App() {
   const { user } = useSelector((state) => state.profile);
   const { course } = useSelector((state) => state.course);
@@ -27,35 +28,75 @@ function App() {
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inte">
       <Navbar />
       <Routes>
+
         {/* public Route 24/7 */}
         <Route path="/" element={<Home />} />
         <Route path="/contact" Component={ContactUs} />
         <Route path="/about" Component={About} />
         <Route path="/Catelog/:categoryid" Component={Catelog} />
         <Route path="/Course/:CourseId" Component={Course} />
+        <Route path="*" Component={Notfound} />
 
         {/* only if the user is not loged in  routes */}
+
+        {/* login Route */}
         <Route
           element={
             <SemiPrivate>
               <Login />
-              <Signup />
-              <VerifyEmail />
-              <Forgetpasspage />
-              <Updatepassword />
             </SemiPrivate>
           }
         >
           <Route path="/login" Component={Login} />
+        </Route>
+
+        {/* signup */}
+        <Route
+          element={
+            <SemiPrivate>
+              <Signup />
+            </SemiPrivate>
+          }
+        >
           <Route path="/signup" Component={Signup} />
+        </Route>
+
+          {/* verify pass  */}
+        <Route
+          element={
+            <SemiPrivate>
+              <VerifyEmail />
+            </SemiPrivate>
+          }
+        >
           <Route path="/verifyemail" Component={VerifyEmail} />
+        </Route>
+
+        {/* forget pass */}
+        <Route
+          element={
+            <SemiPrivate>
+              <Forgetpasspage />
+            </SemiPrivate>
+          }
+        >
           <Route path="/forgot-password" Component={Forgetpasspage} />
-          <Route path="/update-password/:id" Component={Updatepassword} />
+        </Route>
+
+        {/* Update pass */}
+        <Route
+          element={
+            <SemiPrivate>
+              <Updatepassword />
+            </SemiPrivate>
+          }
+        >
+           <Route path="/update-password/:id" Component={Updatepassword} /> 
         </Route>
 
 
 
-        {/* user specific routes */}
+        {/* user specific routes (loged in user)*/}
         <Route
           element={
             <PrivateRoute>

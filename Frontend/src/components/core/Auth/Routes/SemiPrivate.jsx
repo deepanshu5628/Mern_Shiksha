@@ -9,7 +9,7 @@ function SemiPrivate({children}){
         return children
     }
     else{
-        toast.error("Logout First")
+        // toast.error("Logout First")
         return <Navigate to="/"/>
     }
 }
