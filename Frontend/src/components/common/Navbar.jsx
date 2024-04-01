@@ -19,6 +19,7 @@ function Navbar() {
   const { user,image:dpimage } = useSelector((state) => state.profile);
   const [sublinks, setsublinks] = useState([]);
   let dashboarpaths=location.pathname.split("/")[1];
+  // console.log(location.pathname.split("/")[1])
   // logout btn handler
   function logoutbtnhandler() {
     dispatch(logout(navigate));
@@ -44,7 +45,7 @@ function Navbar() {
     catefetch();
   }, []);
   return (
-    <div className={` w-full  items-center flex  bg-richblack-800 justify-center border-b-[1px] border-b-richblack-700 ${dashboarpaths==="dashboard"? "fixed" :null} `}>
+    <div className={` w-full  items-center flex  bg-richblack-800 justify-center border-b-[1px] border-b-richblack-700 ${dashboarpaths==="dashboard" ? "fixed" :null} ${dashboarpaths==="view-course" ? "fixed" :null} `}>
       <div className="w-11/12 max-w-maxContent px-3  h-14 flex items-center justify-between">
         {/* image div  */}
         <Link to="/">
@@ -67,7 +68,7 @@ function Navbar() {
 
                       {/* hover div 's */}
                       <div
-                        className="invisible absolute left-[47%] top-[2%] z-[1000] 
+                        className="invisible absolute left-[47%] top-[2%]  z-[1000] 
                                     flex w-[200px] translate-x-[-50%] translate-y-[3em] flex-col
                                      rounded-lg  bg-richblack-800 p-4 text-richblack-25 opacity-0 
                                      transition-all duration-150 group-hover:visible 

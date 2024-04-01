@@ -1,5 +1,5 @@
 import { apiconnector, axiosapiconnector } from "../apiconnector";
-import { course, section, subsection } from "../apis";
+import { course, review, section, subsection } from "../apis";
 
 
 // ------------------------------------course CRUD API's----------------------------------
@@ -218,4 +218,21 @@ export const DeleteSubSection = async (data, token) => {
     console.log("error occured in Delete Sub Section in coursedetailsAPI.jsx");
     return error;
   }
+}
+
+
+// ----------------------------------------Rating and Review Api's -----------------------------
+
+export const CreateReview=async(data,token)=>{
+  let result;
+  try {
+    result = await apiconnector("POST", review.COURSE_API_CREATERATING, data, {
+      "Content-Type": "application/json",
+      "authorization": `Bearer ${token}`,
+    });
+    return result;
+  } catch (error) {
+    console.log("error occured in Create Review in coursedetailsAPI.jsx");
+    return error;
+  } 
 }
