@@ -53,6 +53,6 @@ router.post("/getCategoryPageDetails",categoryPageDetails);
 //----------------------------------------------------------- ReviewAndRating route -----------------------------------------------------------
 router.post("/createRating",islogedin,isStudent,createRating);
 router.get("/getreviews",getAllRatings);
-router.post("/getaveragerating",getAverageRating);
+// router.post("/getaveragerating",getAverageRating);
 
 module.exports=router;

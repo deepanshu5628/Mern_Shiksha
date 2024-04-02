@@ -68,9 +68,18 @@ exports.createRating=async(req,res)=>{
 exports.getAllRatings=async(req,res)=>{
     try {
         // fetchall data
-        let allratings=await RatingAndReview.find({})
-        .populate("user")
-        .populate("course").exec();
+        let allratings;
+        try {
+         allratings=await RatingAndReview.find({}).sort({rating:"desc"})
+        .populate("user","firstName lastName image")
+        .populate("course","courseName").exec();
+       } catch (error) {
+        return res.status(400).json({
+            success:false,
+            message:"error while fetching reviews",
+            data:error.message
+        })
+       }
         
         // return respoce 
         res.status(200).json({
@@ -87,47 +96,47 @@ exports.getAllRatings=async(req,res)=>{
     }
 }
 // -------------------------------------     get average rating  ---------------------------------
-exports.getAverageRating=async(req,res)=>{
-    try {
-         //get course ID
-         const courseId = req.body.courseId;
-         //calculate avg rating 
+// exports.getAverageRating=async(req,res)=>{
+//     try {
+//          //get course ID
+//          const courseId = req.body.courseId;
+//          //calculate avg rating 
 
-         const result = await RatingAndReview.aggregate([
-             {
-                 $match:{
-                     course: new mongoose.Types.ObjectId(courseId),
-                 },
-             },
-             {
-                 $group:{
-                     _id:null,
-                     averageRating: { $avg: "$rating"},
-                 }
-             }
-         ])
+//          const result = await RatingAndReview.aggregate([
+//              {
+//                  $match:{
+//                      course: new mongoose.Types.ObjectId(courseId),
+//                  },
+//              },
+//              {
+//                  $group:{
+//                      _id:null,
+//                      averageRating: { $avg: "$rating"},
+//                  }
+//              }
+//          ])
 
-         //return rating
-         if(result.length > 0) {
+//          //return rating
+//          if(result.length > 0) {
 
-             return res.status(200).json({
-                 success:true,
-                 averageRating: result[0].averageRating,
-             })
+//              return res.status(200).json({
+//                  success:true,
+//                  averageRating: result[0].averageRating,
+//              })
 
-         }
+//          }
          
-         //if no rating/Review exist
-         return res.status(200).json({
-             success:true,
-             message:'Average Rating is 0, no ratings given till now',
-             averageRating:0,
-         })
-    } catch (error) {
-        return res.status(400).json({
-            success:false,
-            message:"error in get average reating controller in rating and review.js",
-            data:error.message,
-        });
-    }
-}
+//          //if no rating/Review exist
+//          return res.status(200).json({
+//              success:true,
+//              message:'Average Rating is 0, no ratings given till now',
+//              averageRating:0,
+//          })
+//     } catch (error) {
+//         return res.status(400).json({
+//             success:false,
+//             message:"error in get average reating controller in rating and review.js",
+//             data:error.message,
+//         });
+//     }
+// }

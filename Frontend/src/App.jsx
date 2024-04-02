@@ -19,6 +19,8 @@ import { useSelector } from "react-redux";
 import Catelog from "./pages/Catelog";
 import Course from "./pages/Course";
 import Notfound from "./pages/Notfound";
+import VideoDetails from "./components/core/ViewCourse/VideoDetails";
+import ViewCourse from "./pages/ViewCourse";
 function App() {
   const { user } = useSelector((state) => state.profile);
   const { course } = useSelector((state) => state.course);
@@ -118,6 +120,17 @@ function App() {
         >
           <Route path="/dashboard/enrolled-courses" Component={Dashboard} />
           <Route path="/dashboard/cart" Component={Dashboard} />
+        </Route>
+        {/* view Course */}
+        <Route
+          element={
+            <StudentPrivateRoute>
+              <ViewCourse/>
+            </StudentPrivateRoute>
+          }
+        >
+          <Route path="/view-course/:courseid" Component={VideoDetails} />
+          {/* <Route path="/view-course/:id/sectionid/:id/sub-sectionid/:Id" Component={VideoDetails} /> */}
         </Route>
 
 

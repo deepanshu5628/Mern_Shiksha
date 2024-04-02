@@ -40,9 +40,9 @@ export const course = {
 };  
 
 export const review = {
-  COURSE_API_CREATERATING: BASE_URL_COURSE + "/createrating",
+  COURSE_API_CREATERATING: BASE_URL_COURSE + "/createrating",    //done
   COURSE_API_GETREVIEW: BASE_URL_COURSE + "/getreviews",
-  COURSE_API_GETAVERAGERATING: BASE_URL_COURSE + "/getaveragerating",
+  // COURSE_API_GETAVERAGERATING: BASE_URL_COURSE + "/getaveragerating",
 };
 
 // -----------------PROFILE-------------------------------
