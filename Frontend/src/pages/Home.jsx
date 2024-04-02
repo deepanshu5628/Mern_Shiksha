@@ -18,6 +18,7 @@ import RecBox from "../components/core/Homepage/RecBox";
 import Footer from "../components/common/Footer";
 import { useSelector } from "react-redux"
 import Spinner from "../components/common/Spinner";
+import ReviewSlider from "../components/common/ReviewSlider";
 function Home() {
   const { loading, token } = useSelector((state) => state.auth);
   // console.log(token);
@@ -293,12 +294,11 @@ function Home() {
             </div>
 
             {/* part2  reviews */}
-            <div>
-              <div className="text-4xl font-semibold text-white text-center mt-12">
+            <div className="">
+              <div className="text-4xl font-semibold text-white text-center mt-12 px-2">
                 <p>Review from others learners</p>
-              </div>
-              <div>
-                <p>review of useres</p>
+                <ReviewSlider/>
+                <div className='relative bottom-5 z-50 w-full h-5 bg-richblack-900'></div>
               </div>
             </div>
           </div>

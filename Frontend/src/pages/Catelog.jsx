@@ -5,6 +5,7 @@ import Footer from "../components/common/Footer"
 import CourseDiv from "../components/core/Catelog/CourseDiv";
 import { fetchcategorydetails } from "../services/operations/PageAndComponentDataAPI";
 import EmptyCourse from "../components/core/Catelog/EmptyCourse";
+import ReviewSlider from "../components/common/ReviewSlider"
 function Catelog() {
     let [loading, setloading] = useState(false);
     let [categorydetails, setcategorydetails] = useState({});
@@ -16,7 +17,7 @@ function Catelog() {
     // console.log("path name is ", pathname)
 
     // console.log("curr path name is ", currpathname)
-   
+
     let fetchcatdetails = async () => {
         setloading(true);
         try {
@@ -36,7 +37,7 @@ function Catelog() {
         }
         setloading(false);
     }
-    if(pathname!==currpathname){
+    if (pathname !== currpathname) {
         fetchcatdetails();
         setcurrpathname(pathname)
     }
@@ -103,7 +104,13 @@ function Catelog() {
                             <div className="w-full h-7 disabled: relative bottom-6  z-0 bg-richblack-900">
                             </div>
                         </div>
-
+                        <div className="px-8">
+                            <div className="text-4xl font-semibold text-white text-center mt-12 px-2">
+                                <p>Review from others learners</p>
+                                <ReviewSlider />
+                                <div className='relative bottom-5 z-50 w-full h-5 bg-richblack-900'></div>
+                            </div>
+                        </div>
                         <Footer />
                     </div>
                 )

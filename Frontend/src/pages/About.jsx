@@ -8,6 +8,8 @@ import StatsComponenet from "../components/core/AboutPage/Stats";
 import LearningGrid from "../components/core/AboutPage/LearningGrid";
 import Footer from "../components/common/Footer";
 import Form from "../components/core/ContactUspage/Form";
+import ReviewSlider from "../components/common/ReviewSlider"
+
 import ContactFormSection from "../components/core/AboutPage/ContactFormSection";
 function About (){
     return (
@@ -114,13 +116,12 @@ function About (){
                 </div>
             </section>
 
-            <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
-                {/* Reviws from Other Learner */}
-                <h1 className="text-center text-4xl font-semibold mt-8">
-                  Reviews from other learners
-                </h1>
-                {/* <ReviewSlider /> */}
-                {/* <ReviewSlider /> */}
+            <div className="px-8">
+                <div className="text-4xl font-semibold text-white text-center mt-12 px-2">
+                    <p>Review from others learners</p>
+                    <ReviewSlider />
+                    <div className='relative bottom-5 z-50 w-full h-5 bg-richblack-900'></div>
+                </div>
             </div>
             {/* <Footer /> */}
             <Footer />

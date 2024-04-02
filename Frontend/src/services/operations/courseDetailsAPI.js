@@ -82,11 +82,11 @@ export const getcoursedetails = async (id) => {
 };
 
 // -------------------------------Delete Course ---------------------------------------
-export const deleteCourse=async(id,token)=>{
+export const deleteCourse = async (id, token) => {
   try {
-    let res=await apiconnector("DELETE",course.COURSE_API_DELETECOURSE,{courseId:id},{
-      "Content-Type":"application/json",
-      "authorization":`Bearer ${token}`
+    let res = await apiconnector("DELETE", course.COURSE_API_DELETECOURSE, { courseId: id }, {
+      "Content-Type": "application/json",
+      "authorization": `Bearer ${token}`
     })
     return res;
   } catch (error) {
@@ -97,12 +97,12 @@ export const deleteCourse=async(id,token)=>{
 
 
 // --------------------------------------------Get ALL cOURSES OF a instructor-------------------------
-export const instructorCoursesdetails = async ( token) => {
+export const instructorCoursesdetails = async (token) => {
   let result;
   try {
     result = await apiconnector(
       "GET",
-      course.COURSE_API_INSTRUCTORCOURSE,null,
+      course.COURSE_API_INSTRUCTORCOURSE, null,
       {
         "Content-Type": "application/json",
         authorization: `Bearer ${token}`,
@@ -116,12 +116,12 @@ export const instructorCoursesdetails = async ( token) => {
 }
 
 // ------------------------------ Get Course of a loged in user -------------------------
-export const userCourseDetails=async(token)=>{
+export const userCourseDetails = async (token) => {
   let result;
   try {
     result = await apiconnector(
       "GET",
-      course.COURSE_API_USERCOURSES,null,
+      course.COURSE_API_USERCOURSES, null,
       {
         "Content-Type": "application/json",
         authorization: `Bearer ${token}`,
@@ -131,7 +131,7 @@ export const userCourseDetails=async(token)=>{
   } catch (error) {
     console.log("error occured");
     return error;
-  } 
+  }
 }
 
 
@@ -223,16 +223,27 @@ export const DeleteSubSection = async (data, token) => {
 
 // ----------------------------------------Rating and Review Api's -----------------------------
 
-export const CreateReview=async(data,token)=>{
+export const CreateReview = async (data, token) => {
   let result;
   try {
     result = await apiconnector("POST", review.COURSE_API_CREATERATING, data, {
       "Content-Type": "application/json",
-      "authorization": `Bearer ${token}`,
+      authorization: `Bearer ${token}`,
     });
     return result;
   } catch (error) {
     console.log("error occured in Create Review in coursedetailsAPI.jsx");
     return error;
-  } 
+  }
+}
+
+export const FetchReviews = async () => {
+  let result;
+  try {
+    result = await apiconnector("GET", review.COURSE_API_GETREVIEW);
+    return result;
+  } catch (error) {
+    console.log("error occured in Create Review in coursedetailsAPI.jsx");
+    return error;
+  }
 }
