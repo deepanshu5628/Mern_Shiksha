@@ -1,36 +1,62 @@
 import { useSelector } from "react-redux";
-import { IoTrashBinOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineWavingHand } from "react-icons/md";
 import { instructorCoursesdetails } from "../../../../services/operations/courseDetailsAPI";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 
 function Instructor() {
     const navigate = useNavigate();
     let { token } = useSelector((state) => state.auth);
     let { user } = useSelector((state) => state.profile);
     const [courses, setcourses] = useState(null);
-    const [totalearning,settotalearning]=useState(0);
-    const [totalstudents,settotalstudents]=useState(0);
+    const [totalearning, settotalearning] = useState(0);
+    const [totalstudents, settotalstudents] = useState(0);
+    const [totalcourseses, settotalcourseses] = useState(0);
     let [loading, setloading] = useState(false);
+
+    // chart ka data
+    const chartkaekordata = [
+        { name: 'Courses', value: totalcourseses *100},
+        { name: 'Earning', value: totalearning },
+        { name: 'Total Students', value: totalstudents*80 },
+    ];
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    const RADIAN = Math.PI / 180;
+    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+        const x = cx + radius * Math.cos(-midAngle * RADIAN);
+        const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+        return (
+            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+                {`${(percent * 100).toFixed(0)}%`}
+            </text>
+        );
+    };
+
 
 
     let fetchinstructorcourses = async () => {
         let res;
         try {
-             res = await instructorCoursesdetails(token);
+            res = await instructorCoursesdetails(token);
             // console.log(res);
             if (res.success) {
                 setcourses(res.coursedetail);
-                if(res.coursedetail.length>0){                    
-                    res.coursedetail.map((cour)=>{
-                        settotalearning((prev)=>(
-                            prev+=cour.price
+                if (res.coursedetail.length > 0) {
+                    settotalcourseses((prev) => {
+                      return   prev = res.coursedetail.length
+                    })
+                    res.coursedetail.map((cour) => {
+                        settotalearning((prev) => (
+                            prev += cour.price
                         ))
-                        settotalstudents((prev)=>(
-                            prev+=cour.enrolledStudents.length
+                        settotalstudents((prev) => (
+                            prev += cour.enrolledStudents.length
                         ))
+
                     })
                 }
             }
@@ -67,10 +93,28 @@ function Instructor() {
                                         <p className="font-semibold text-2xl"> Visualize </p>
                                         {/* if enrolled studets are 0 then say not enought data to visualize */}
                                         {
-                                            totalstudents ===0 && <div  className="flex justify-center items-center w-full h-full">
-                                              <p className="text-3xl text-pink-600 font-semibold mb-10">  Not Enough Data to Visualize </p>
+                                            totalstudents === 0 && <div className="flex justify-center items-center w-full h-full">
+                                                <p className="text-3xl text-pink-600 font-semibold mb-10">  Not Enough Data to Visualize </p>
                                             </div>
                                         }
+                                        <div className="w-full h-full flex items-center justify-center">
+                                            <PieChart width={400} height={400}>
+                                                <Pie
+                                                    data={chartkaekordata}
+                                                    cx="50%"
+                                                    cy="50%"
+                                                    labelLine={false}
+                                                    label={renderCustomizedLabel}
+                                                    outerRadius={160}
+                                                    fill="#8884d8"
+                                                    dataKey="value"
+                                                >
+                                                    {chartkaekordata.map((entry, index) => (
+                                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                                    ))}
+                                                </Pie>
+                                            </PieChart>
+                                        </div>
                                     </div>
                                     <div className="bg-richblack-800 flex-col  rounded-md p-4 w-[28%]">
                                         <p className="font-semibold text-2xl my-1">Statistics </p>
