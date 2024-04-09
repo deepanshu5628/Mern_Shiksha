@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import MyCourses from "../components/core/Dashboard/MyCourses";
 import AddCourse from "../components/core/Dashboard/Addcourse/index";
 import EditCourse from "../components/core/Dashboard/EditCourse";
+import Instructor from "../components/core/Dashboard/InstructorDashboard/Instructor";
 function Dashboard() {
   const { loading: authloading } = useSelector((state) => state.auth);
   const { loading: profileloading } = useSelector((state) => state.profile);
@@ -30,6 +31,7 @@ function Dashboard() {
           {currpath === "/dashboard/add-course" ? <AddCourse /> : null}
           {currpath === "/dashboard/my-courses" ? <MyCourses /> : null}
           {currpath === "/dashboard/edit-course" ? <EditCourse /> : null}
+          {currpath === "/dashboard/instructor" ? <Instructor /> : null}
           </div>
         </div>
       )}

@@ -18,7 +18,7 @@ connectcloudianry();
 // using cors
 app.use( 
 	cors({
-		origin:"http://localhost:5173",
+		origin:"http://localhost:5174",
 		credentials:true,
 	})
 )
@@ -40,7 +40,7 @@ const profileRoute=require("./Routes/Profile");
 const contactUsRoute=require("./Routes/Contact");
 // payment Route
 const paymentRoute=require("./Routes/Payment");
-app.use("/api/v1/auth",userRoute);
+app.use("/api/v1/auth",userRoute) ;
 app.use("/api/v1/Course",courseRoute);
 app.use("/api/v1/profile",profileRoute);
 app.use("/api/v1/reach", contactUsRoute);
