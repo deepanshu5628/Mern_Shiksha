@@ -238,6 +238,7 @@ function CourseInformationform() {
               name="thumbnail"
               disabled={edit}
               required={!edit}
+              accept="image/*"
               {...register("thumbnail", `${edit ? { required: { value: false } } : { required: { value: true } }}`)}
               // {...register("thumbnail",{ required: { value: true } } )}
               className="w-full  p-1 rounded-md bg-richblack-700 text-richblack-25"

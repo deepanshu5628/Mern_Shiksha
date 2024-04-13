@@ -13,6 +13,23 @@ exports.updateDp = async (req, res) => {
       });
     }
     // perform size validation's
+     // image validation's 
+     if (image.size >= 100000) {
+      return res.status(200).json({
+        success: false,
+        message: "file size shold be less then 100 kb",
+      })
+    }
+    // console.log("file type is ",thumbnail.mimetype.split("/")[1]);
+    // console.log("image details are ", thumbnail)
+    if(image.mimetype.split("/")[0]!="image") {
+      return res.status(200).json({
+        success:false,
+        message:'only image can be uploaded',
+      })
+    }
+   
+
     // upload it to cloudinary
     let uploadedimage;
     try {

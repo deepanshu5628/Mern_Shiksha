@@ -79,6 +79,7 @@ function SubSectionModal({ add = false, edit = false, view = false, sectionId ,f
                                 <br />
                                 <input type="file"
                                     id="videofile"
+                                    accept="video/*"
                                     {...register("videoFile", { required: { value: true } })}
                                     placeholder="Select the Lecture" />
                                     <br />

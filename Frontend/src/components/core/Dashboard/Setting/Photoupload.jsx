@@ -35,8 +35,10 @@ function Photoupload() {
               id="file_input"
               type="file"
               name="profilepicture"
+              accept="image/*"
               {...register("profilepicture",{required:{value:true,message:"image is required"}})}
             />
+            <span className="text-sm text-pink-600">max size 100kb</span>
             {
               errors.profilepicture && (
                 <span className="text-yellow-50"> {errors.profilepicture.message}</span>
