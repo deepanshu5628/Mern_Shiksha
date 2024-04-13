@@ -27,7 +27,7 @@ function SubSectionModal({ add = false, edit = false, view = false, sectionId ,f
                 setloading(true);
                 try {
                     let res = await createSubSection(formData, token);
-                    // console.log("create subsection respoce ", res);
+                    console.log("create subsection respoce ", res);
                     if (res.success) {
                         const fetchcoursedetails = async () => {
                             let res = await getcoursedetails(course._id);
@@ -41,7 +41,7 @@ function SubSectionModal({ add = false, edit = false, view = false, sectionId ,f
 
                     }
                     if (!res.success) {
-                        toast.error(res.data.message);
+                        toast.error(res.message);
                     }
                 } catch (error) {
                     toast.error("error while creating A SubSection");
@@ -76,11 +76,13 @@ function SubSectionModal({ add = false, edit = false, view = false, sectionId ,f
                             {/* edit field */}
                             <div>
                                 <label htmlFor="videofile">Lecture Video</label>
+                                <br />
                                 <input type="file"
                                     id="videofile"
                                     {...register("videoFile", { required: { value: true } })}
                                     placeholder="Select the Lecture" />
-
+                                    <br />
+                                    <span className="text-sm text-yellow-50">max size 5mb mp4 supported</span>
                                 {
                                     errors.videoFile && ( 
                                         

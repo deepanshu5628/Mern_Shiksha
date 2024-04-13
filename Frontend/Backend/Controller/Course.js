@@ -35,6 +35,22 @@ exports.createCourse = async (req, res) => {
         message: "fill in all the details",
       });
     }
+    // image validation's 
+    if (thumbnail.size >= 100000) {
+      return res.status(200).json({
+        success: false,
+        message: "file size shold be less then 100 kb",
+      })
+    }
+    // console.log("file type is ",thumbnail.mimetype.split("/")[1]);
+    // console.log("image details are ", thumbnail)
+    if(thumbnail.mimetype.split("/")[1]!= ("png"|| "jpeg")){
+      return res.status(200).json({
+        success:false,
+        message:'file type not supported',
+      })
+    }
+   
     // check if the category is valid or not
     let isvalidCategory = await Category.findOne({ name: category });
     if (!isvalidCategory) {
@@ -508,9 +524,9 @@ exports.userCoursesDetails = async (req, res) => {
     // if course found 
     // send responce
     res.status(200).json({
-      success:true,
-      message:"All courses",
-      coursedetails:coursedetails.courses
+      success: true,
+      message: "All courses",
+      coursedetails: coursedetails.courses
     })
 
   } catch (error) {

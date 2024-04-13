@@ -12,9 +12,17 @@ exports.createSubsection = async (req, res) => {
         let { videoFile } = req.files;
         // validation of file size 
         if (videoFile.size > 5242880) {
-            return res.status(400).json({
+            return res.status(200).json({
                 success: false,
                 message: "Your video file has excedd the file size of 5mb ",
+            });
+        }
+        // validaiton on file type
+        // console.log("video file is ",videoFile.mimetype.split("/")[1]);
+        if(videoFile.mimetype.split("/")[1] !=="mp4" ){
+            return res.status(200).json({
+                success: false,
+                message: "file type can only be mp4 & mkv",
             });
         }
         // perform validation's 

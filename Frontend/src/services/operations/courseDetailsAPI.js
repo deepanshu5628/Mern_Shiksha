@@ -20,8 +20,8 @@ export const addCourseDetails = async (data, token) => {
     );
     return result;
   } catch (error) {
-    console.log("error occured");
-    return error;
+    console.log("error occured in add Course Details ",error);
+    // return error;
   }
 };
 
@@ -201,7 +201,7 @@ export const createSubSection = async (data, token) => {
     return result.data;
   } catch (error) {
     console.log("error occured in Create Sub Section in coursedetailsAPI.jsx");
-    return error;
+    return error.message;
   }
 }
 

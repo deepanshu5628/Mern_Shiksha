@@ -66,7 +66,7 @@ function CourseInformationform() {
         setloading(true);
         try {
           let res = await addCourseDetails(formdata, token);
-          // console.log(res);
+          console.log(res);
           if (res.data.success) {
             toast.success(res.data.message);
             dispatch(setStep(2));
@@ -81,7 +81,7 @@ function CourseInformationform() {
             toast.error(res.data.message);
           }
         } catch (error) {
-          toast.error("error while creating A course");
+          toast.error(error.message);
           console.log(error);
           setloading(false);
           return;
@@ -243,6 +243,10 @@ function CourseInformationform() {
               className="w-full  p-1 rounded-md bg-richblack-700 text-richblack-25"
 
             />
+            {
+              edit? null:
+            <span className="text-sm text-yellow-25 px-2">max size sholud be 100 kb, only png,jpg suppoerted</span>
+            }
             {errors.thumbnail && (
               <span className="text-yellow-25">Required</span>
             )}

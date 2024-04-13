@@ -88,7 +88,7 @@ function MyCourses() {
                                         <tbody  >
 
                                             {
-                                                instructorcourses !== null && instructorcourses.map((onecourse,index) => {
+                                                instructorcourses !== null &&instructorcourses.length>0&& instructorcourses.map((onecourse,index) => {
                                                     return < >
                                                         <tr key={index} >
                                                             <td>
