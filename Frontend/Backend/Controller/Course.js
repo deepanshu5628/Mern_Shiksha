@@ -44,10 +44,10 @@ exports.createCourse = async (req, res) => {
     }
     // console.log("file type is ",thumbnail.mimetype.split("/")[1]);
     // console.log("image details are ", thumbnail)
-    if(thumbnail.mimetype.split("/")[1]!= ("png"|| "jpeg")){
+    if(thumbnail.mimetype.split("/")[0]!="image") {
       return res.status(200).json({
         success:false,
-        message:'file type not supported',
+        message:'only image can be uploaded',
       })
     }
    
