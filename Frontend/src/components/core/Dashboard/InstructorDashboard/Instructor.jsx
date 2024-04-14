@@ -97,7 +97,8 @@ function Instructor() {
                                                 <p className="text-3xl text-pink-600 font-semibold mb-10">  Not Enough Data to Visualize </p>
                                             </div>
                                         }
-                                        <div className="w-full h-full flex items-center justify-center">
+                                        {
+                                            totalstudents >0 ? <div className="w-full h-full flex items-center justify-center">
                                             <PieChart width={400} height={400}>
                                                 <Pie
                                                     data={chartkaekordata}
@@ -114,7 +115,9 @@ function Instructor() {
                                                     ))}
                                                 </Pie>
                                             </PieChart>
-                                        </div>
+                                        </div> :null
+                                        }
+                                        
                                     </div>
                                     <div className="bg-richblack-800 flex-col  rounded-md p-4 w-[28%]">
                                         <p className="font-semibold text-2xl my-1">Statistics </p>
@@ -127,7 +130,7 @@ function Instructor() {
                                             <p className="font-semibold text-3xl">{totalstudents}</p>
                                         </div>
                                         <div className="my-1">
-                                            <p className="text-xl text-richblack-100">Total income</p>
+                                            <p className="text-xl text-richblack-100">Expected income</p>
                                             <p className="font-semibold text-3xl">Rs.{totalearning}</p>
                                         </div>
                                     </div>

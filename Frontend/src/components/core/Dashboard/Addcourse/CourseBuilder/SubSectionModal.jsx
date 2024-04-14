@@ -122,7 +122,7 @@ function SubSectionModal({ add = false, edit = false, view = false, sectionId ,f
                                 }
                             </div>
                             {
-                                add && <button className="p-2 bg-yellow-300 rounded-md my-2  text-black" type="submit">Save</button>
+                                add && <button className="p-2 bg-yellow-100 rounded-md my-2  text-black" type="submit">Save</button>
                             }
                             {
                                 edit && <button type="submit">Update</button>

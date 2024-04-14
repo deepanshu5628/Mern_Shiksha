@@ -94,7 +94,7 @@ function MyCourses() {
                                                             <td>
                                                                 <div className="flex gap-6">
                                                                     <div >
-                                                                        <img className="rounded-lg w-56 h-28 pl-4 mt-4 "
+                                                                        <img className="rounded-lg min-w-48 h-28 pl-4 mt-4 "
                                                                             src={onecourse.thumbnail} alt="thmbnail" />
                                                                     </div>
                                                                     <div className="flex-col w-auto " >

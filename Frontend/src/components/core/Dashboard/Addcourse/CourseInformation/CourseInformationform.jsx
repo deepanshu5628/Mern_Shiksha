@@ -246,7 +246,7 @@ function CourseInformationform() {
             />
             {
               edit? null:
-            <span className="text-sm text-pink-500 px-2">max size sholud be 100 kb </span>
+            <span className="text-sm text-pink-500 px-2">max size sholud be 500 kb </span>
             }
             {errors.thumbnail && (
               <span className="text-yellow-25">Required</span>

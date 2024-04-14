@@ -36,10 +36,10 @@ exports.createCourse = async (req, res) => {
       });
     }
     // image validation's 
-    if (thumbnail.size >= 100000) {
+    if (thumbnail.size >= 500000) {
       return res.status(200).json({
         success: false,
-        message: "file size shold be less then 100 kb",
+        message: "file size shold be less then 500 kb",
       })
     }
     // console.log("file type is ",thumbnail.mimetype.split("/")[1]);
