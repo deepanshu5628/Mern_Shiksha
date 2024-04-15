@@ -16,13 +16,13 @@ startdb();
 connectcloudianry();
 
 // using cors
-app.use( 
-	cors({
-		origin:["http://localhost:5174",process.env.BACKEND_HOSTEDLINK],
-		credentials:true,
-	})
-)
-
+// app.use( 
+// 	cors({
+// 		origin:["http://localhost:5174",process.env.BACKEND_HOSTEDLINK],
+// 		credentials:true,
+// 	})
+// )
+app.use(cors())
 app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload({
