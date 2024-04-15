@@ -18,7 +18,7 @@ connectcloudianry();
 // using cors
 app.use( 
 	cors({
-		origin:"http://localhost:5174",
+		origin:["http://localhost:5174",process.env.BACKEND_HOSTEDLINK],
 		credentials:true,
 	})
 )
