@@ -70,7 +70,7 @@ exports.resetPasswordtoken=async(req,res)=>{
         // generate a token
         let token=crypto.randomUUID();
         // create a link 
-        let url=`https://shiksha-eko8rcxeg-deepanshus-projects-12e2a225.vercel.app/update-password/${token}`;
+        let url=`https://shiksha-taupe.vercel.app/update-password/${token}`;
         // send this link via mail to the mail address
         let info;
         try {
