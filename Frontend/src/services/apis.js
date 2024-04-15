@@ -1,7 +1,8 @@
-import dotenv from "dotenv";
-// dotenv.config();
+// require("dotenv").config();
 // const BASE_URL=process.env.REACT_APP_BASE_URL;
-const BASE_URL = "http://localhost:3000";
+// const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://shiksha-tvyc.onrender.com";
+// const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const BASE_URL_COURSE = BASE_URL + "/api/v1/Course";
 const BASE_URL_AUTH = BASE_URL + "/api/v1/auth";
