@@ -14,6 +14,7 @@ function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [loading, setloading] = useState(false);
   const { token } = useSelector((state) => state.auth);
   const totalitems = useSelector((state) => state.cart.totalitems);
   const { user,image:dpimage } = useSelector((state) => state.profile);
@@ -28,6 +29,7 @@ function Navbar() {
 
   // fetch category data using the connetor fucntion
   async function catefetch() {
+    setloading(true);
     try {
       let res = await apiconnector(
         "GET",
@@ -39,7 +41,9 @@ function Navbar() {
     } catch (error) {
       console.log("problem in fetch category detail's ");
       console.log(error);
+      setloading(false);
     }
+    setloading(false);
   }
   useEffect(() => {
     catefetch();
@@ -79,15 +83,21 @@ function Navbar() {
                                     translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded
                                      bg-richblack-800"
                         ></div>
-                        {sublinks.map((cate, index) => {
-                          return (
-                            <Link key={index} to={`catelog/${cate.link}`}>
-                              <p className="text-center text-xl hover:border">
-                                {cate.name}
-                              </p>
-                            </Link>
-                          );
-                        })}
+                          {
+                          loading ? <div className="loader"></div> :
+                            <>
+                              {sublinks.map((cate, index) => {
+                                return (
+                                  <Link key={index} to={`catelog/${cate.link}`}>
+                                    <p className="text-center text-xl hover:border">
+                                      {cate.name}
+                                    </p>
+                                  </Link>
+                                );
+                              }
+                              )}
+                            </>
+                        }
                       </div>
                     </div>
                   ) : (
