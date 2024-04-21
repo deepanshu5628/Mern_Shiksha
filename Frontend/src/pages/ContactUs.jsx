@@ -13,7 +13,7 @@ function ContactUs() {
                 {/* section 1 */}
                 <div className="flex-col min-w-3/12 h-fit bg-richblack-800 gap-5 ">
                     <Info logo={<IoMdChatboxes />} heading={"Chat with Us"} des1={"Our friendy is here to help you"} des2={"info@Shiksha.com"} />
-                    <Info logo={<BiWorld />} heading={"Visit Us"} des1={"Come and say hello at our office HQ."} des2={"Akshya Nagar 1st Block 1st Cross Rammurthy nagar, Bangalore-560016"} />
+                    <Info logo={<BiWorld />} heading={"Visit Us"} des1={"Come and say hello at our office HQ."} des2={"Deepanshu yadav 1st Block 1st Cross Rohtak, Haryana-127307"} />
                     <Info logo={<FaPhoneAlt />} heading={"Call Us"} des1={"Mon - Fri From 8am to 5pm"} des2={"+123 456 7869"} />
                 </div>
                 {/* section 2 */}
