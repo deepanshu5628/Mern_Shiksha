@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/Shiksha/sample1.png";
 
 // Icons
-import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"];
 const Resources = [
@@ -15,10 +15,7 @@ const Resources = [
   "Blog",
   "Chart Sheet",
   "Code challenges",
-  "Docs",
-  "Projects",
-  "Videos",
-  "Workspaces",
+ 
 ];
 const Plans = ["Paid memberships", "For students", "Business solutions"];
 const Community = ["Forums", "Chapters", "Events"];
@@ -31,8 +28,8 @@ const Footer = () => {
         <div className="border-b w-[100%] flex flex-col lg:flex-row pb-5 border-richblack-700">
           {/* Section 1 */}
           <div className="lg:w-[50%] flex flex-wrap flex-row justify-between lg:border-r lg:border-richblack-700 pl-3 lg:pr-5 gap-3">
-            <div onClick={()=>navigate("/login")} className="w-[30%] flex flex-col gap-3 lg:w-[30%] mb-7 lg:pl-0">
-              <img src={Logo} alt="" className="object-contain" />
+            <div   className="w-[30%]  flex flex-col gap-3 lg:w-[30%] mb-7 lg:pl-0">
+              <img src={Logo} alt="" onClick={()=>navigate("/login")} className="object-contain" />
               <h1 className="text-richblack-50 cursor-pointer font-semibold text-[16px]">
                 Company
               </h1>
@@ -48,11 +45,10 @@ const Footer = () => {
                   );
                 })}
               </div>
-              <div className="flex gap-3 text-lg">
-                <FaFacebook />
-                <FaGoogle />
-                <FaTwitter />
-                <FaYoutube />
+              <div className="flex gap-3 text-lg cursor-pointer ">
+                <FaGithub  onClick={()=>window.location.href="https://github.com/deepanshu5628/Mern_Shiksha"}/>
+                <FaLinkedin onClick={()=>window.location.href="https://www.linkedin.com/in/deepanshuyaadav/"} />
+                <FaInstagram onClick={()=>window.location.href="https://www.instagram.com/depansu_ydv/"} />
               </div>
               <div></div>
             </div>
