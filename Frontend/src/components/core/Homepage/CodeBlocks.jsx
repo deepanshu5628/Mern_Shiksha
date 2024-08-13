@@ -3,9 +3,9 @@ import { FaArrowRight } from "react-icons/fa6";
 import { TypeAnimation } from 'react-type-animation';
 function CodeBlocks ({position,heading,subheading,ctabtn1,ctabtn2,codeblock,backgroundGradiant,codeColor}){
     return (
-        <div className={`flex flex-row ${position} my-20 justify-between gap-10`}>
+        <div className={`flex flex-col md:flex-row ${position} my-20 justify-between gap-10`}>
             {/* section 1  */}
-        <div className="w-[50%] flex flex-col gap-8 ">
+        <div className="lg:w-[50%] flex flex-col gap-8 ">
                 {heading}
             <div className="text-richblack-300 font-blod">
             {subheading}    
@@ -21,7 +21,7 @@ function CodeBlocks ({position,heading,subheading,ctabtn1,ctabtn2,codeblock,back
             </div>
         </div>
         {/* section 2  */}
-        <div className="flex flex-row border border-zinc-400  code-border h-fit w-[50%] text-10[px]  py-4 lg-w-[500px]">
+        <div className="flex flex-row border border-zinc-400  code-border min-h-fit w-[100%] lg:w-[50%] text-10[px] pb-5  py-4 lg-w-[500px]">
             <div className="w-[10%] text-center flex flex-col text-richblack-400 select-none  font-inter font-bold">
                 <p>1</p>
                 <p>2</p>
@@ -33,6 +33,7 @@ function CodeBlocks ({position,heading,subheading,ctabtn1,ctabtn2,codeblock,back
                 <p>8</p>
                 <p>9</p>
                 <p>10</p>
+                <p>11</p>
             </div>
             <div className={`w-[90%] flex flex-col gap-2 font-bold font-mono ${codeColor} pr-2`}>
             <TypeAnimation

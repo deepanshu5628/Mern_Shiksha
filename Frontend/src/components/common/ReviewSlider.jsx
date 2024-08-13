@@ -58,7 +58,7 @@ function ReviewSlider() {
                     <div className="flex    overflow-auto scroll-auto  swiper">
                         {
                             reviews !== null && reviews.length > 0 && reviews.map((rev,index) => {
-                                return <div key={index} className=" flex-col rounded-lg my-10 p-2 mr-8  mx-2 w-3/12 h-48 bg-richblack-800 swiper-slide ">
+                                return <div key={index} className="min-w-fit w-[10%] flex-col rounded-lg my-10 p-2 mr-8  mx-2 min-h-fit bg-yellow-800 swiper-slide ">
                                     <div className='flex'>
                                         <img className='rounded-full w-16 h-16' src={rev.user.image} alt="img" />
                                         <div className='flex-col text-lg'>
