@@ -68,9 +68,9 @@ function CartSection({ coursedetails }) {
             {
                 loading ? <div className="loader"></div> :
 
-                    <div className="w-[30%] h-fit p-5 pb-2 rounded-md flex-col  relative bottom-44  bg-richblack-700">
+                    <div className="w-full min-w-fit md:w-[30%] h-fit p-5 pb-2 rounded-md flex-col  md:relative md:bottom-44  bg-richblack-700">
                         <p className="text-3xl my-1">{coursedetails.courseName}</p>
-                        <img className="my-1 rounded-md" src={coursedetails.thumbnail} alt="Thubnail" />
+                        <img className="my-1 rounded-md  h-44" src={coursedetails.thumbnail} alt="Thubnail" />
                         <p className="my-1 font-semibold text-3xl">Rs.{coursedetails.price}</p>
                         <div className="flex-col  items-center   my-1">
                             <button

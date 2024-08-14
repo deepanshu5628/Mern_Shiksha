@@ -36,7 +36,7 @@ function CourseReviewModal({ setreviewmodal }) {
         
     }
     return (
-        <div className="w-[60%] h-auto text-white bg-richblack-900  absolute bottom-40 left-72">
+        <div className="w-full md:w-[60%] h-auto text-white bg-richblack-900 absolute bottom-20 md:absolute md:bottom-20 md:left-40  lg:absolute lg:bottom-40 lg:left-72">
             <div className="flex-col">
                 <div className="flex justify-between px-2 bg-richblack-700 p-2 text-lg cursor-default">
                     <h1>Add Review</h1>

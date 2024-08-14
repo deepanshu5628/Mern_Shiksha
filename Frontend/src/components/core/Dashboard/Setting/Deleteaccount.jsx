@@ -11,7 +11,7 @@ function Deleteaccount() {
   }
   return (
     <>
-      <section className="bg-pink-800 flex items-center gap-6 h-auto py-6 px-8 rounded-md w-[70%]">
+      <section className="bg-pink-800 flex items-center gap-6 h-auto py-6 px-8 rounded-md w-full md:w-[70%]">
         {/* icon div */}
         <div className="text-pink-500 text-7xl  ">
           <MdDelete className="border rounded-full bg-pink-900 p-3" />

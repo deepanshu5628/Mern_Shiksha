@@ -55,13 +55,22 @@ function Navbar() {
     <div className={` w-full  items-center flex flex-wrap bg-richblack-800 justify-center border-b-[1px] border-b-richblack-700 ${dashboarpaths === "dashboard" ? "fixed" : null} ${dashboarpaths === "view-course" ? "fixed" : null} `}>
       {
         hamburger ? <Hamburger NavbarLinks={NavbarLinks} loading={loading} sublinks={sublinks} sethamburger={sethamburger} /> :
-          <div className="w-11/12 max-w-maxContent px-3  h-14 flex items-center justify-between">
+          <div className="w-11/12 max-w-maxContent md:px-3  h-14 flex items-center justify-between">
             {/* image div  */}
+
             <Link to="/">
               <div className="">
-                <img className="h-[44px]  w-[145px] md:h-[54px] md:w-[165px] rounded-lg" src={logoimage} alt="logoimage" />
+                <img className={`h-[44px]   w-[145px] md:h-[54px] md:w-[165px] rounded-lg ${token? "hidden sm:block ":""}`} src={logoimage} alt="logoimage" />
+                {/* <img className="h-[44px] hidden sm:block  w-[145px] md:h-[54px] md:w-[165px] rounded-lg" src={logoimage} alt="logoimage" /> */}
               </div>
             </Link>
+            {token!==null&&
+              <div className=" text-2xl relative right-[8%] text-white self-center sm:hidden">
+                <button onClick={() => sethamburger(true)}>
+                  <RxHamburgerMenu />
+                </button>
+              </div>
+            }
             {/* nav option */}
             <nav className="hidden sm:block">
               <ul className="flex gap-x-6 text-richblack-25 cursor-pointer">
@@ -161,7 +170,7 @@ function Navbar() {
                   onClick={() => navigate("/dashboard/my-profile")}
                   className="flex items-center gap-1 cursor-pointer ">
                   <img
-                    className="rounded-full h-[39px] w-[39px]"
+                    className="rounded-full h-10 w-10 md:h-[39px] md:w-[39px]"
                     src={dpimage}
                     alt=""
                   />

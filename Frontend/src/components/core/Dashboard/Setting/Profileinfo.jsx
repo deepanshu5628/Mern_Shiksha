@@ -19,7 +19,7 @@ function Profileinfo() {
   }
   return (
     <>
-      <section className="bg-richblack-800 h-auto py-6 px-8 rounded-md w-[70%] ">
+      <section className="bg-richblack-800 h-auto py-6 px-8 rounded-md min-w-fit w-full md:w-[70%] ">
         <h1 className="text-2xl font-semibold">Profile Information</h1>
         <div>
           <form onSubmit={handleSubmit(formsubmithandler)}>

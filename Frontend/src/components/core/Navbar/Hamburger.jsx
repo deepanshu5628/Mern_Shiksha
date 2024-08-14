@@ -4,8 +4,8 @@ import { ImCross } from "react-icons/im";
 
 function Hamburger({ NavbarLinks, loading, sublinks,sethamburger }) {
     return (
-        <div className="transition-all duration-2000  h-fit py-4 w-full ">
-            <div onClick={()=>sethamburger(false)} className="absolute right-5">
+        <div className="transition-all duration-1000  z-50 opacity-100 h-fit py-4 w-full ">
+            <div onClick={()=>sethamburger(false)} className="absolute right-5 text-richblack-25">
                 <ImCross />
             </div>
             <ul className="text-center">
@@ -16,7 +16,7 @@ function Hamburger({ NavbarLinks, loading, sublinks,sethamburger }) {
                                 <div className="flex relative left-[40%] md:left-[46%] lg:left-[47%] w-full text-center  gap-2 group">
                                     <p className="text-richblack-25">{nav.title}</p>
                                     <span>
-                                        <IoIosArrowDown className="text-richblack-25 relative top-2" />
+                                        <IoIosArrowDown className="text-richblack-25 relative top-2 text-ri" />
                                     </span>
 
                                     {/* hover div 's */}
