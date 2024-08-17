@@ -11,8 +11,8 @@ function ExploreMore(){
         setshowndata(tabdata[idx]);
     }
     return (
-        <div className="flex  flex-col items-center relative top-32 z-50 ">
-            <p className=" text-xl  md:text-4xl font-semibold text-center ">Unlock the <HighlightText text={"Power of Code "}/></p>
+        <div className="flex  flex-col items-center relative  md:top-20 z-50 ">
+            <p className="text-3xl px-2 md:text-4xl font-semibold text-center ">Unlock the <HighlightText text={"Power of Code "}/></p>
             <p className="text-richblack-300 text-sm text-[16px]  mt-3">Learn to Build Anything You Can Imagine</p>
             
             <div className=" md:flex md:flex-row gap-6 rounded-md md:rounded-full bg-richblack-800 mt-5 mb-5 border-richblack-100 px-4 py-1">
@@ -30,7 +30,7 @@ function ExploreMore(){
             </div>
 
             {/* section 2  */}
-               <div className="  flex flex-col   lg:flex-row  gap-10 mt-4 w-11/12">
+               <div className="  flex flex-col   lg:flex-row  gap-10 mt-4 w-11/12 px-4">
                 {
                     showndata.courses.map((element,index)=>{
                         return <CourseCard key={index} setCurrentCard={setmycard} currentCard={showndata} cardData={element}/>

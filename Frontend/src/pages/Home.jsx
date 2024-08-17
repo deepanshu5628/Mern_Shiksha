@@ -140,7 +140,7 @@ function Home() {
           {/* self try  */}
           <div className="bg-pure-greys-5 text-richblack-700 relative mx-auto  flex flex-col   w-11/12  max-w-maxContent items-center justify-between pb-12 ">
             {/* part-1 two buttons  */}
-            <div className="bg-white w-[100%] homepage_bg h-[333px] flex-col  md:flex text-center justify-center gap-4 pt-48">
+            <div className="bg-white w-[100%] homepage_bg h-[333px] flex-col  md:flex text-center justify-center gap-4 pt-20 md:pt-48">
               <CTAButton
                 linkto={`${token === null ? "/signup" : "/dashboard/my-profile"}`}
                 active={true}
@@ -155,7 +155,7 @@ function Home() {
                 children={"Learn More"} />
             </div>
             {/* part2 -heading and para   */}
-            <div className="md:flex justify-between min-w-fit  gap-24 mt-20 mb-16 mx-5">
+            <div className="md:flex justify-between min-w-fit  gap-24 md:mt-14 mb-16 mx-3">
               {/* semi div 1- */}
               <div className="text-4xl font-bold ">
                 <p>Get the skills you need for a </p>{" "}
@@ -180,7 +180,7 @@ function Home() {
               </div>
             </div>
             {/* iamge and role's  */}
-            <div className="flex flex-col  lg:flex-row gap-8 justify-between ">
+            <div className="flex flex-col  lg:flex-row gap-8 justify-between px-2">
               <div className=" w-[100%] md:w-6/12 flex flex-col gap-10  self-center">
                 <RecBox
                   heading={"Leadership"}
@@ -204,7 +204,7 @@ function Home() {
                 />
               </div>
               {/* image  */}
-              <div className="w-6/12   flex justify-center items-center flex-col self-center">
+              <div className="md:w-6/12   flex justify-center items-center flex-col self-center">
                 <div className="shadow-2xl  shadow-blue-200">
                   <img src={imageno1} alt="computer" />
                 </div>
@@ -260,7 +260,7 @@ function Home() {
             <CTAButton active={true} linkto={`${token === null ? "/signup" : "/dashboard/my-profile"}`} children={"Learn More"} />
           </div>
           {/* --------------------------------section-3---------------------------------- */}
-          <div className="w-11/12 max-w-maxContent mx-auto text-richblack-300 pt-16 pl-8 ">
+          <div className="w-11/12 max-w-maxContent mx-auto text-richblack-300 pt-16 md:pl-8 ">
             {/* part-1 */}
             <div className=" lg:flex gap-24 justify-between">
               {/* image div  */}
