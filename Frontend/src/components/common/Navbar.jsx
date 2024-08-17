@@ -65,7 +65,7 @@ function Navbar() {
               </div>
             </Link>
             {token!==null&&
-              <div className=" text-2xl relative right-[8%] text-white self-center sm:hidden">
+              <div className=" text-2xl relative right-[15%] text-white self-center sm:hidden">
                 <button onClick={() => sethamburger(true)}>
                   <RxHamburgerMenu />
                 </button>

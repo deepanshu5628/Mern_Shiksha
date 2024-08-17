@@ -4,7 +4,7 @@ import { ImCross } from "react-icons/im";
 
 function Hamburger({ NavbarLinks, loading, sublinks,sethamburger }) {
     return (
-        <div className="transition-all duration-1000  z-50 opacity-100 h-fit py-4 w-full ">
+        <div className="transition-all duration-1000  z-50 opacity-100 h-fit   py-4 w-full ">
             <div onClick={()=>sethamburger(false)} className="absolute right-5 text-richblack-25">
                 <ImCross />
             </div>
