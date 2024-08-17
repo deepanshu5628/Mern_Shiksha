@@ -109,8 +109,8 @@ function About (){
             <section className="mx-auto mt-20 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-white">
                 <LearningGrid />
                 {/* form div */}
-                <div className="w-full flex justify-center items-center">
-                    <div className="w-4/12">
+                <div className="w-full flex justify-center items-center ">
+                    <div className="md:w-4/12">
                     <Form heading={"Get in Touch"} description={"We'd love to here for you, Please fill out this form."}/>
                     </div>
                 </div>

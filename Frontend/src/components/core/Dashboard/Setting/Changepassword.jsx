@@ -20,10 +20,10 @@ function Changepassword() {
   }
   return (
     <>
-      <section className="bg-richblack-800 h-auto py-6 px-8 rounded-md w-[70%]">
+      <section className="bg-richblack-800 h-auto py-6 px-8 rounded-md w-full md:w-[70%]">
         <h1 className="text-xl font-semibold">Password </h1>
         <form onSubmit={handleSubmit(formsubmithandler)}>
-          <div className="flex justify-between min-w-full my-2 ">
+          <div className="md:flex justify-between min-w-full my-2 ">
             {/* curr pass word input  */}
             <label htmlFor="oldpassword" className="w-full">
               New Password
@@ -61,6 +61,7 @@ function Changepassword() {
               )}
             </label>
           </div>
+          {/* two buttons  */}
           <div className="flex justify-end mt-6 mr-9">
             <CTAButton children={"Cancel"} linkto="/dashboard/my-profile" />
             <button

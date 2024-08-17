@@ -46,9 +46,9 @@ function Course() {
                                     <CourseIntro coursedetails={coursedetails} />
 
                                     {/* section 2 */}
-                                    <section className="flex w-full h-auto p-2 pr-5 mt-4 pb-0 bg-richblack-900 justify-around">
+                                    <section className="md:flex w-full h-auto p-2 pr-5 mt-4 pb-0 bg-richblack-900 justify-around">
                                         {/* first div */}
-                                        <div className="w-[62%] flex-col mt-4  ">
+                                        <div className="w-full md:w-[62%] flex-col mt-4  ">
                                             <div className="border-2 rounded-lg mb-5 border-richblack-300">
                                                 <p className="text-4xl font-semibold p-5">What You Will Learn </p>
                                                 <p className="px-5  pb-5 text-2xl text-richblack-200">{coursedetails.whatYouWillLearn}</p>

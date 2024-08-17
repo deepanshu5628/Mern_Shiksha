@@ -25,7 +25,7 @@ function Rendersteps() {
 
   return (
     <>
-    <div className="bg-richblack-800 h-auto py-6 rounded-md px-8 w-[85%] flex justify-between items-center">
+    <div className="bg-richblack-800 h-auto py-6 rounded-md px-8 w-full md:w-[85%] flex justify-between items-center">
       <div className="flex w-full justify-around text-center ">
         {steps.map((element,index) => (
           <div key={index} className="flex-col items-center justify-center">
@@ -50,7 +50,7 @@ function Rendersteps() {
       </div>
     </div>
     {/* input form  */}
-    <div className="w-[85%] bg-richblack-800 h-auto py-6 rounded-md px-8 items-center">
+    <div className="w-full md:w-[85%] bg-richblack-800 h-auto py-6 rounded-md px-8 items-center">
         {
           step==1  &&  <CourseInformationform/>
         }

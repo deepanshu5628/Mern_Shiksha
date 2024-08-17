@@ -56,7 +56,7 @@ function Home() {
             </div>
 
             {/*subheading   */}
-            <div className="text-center w-[90%] text-lg font-bold text-richblack-300 mt-4">
+            <div className="text-center min-w-fit w-full md:w-[90%] md:text-lg font-bold text-richblack-300 mt-4">
               With our online coding courses, you can learn at your own pace,
               from anywhere in the world, and get access to a wealth of
               resources, including hands-on projects, quizzes, and personalized
@@ -101,6 +101,7 @@ function Home() {
                   linkto: `${token === null ? "/login" : "/dashboard/my-profile"}`,
                   btntext: "Learn More",
                 }}
+                
                 codeblock={`<!DOCTYPE html>\n <html lang="en">\n<head>\n<title>Document</title>\n</head>\n<body>\n<a href="/puma">puma</a>\n<a href="/oneeight">oneeight</a>\n</body>\n</html>`}
                 codeColor={"text-yellow-100"}
               />
@@ -139,7 +140,7 @@ function Home() {
           {/* self try  */}
           <div className="bg-pure-greys-5 text-richblack-700 relative mx-auto  flex flex-col   w-11/12  max-w-maxContent items-center justify-between pb-12 ">
             {/* part-1 two buttons  */}
-            <div className="bg-white w-[100%] homepage_bg h-[333px] flex text-center justify-center gap-4 pt-48">
+            <div className="bg-white w-[100%] homepage_bg h-[333px] flex-col  md:flex text-center justify-center gap-4 pt-48">
               <CTAButton
                 linkto={`${token === null ? "/signup" : "/dashboard/my-profile"}`}
                 active={true}
@@ -154,12 +155,14 @@ function Home() {
                 children={"Learn More"} />
             </div>
             {/* part2 -heading and para   */}
-            <div className="flex justify-between  gap-24 mt-20 mb-16 ">
+            <div className="md:flex justify-between min-w-fit  gap-24 mt-20 mb-16 mx-5">
+              {/* semi div 1- */}
               <div className="text-4xl font-bold ">
                 <p>Get the skills you need for a </p>{" "}
                 <HighlightText text={"job that is in demand"} />
               </div>
-              <div className="flex flex-col gap-10">
+              {/* semi div 2 */}
+              <div className="flex flex-col gap-10 px-2">
                 <div>
                   <p>
                     The modern Shiksha is the dictates its own terms. Today,
@@ -177,8 +180,8 @@ function Home() {
               </div>
             </div>
             {/* iamge and role's  */}
-            <div className="flex flex-row gap-8 justify-between ">
-              <div className=" w-6/12 flex flex-col gap-10  ">
+            <div className="flex flex-col  lg:flex-row gap-8 justify-between ">
+              <div className=" w-[100%] md:w-6/12 flex flex-col gap-10  self-center">
                 <RecBox
                   heading={"Leadership"}
                   description={"Fully committed to the success company"}
@@ -201,11 +204,11 @@ function Home() {
                 />
               </div>
               {/* image  */}
-              <div className="w-6/12   flex justify-center items-center flex-col">
+              <div className="w-6/12   flex justify-center items-center flex-col self-center">
                 <div className="shadow-2xl  shadow-blue-200">
                   <img src={imageno1} alt="computer" />
                 </div>
-                <div className="h-[120px] w-[90%] flex text-white text-1.5xl relative bottom-10  justify-center gap-40 text-bolds bg-caribbeangreen-700">
+                <div className="h-[120px] min-w-fit w-[90%]  md:flex text-white text-1.5xl relative bottom-10  justify-center gap-40 text-bolds bg-caribbeangreen-700 hidden">
                   <div className=" flex gap-5 pl-4 items-center">
                     <h1 className="text-2xl font-extrabold">10</h1>
                     <div className="text-richblack-300">
@@ -259,21 +262,21 @@ function Home() {
           {/* --------------------------------section-3---------------------------------- */}
           <div className="w-11/12 max-w-maxContent mx-auto text-richblack-300 pt-16 pl-8 ">
             {/* part-1 */}
-            <div className="flex gap-24 justify-between">
+            <div className=" lg:flex gap-24 justify-between">
               {/* image div  */}
-              <div>
+              <div className="">
                 <img
-                  className="w-[32rem] h-[26rem]"
+                  className="md:w-[32rem] md:h-[26rem] self-center"
                   src={instructorimg}
                   alt="instructore image"
                 />
               </div>
               {/* info div  */}
-              <div className="flex w-[50%] mt-12 gap-10  flex-col">
+              <div className="flex lg:w-[50%] mt-12 gap-10  flex-col">
                 <div className="text-5xl font-bold">
                   <p>Become an</p> <HighlightText text={"instructor"} />
                 </div>
-                <div className="text-2xl">
+                <div className="text-2xl min-w-fit">
                   <p>
                     Instructors from around the world teach millions of students
                     on Shiksha. We provide the tools and skills to teach what

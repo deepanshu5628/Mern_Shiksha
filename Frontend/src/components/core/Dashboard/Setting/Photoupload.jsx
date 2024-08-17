@@ -16,14 +16,14 @@ function Photoupload() {
   }
   return (
     <>
-      <section className="bg-richblack-800 h-auto py-6 px-8 rounded-md w-[70%] flex justify-between items-center">
-      <form  className="flex justify-between w-full items-center" onSubmit={handleSubmit(imagesubmit)}>
-        <div className="flex gap-3">
+      <section className="bg-richblack-800 h-auto py-6 px-8 rounded-md w-full md:w-[70%] flex justify-between items-center">
+      <form  className="flex flex-col md:flex-row justify-between w-full items-center" onSubmit={handleSubmit(imagesubmit)}>
+        <div className="flex flex-col md:flex-row gap-3">
           {/* image div  */}
-          <div>
-            <img className="rounded-full w-20 h-20 " src={image} alt="" />
+          <div className="self-center">
+            <img className="rounded-full w-20 h-20  " src={image} alt="" />
           </div>
-          {/* upload button */}
+          {/* pic  &input */}
           <div className="flex-col ">
             <p className="text-white font-semibold pb-2 text-lg">
               Change Profile Picture
@@ -46,6 +46,7 @@ function Photoupload() {
             }
           </div>
         </div>
+         {/* upload button */}
         <div>
           <button
             className="flex items-center gap-2 text-center

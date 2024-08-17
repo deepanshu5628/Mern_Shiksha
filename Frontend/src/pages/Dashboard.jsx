@@ -19,11 +19,11 @@ function Dashboard() {
       {authloading || profileloading ? (
         <div className="loader"></div>
       ) : (
-        <div className=" flex cursor-default mt-14 h-[calc(100vh-3.5rem)] w-[100%]  overflow-auto  ">
-          <div className="w-[13%]">
+        <div className=" mt-12  md:flex cursor-default md:mt-14 h-[calc(100vh-3.5rem)] md:w-[100%]  overflow-auto  ">
+          <div className="w-full md:w-[13%]   ">
           <Sidebar />
           </div>
-          <div className="flex w-11/12 ml-4  mt-4 h-fit">
+          <div className="md:flex md:w-11/12 md:ml-4  md:mt-4 md:h-fit">
           {currpath === "/dashboard/my-profile" ? <Myprofile /> : null}
           {currpath === "/dashboard/setting" ? <Setting /> : null}
           {currpath === "/dashboard/enrolled-courses" ? <EnrolledCourses /> : null}

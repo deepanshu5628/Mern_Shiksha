@@ -63,7 +63,7 @@ function Catelog() {
                         <div className=" my-9 cursor-default ">
                             <h1 className="text-4xl font-semibold px-7">Courses To Get You Started</h1>
                             {/* course Slider  */}
-                            <div className="flex px-10 py-4 mt-7 overflow-auto scrollbar-hide whitespace-nowrap">
+                            <div className="flex md:px-10 py-4 mt-7 overflow-auto scrollbar-hide whitespace-nowrap">
                                 {
                                     selectedcourses.length > 0 && selectedcourses.map((course, index) => {
                                         return <div className=" bg-richblack-800  cursor-pointer rounded-lg  m-4 max-h-64 min-h-64 min-w-64 max-w-64 hover:border-yellow-200 hover:border-2" key={index}>
@@ -86,7 +86,7 @@ function Catelog() {
                         <div className=" my-9 cursor-default ">
                             <h1 className="text-4xl font-semibold px-7">Courses You May Like</h1>
                             {/* course Slider  */}
-                            <div className="flex px-10 py-4 mt-7 overflow-auto scrollbar-hide whitespace-nowrap">
+                            <div className="flex md:px-10 py-4 mt-7 overflow-auto scrollbar-hide whitespace-nowrap">
                                 {
                                     othercourses.length > 0 && othercourses.map((course, index) => {
                                         return <div className=" bg-richblack-800  cursor-pointer rounded-lg  m-4 max-h-64 min-h-64 min-w-64 max-w-64 hover:border-yellow-200 hover:border-2" key={index}>
@@ -106,7 +106,8 @@ function Catelog() {
                         </div>
                         <div className="px-8">
                             <div className="text-4xl font-semibold text-white text-center mt-12 px-2">
-                                <p>Review from others learners</p>
+                                <p className="hidden md:block">Review from others learners</p>
+                                <p className="md:hidden">Review's</p>
                                 <ReviewSlider />
                                 <div className='relative bottom-5 z-50 w-full h-5 bg-richblack-900'></div>
                             </div>

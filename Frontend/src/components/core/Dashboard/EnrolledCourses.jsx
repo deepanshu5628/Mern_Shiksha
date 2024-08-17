@@ -39,9 +39,9 @@ function EnrolledCourses() {
     <>
       {
         loading ? <div className="loader"></div> : (
-          <div className="flex flex-col text-richblack-5 w-[100%] items-center h-max  gap-6  ">
-            <section className=" bg-richblack-800 pl-10 pb-14  rounded-md my-12  w-[70%] h-[75%] flex-col justify-between items-center">
-              <h1 className="text-4xl relative my-10  font-semibold text-richblack-25">
+          <div className="flex flex-col text-richblack-5 w-[100%]  items-center h-max  gap-6  ">
+            <section className=" bg-richblack-800 px-4 md:pl-10 md:pb-14  rounded-md my-12   md:w-[70%] h-[75%] flex-col justify-between items-center">
+              <h1 className="text-xl md:text-4xl relative my-10  font-semibold text-richblack-25">
                 Enrolled Courses
               </h1>
               {currusercourses.length === 0 ? (
@@ -55,20 +55,21 @@ function EnrolledCourses() {
                 </div>
               ) : (
                 // pending
-                < div className="w-[95%]  cursor-pointer ">
+                < div className="w-[95%]   cursor-pointer ">
                   {
                     currusercourses.map((course, index) => {
                       return <div
                         onClick={() => viewcourse(course._id)}
-                        className=" sm::flex-col lg:flex justify-evenly bg-richblack-900 my-4 rounded-lg border-t-2 border-richblack-300"
+                        className=" flex flex-col lg:flex-row justify-evenly bg-richblack-900 my-4 rounded-lg border-t-2 border-richblack-300"
                         key={index}>
                         {/* image div */}
-                        <div className=" p-2 pl-4   w-[37%] ">
-                          <img src={course.thumbnail} className="h-24 py-2 w-32 rounded-lg" alt="asf" />
+                        <div className="  w-full  bg-pink-200 md:min-w-[40%] ">
+                          <img src={course.thumbnail} className="h-full py-1 w-full rounded-lg" alt="asf" />
                         </div>
                         {/* info div */}
-                        <div className="text-3xl flex w-[37%] py-3  items-center">
-                          <p className="font-semibold">{course.courseName}</p>
+                        <div className="  md:text-3xl flex  py-3   items-center">
+                          <p className="font-semibold text-base sm:text-sm ">{course.courseName}</p>
+                          {/* <p>hsdfljasfdljsadflroerm  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla rem dignissimos, mollitia eius optio error eum et repudiandae corporis quisquam? Distinctio saepe laboriosam, nemo voluptatibus temporibus ex accusantium. Dignissimos, ratione!</p> */}
                           {/* <p className="mt-4 text-richblack-100">{course.category.name}</p> */}
                         </div>
                       </div>
