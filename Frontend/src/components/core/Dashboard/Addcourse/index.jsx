@@ -7,16 +7,16 @@ import { setCourse, setEdit } from "../../../../redux/Slices/courseSlice";
 import { useLocation } from "react-router-dom";
 function AddCourse() {
   const dispatch = useDispatch();
-  const { course, edit,step } = useSelector((state) => state.course);
-  const location=useLocation();
+  const { course, edit, step } = useSelector((state) => state.course);
+  const location = useLocation();
   // console.log("loca",location.pathname);
   // console.log("in index.jsx",course);
 
- 
- 
+
+
   return (
-    <div className="flex text-richblack-5  justify-center  my-10  w-[100%]">
-      <div className=" min-w-[49%]">
+    <div className="flex flex-col md:flex-row text-richblack-5  md:justify-center  my-10  w-[100%]">
+      <div className=" md:min-w-[49%] ">
         <h1 className="text-4xl  mb-10  flex  font-semibold text-richblack-25">
           Add Course
         </h1>
@@ -25,10 +25,7 @@ function AddCourse() {
           <Rendersteps />
         </div>
       </div>
-      <div
-        className="bg-richblack-800 h-fit
-       p-8 rounded-lg w-[40%] mt-10"
-      >
+      <div className="bg-richblack-800 h-fit p-8 rounded-lg w-full md:w-[40%] mt-10">
         <div className="flex  gap-5">
           <IoSparklesOutline className="text-yellow-25 text-3xl items-center" />
           <h3 className="mb-6 font-bold text-2xl"> Code Upload Tips </h3>

@@ -20,7 +20,7 @@ function Dashboard() {
         <div className="loader"></div>
       ) : (
         <div className=" mt-12  md:flex cursor-default md:mt-14 h-[calc(100vh-3.5rem)] md:w-[100%]  overflow-auto  ">
-          <div className="w-full md:w-[13%] mb-32  ">
+          <div className="w-full md:w-[13%]   ">
           <Sidebar />
           </div>
           <div className="md:flex md:w-11/12 md:ml-4  md:mt-4 md:h-fit">

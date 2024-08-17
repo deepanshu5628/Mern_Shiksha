@@ -63,15 +63,15 @@ function MyCourses() {
             {
                 loading ? <div className="loader"></div> :
                     <div className="flex flex-col  text-richblack-5 justify-center items-center my-4 gap-6 w-[100%]">
-                        <section className="w-[70%] rounded-lg py-3 px-7  pb-10 flex-col items-center justify-center bg-richblack-800 ">
+                        <section className="w-full  md:w-[70%] rounded-lg py-3 px-7  pb-10 flex-col items-center justify-center bg-richblack-800 ">
 
                             {/* heading div */}
-                            <div className="flex justify-between  rounded-2xl w-full my-5 px-4 pr-11  ">
-                                <h1 className="text-3xl  font-semibold text-richblack-25">My Course</h1>
+                            <div className="flex justify-between  rounded-2xl w-full md:my-5 md:px-4 md:pr-11  ">
+                                <h1 className="text-xl md:text-3xl  font-semibold text-richblack-25">My Course</h1>
                                 <button
                                     onClick={() => navigate("/dashboard/add-course")}
 
-                                    className="flex items-center gap-1 bg-yellow-50 font-semibold text-black rounded-md p-2">Add Course <CiCirclePlus className="text-lg" /></button>
+                                    className="flex items-center gap-1 bg-yellow-50 font-semibold text-black rounded-md p-1 md:p-2">Add Course <CiCirclePlus className="text-lg" /></button>
                             </div>
 
                             {
@@ -81,27 +81,27 @@ function MyCourses() {
                                     /* table */
                                     <table className="w-full   mt-5">
                                         <thead >
-                                            <th className="w-[74%] text-start pl-4">Courses</th>
-                                            <th className="w-[13%] text-start">Price</th>
-                                            <th className="w-[13%] text-start">Action</th>
+                                            <th className="w-[74%] md:w-[74%] text-start md:pl-4">Courses</th>
+                                            <th className="w-[13%] md:w-[13%] text-start">Price</th>
+                                            <th className="w-[13%] md:w-[13%] text-start">Action</th>
                                         </thead>
                                         <tbody  >
 
                                             {
                                                 instructorcourses !== null &&instructorcourses.length>0&& instructorcourses.map((onecourse,index) => {
                                                     return < >
-                                                        <tr key={index} >
-                                                            <td>
-                                                                <div className="flex gap-6">
+                                                        <tr key={index}  >
+                                                            <td className="">
+                                                                <div className="flex gap-2 md:gap-6 my-5">
                                                                     <div >
-                                                                        <img className="rounded-lg min-w-48 h-28 pl-4 mt-4 "
+                                                                        <img className="rounded-lg min-h-32 md:min-w-48 md:h-28 md:pl-4 md:mt-4 "
                                                                             src={onecourse.thumbnail} alt="thmbnail" />
                                                                     </div>
                                                                     <div className="flex-col w-auto " >
-                                                                        <p className="font-semibold text-2xl my-2 ">{onecourse.courseName}</p>
-                                                                        <p className="my-2 text-richblack-50"> {onecourse.courseDescription}</p>
+                                                                        <p className="font-semibold text-base md:text-2xl my-2 ">{onecourse.courseName}</p>
+                                                                        <p className="my-2 text-richblack-50"> {onecourse.courseDescription.length>30?onecourse.courseDescription.substring(0,20)+"...":onecourse.courseDescription}</p>
                                                                         {/* <p>{onecouse.createdAt}</p> */}
-                                                                        <p className={`  ${onecourse.status === "Published" ? "bg-caribbeangreen-300 text-black rounded-lg p-2 w-24" : "bg-pink-600 text-white rounded-lg p-2 w-16"}`}>
+                                                                        <p className={`  ${onecourse.status === "Published" ? "bg-caribbeangreen-300 text-black rounded-lg p-1 md:p-2 w-20 md:w-24" : "bg-pink-600 text-white rounded-lg p-2 w-16"}`}>
                                                                             {onecourse.status}
                                                                         </p>
                                                                     </div>

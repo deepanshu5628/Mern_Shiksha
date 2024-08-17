@@ -7,7 +7,7 @@ function Sidebar() {
   const currpath=location.pathname;
   return (
     <div
-      className="bg-richblack-800 flex justify-evenly md:justify-start md:flex-col fixed w-full md:min-w-[13%] md:max-w-[13%] md:h-[calc(100vh-3.5rem)]   pl-1  py-4
+      className="bg-richblack-800 flex flex-wrap justify-evenly md:justify-start md:flex-col md:fixed w-full md:min-w-[13%] md:max-w-[13%] md:h-[calc(100vh-3.5rem)]   pl-1  py-4
           text-richblack-25"
     >
       {sidebarLinks.map((element, index) => {

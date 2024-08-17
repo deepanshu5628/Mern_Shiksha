@@ -87,9 +87,9 @@ function Instructor() {
                                     <p className="text-richblack-100 text-lg my-4">Let's start something new</p>
                                 </div>
 
+                                <div className="md:flex w-full  md:justify-between bg-richblack-900 my-2">
                                 {/* stats section */}
-                                <div className="flex w-full  justify-between bg-richblack-900 my-2">
-                                    <div className="bg-richblack-800 rounded-md p-4 w-[70%]">
+                                    <div className="bg-richblack-800 rounded-md p-4 w-full md:w-[70%]">
                                         <p className="font-semibold text-2xl"> Visualize </p>
                                         {/* if enrolled studets are 0 then say not enought data to visualize */}
                                         {
@@ -119,7 +119,8 @@ function Instructor() {
                                         }
                                         
                                     </div>
-                                    <div className="bg-richblack-800 flex-col  rounded-md p-4 w-[28%]">
+                                    {/* visualization */}
+                                    <div className="bg-richblack-800 flex-col  rounded-md p-4 w-full mt-7 md:mt-0 md:w-[28%]">
                                         <p className="font-semibold text-2xl my-1">Statistics </p>
                                         <div className="my-1">
                                             <p className="text-xl text-richblack-100">Total Courses</p>
@@ -142,13 +143,13 @@ function Instructor() {
                                         <p className="text-xl font-semibold">Your Courses</p>
                                         <p onClick={() => navigate("/dashboard/my-courses")} className="text-yellow-50 cursor-pointer">View All</p>
                                     </div>
-                                    <div className="flex p-2 pb-5 justify-evenly">
+                                    <div className="flex flex-col  md:flex-row p-2 pb-5 md:justify-evenly">
                                         {
                                             courses.slice(0, 3).map((cour, index) => {
-                                                return <div key={index} onClick={() => navigate("dashboard/my-courses")} className="px-2 flex-col cursor-pointer">
-                                                    <img className="w-72 h-52" src={cour.thumbnail} alt="" />
-                                                    <p>{cour.courseName}</p>
-                                                    <p>{cour.enrolledStudents.length} students | Rs.{cour.price}</p>
+                                                return <div key={index} onClick={() => navigate("dashboard/my-courses")} className="self-center my-7 md:my-0 px-2 flex-col cursor-pointer">
+                                                    <img className="w-[90%] mx-auto md:mx-0 md:w-72 md:h-52" src={cour.thumbnail} alt="" />
+                                                    <p className="ml-8 md:mx-0">{cour.courseName}</p>
+                                                    <p className="ml-8 md:mx-0">{cour.enrolledStudents.length} students | Rs.{cour.price}</p>
                                                 </div>
                                             })
                                         }

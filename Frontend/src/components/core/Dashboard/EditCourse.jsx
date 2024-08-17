@@ -36,7 +36,7 @@ function EditCourse() {
             {
                 loading ? <div className="loader"></div> :
                     <div className="flex  w-full justify-center items-center">
-                        <div className="text-white w-[65%] pl-9 flex-col  justify-center items-center  bg-richblack-800">
+                        <div className="text-white w-full md:w-[65%] md:pl-9 flex-col  justify-center items-center  bg-richblack-800">
                             <h1 className="text-4xl px-8 my-6  flex  font-semibold text-richblack-25">
                                 Edit Course
                             </h1>
