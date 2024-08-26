@@ -6,6 +6,7 @@ import Changepassword from "./Changepassword";
 import Deleteaccount from "./Deleteaccount";
 function Setting() {
   const { user } = useSelector((state) => state.profile);
+  console.log(user);
   return (
     <div className="flex flex-col text-richblack-5 items-center my-4 gap-6 w-[100%]">
       <h1 className="text-4xl  font-semibold text-richblack-25">

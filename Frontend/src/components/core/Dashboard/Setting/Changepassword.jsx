@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import { changepassword } from "../../../../services/operations/authAPI";
 import {useDispatch, useSelector} from "react-redux"
 import { Navigate, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 function Changepassword() {
   const {token}=useSelector((state)=>state.auth);
+  const { user } = useSelector((state) => state.profile);
   const navigate=useNavigate();
   const dispatch=useDispatch();
   const {
@@ -16,6 +18,10 @@ function Changepassword() {
   } = useForm();
 
    function formsubmithandler(data) {
+    if(user.email==="studentdemo@gmail.com" || user.email==="teacherdemo@gmail.com"){
+      toast.error("try it be smart with your own id ");
+      return 
+    }
      dispatch(changepassword(data,token,navigate));
   }
   return (
@@ -64,7 +70,7 @@ function Changepassword() {
           {/* two buttons  */}
           <div className="flex justify-end mt-6 mr-9">
             <CTAButton children={"Cancel"} linkto="/dashboard/my-profile" />
-            <button
+            <button 
               className="text-center text-[13px] px-6 py-3 rounded-md 
              font-bold text-black bg-yellow-50 hover:scale-95 transition-all 
              duration-200"
