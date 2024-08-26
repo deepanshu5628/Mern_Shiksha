@@ -63,12 +63,12 @@ function EnrolledCourses() {
                         className=" flex flex-col lg:flex-row justify-evenly bg-richblack-900 my-4 rounded-lg border-t-2 border-richblack-300"
                         key={index}>
                         {/* image div */}
-                        <div className="  w-full  bg-pink-200 md:min-w-[40%] ">
+                        <div className="  w-full md:w-[60%]  bg-pink-200 md:min-w-[40%] ">
                           <img src={course.thumbnail} className="h-full py-1 w-full rounded-lg" alt="asf" />
                         </div>
                         {/* info div */}
                         <div className="  md:text-3xl flex  py-3   items-center">
-                          <p className="font-semibold text-base sm:text-sm ">{course.courseName}</p>
+                          <p className="font-semibold text-base sm:text-sm md:text-2xl ">{course.courseName}</p>
                           {/* <p>hsdfljasfdljsadflroerm  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla rem dignissimos, mollitia eius optio error eum et repudiandae corporis quisquam? Distinctio saepe laboriosam, nemo voluptatibus temporibus ex accusantium. Dignissimos, ratione!</p> */}
                           {/* <p className="mt-4 text-richblack-100">{course.category.name}</p> */}
                         </div>
